@@ -2,6 +2,9 @@
 
 toggl cli written in node, based on TogglCli project. Attempting to use similiar syntax.
 
+## Configuration
+
+add your `TOGGL_API_TOKEN` to your environment. Eventually this will read from a config file too.
 ## Dependencies
 
 ## To DO
