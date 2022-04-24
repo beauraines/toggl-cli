@@ -10,6 +10,7 @@ module.exports = function() {
     
     // Try to read rc file
     
+    // FIXME apiToken is not needed
     const apiToken = process.env.TOGGL_API_TOKEN;
         const client = togglClient();
         // const client = togglClient({ apiToken });
