@@ -12,7 +12,7 @@
   "dependencies": {
     "dayjs": "^1.11.1",
     "dotenv": "^16.0.0",
-    "toggl-client": "github:beauraines/toggl-client#addUserClass",
+    "toggl-client": "github:saintedlama/toggl-client",
     "yargs": "^17.4.1"
   }
 }
