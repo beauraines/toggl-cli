@@ -11,62 +11,20 @@ exports.builder = {}
 exports.handler = async function (argv) {
     const client = Client();
     let workspace = await getWorkspace();
+    let projects = await getProjects(workspace.id);
     let params = { start_date: dayjs().startOf('day').toISOString() };
 
 
     timeEntries = await client.timeEntries.list(params);
 
-     // [
-    //     {
-    //       id: 2463026053,
-    //       guid: 'dba205a234d78492f3f7510c0c00b790',
-    //       wid: 403916,
-    //       pid: 174558624,
-    //       billable: false,
-    //       start: '2022-04-22T17:38:27+00:00',
-    //       stop: '2022-04-22T18:07:50+00:00',
-    //       duration: 1763,
-    //       description: 'recommendations',
-    //       duronly: false,
-    //       at: '2022-04-22T18:07:51+00:00',
-    //       uid: 530321
-    //     },
-    //     {
-    //       id: 2463068736,
-    //       guid: 'e9a444f99da3a09de1f16d242546e18e',
-    //       wid: 403916,
-    //       pid: 174558624,
-    //       billable: false,
-    //       start: '2022-04-22T18:16:01+00:00',
-    //       stop: '2022-04-22T18:33:44+00:00',
-    //       duration: 1063,
-    //       description: 'profile updates',
-    //       duronly: false,
-    //       at: '2022-04-22T18:33:44+00:00',
-    //       uid: 530321
-    //     }
-    //   ]
-
-
-    console.log(timeEntries);
-    let projects = [];
+    let todaysProjects = [];
     timeEntries.map(e => {
-        console.log(`${e.start} ${e.description}  ${e.duration}`)
-        // find unique projects
-        projects.push(e.pid);
-        // filter for each project
-        // reduce() or _.groupBy() or groupBy()
-        // sum duration
-        // 2022-04-22T18:53:24+00:00 Time tracking - cli  52
-        // 2022-04-22T18:54:15+00:00 Time tracking - cli  225
-        // 2022-04-22T18:58:00+00:00 MCP All Hands  3191
-        // 2022-04-22T19:56:37+00:00 Time tracking - cli  303
-        // 2022-04-22T20:01:39+00:00 Time tracking - cli  -1650657699
+        todaysProjects.push(e.pid);
     })
-    projects = [...new Set(projects)];
+    todaysProjects = [...new Set(todaysProjects)];
 
-    let foo = []
-    projects.map(p =>{
+    let report = []
+    todaysProjects.map(p =>{
         let total=0;
         timeEntries.filter(x => x.pid == p).map(e =>{
             if (e.duration >= 0) {
@@ -79,26 +37,32 @@ exports.handler = async function (argv) {
                 total+=duration;
             }
         })
-        foo.push({[p]: total});
+        let project = projects.find(x=> x.id == p);
+        report.push({
+            ...project,
+            seconds: total,
+            duration_formatted:  dayjs.duration(total*1000).format('H[h] m[m]'),
+            duration:  dayjs.duration(total*1000).format('H:mm:ss')
+        });
     })
-    console.log(foo);
-
-    console.log(timeEntries[0]);
-    console.log(timeEntries[timeEntries.length-1]);
-
-
-    
-    // ! Not supported in Node
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/groupBy
-    // let result = timeEntries.groupBy( ({ pid }) => pid );
-    // console.log(result);
+    console.log(report);
 
 
 }
 
+// TODO these should move to some utility
 async function getWorkspace() {
     const client = Client();
     workspaces = await client.workspaces.list();
     return workspaces[0];
+}
+
+// TODO these should move to some utility
+async function getProjects(workspaceId) {
+    const client = Client();
+    projects = await client.workspaces.projects(workspaceId);
+    // TODO what is this magic number 56426359
+    let activeProjects = projects.filter(x => x.active && x.cid == 56426359 )
+    return activeProjects;
 }
 

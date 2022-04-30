@@ -50,6 +50,7 @@ function displayReportText(data) {
         console.info(project.title.project);
         let startOfWeek = dayjs().startOf('week');
         project.totals.map((total, i) => {
+            // TODO see https://runkit.com/6022b36c23da0600130851a0/6022b36c7614ed001ad11853 for formatting options
             let duration = dayjs.duration(total, 'milliseconds').format('H[h] m[m]');
             let day = startOfWeek.add(i, 'days').format('ddd MMM D');
             i == 7 ? console.info(`\tTotal : ${duration}`) : console.info(`\t ${day} - ${duration}`);
