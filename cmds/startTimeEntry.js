@@ -24,8 +24,8 @@ exports.handler = async function (argv) {
     // TODO lookup workspace
     params.workspaceId = utils.defaultWorkspaceId;
     // TODO lookup project
-    params.projectId = utils.defaultProjectId;
-    let timeEntry //= await createTimeEntry(params);
+    params.projectId = utils.defaultProjectId || null;
+    let timeEntry = await createTimeEntry(params);
     console.info(`Started ${timeEntry?.description} for project ${params.projectId}`);
 }
 

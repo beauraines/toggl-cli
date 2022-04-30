@@ -8,7 +8,7 @@ module.exports = function() {
         console.log('For development, it can be set in the .env file in the project root');
     }
     
-    // Try to read rc file
+    // TODO Try to read rc file
     
     // FIXME apiToken is not needed
     const apiToken = process.env.TOGGL_API_TOKEN;
