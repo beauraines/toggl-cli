@@ -12,7 +12,7 @@ async function main() {
     
     projects = await client.workspaces.projects(workspace.id);
     
-    let activeProjects = projects.filter(x => x.active && x.cid == 56426359 )
+    let activeProjects = projects.filter(x => x.active )
     console.info(`Found ${activeProjects.length} projects`);
     activeProjects.map(p => {console.log(p.name + " " + p.id )})
 }

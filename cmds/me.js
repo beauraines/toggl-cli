@@ -1,5 +1,6 @@
 const dayjs = require('dayjs');
 const Client = require('../client');
+const utils = require('../utils');
 
 exports.command = 'me'
 exports.desc = 'Displays the current user'
@@ -39,7 +40,6 @@ exports.handler = async function (argv) {
     let since = dayjs.unix(currentUser.since);
     console.log('')
     console.log(`Toggl user since ${since}`);
-
 
 
 }
