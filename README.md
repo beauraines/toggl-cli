@@ -19,10 +19,12 @@ This was made possible because [saintedlama](https://github.com/saintedlama) had
 
 ## Development Road Map
 
-This is just a scattered list of features, not yet sorted.
+Priority order... I think.
 
-1. toggl continue - this command is not yet supported.
-1. now - format the display time entry output
+1. today - improve the output
+   1. duration to display helper function?
+2. weekly - improve the output format
+3. now - format the display time entry output
    
         Time tracking - cli #2462957088
         Billable: False
@@ -33,15 +35,13 @@ This is just a scattered list of features, not yet sorted.
         Tags: 
         Task: 
         Workspace: beau.raines's workspace (#403916)
-2. now - update running description, project, start time
-3. now - update start time with overlap detection and adjust prior time entry
-4. read configuration (token, default workspace) from files (client and utils)
-5. weekly - improve the output format
-6. toggl project add - this command is not yet supported.
-7. project list - format the output, group by client
-8. start - add project name to output, add time started
-9.  duration to display helper function?
-10. today - improve the output
+4. toggl continue - this command is not yet supported.
+5. read configuration (token, default workspace) from files (client and utils)
+6. now - update running description, project, start time
+7. now - update start time with overlap detection and adjust prior time entry
+8. project list - format the output, group by client
+9. Add ability to lookup project by name not just id
+10. start - add project name to output, add time started
 11. toggl workspace add - this command is not yet supported.
 12. toggl workspace list - improve output 
 13. colorized output
@@ -49,6 +49,7 @@ This is just a scattered list of features, not yet sorted.
     1.  default workspace?
     2.  API key?
     3.  display formats?
+15. toggl project add - this command is not yet supported.
 
 
 

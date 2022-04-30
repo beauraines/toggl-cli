@@ -12,4 +12,17 @@ exports.handler = async function (argv) {
 }
 
 
+// from toggl-cli
+// Usage: toggl continue [OPTIONS] [DESCR]
+
+//   If DESCR is specified then it will search this entry and continue it,
+//   otherwise it continues the last time entry.
+
+//   The underhood behaviour of Toggl is that it actually creates a new entry
+//   with the same description.
+
+// Options:
+//   -s, --start DATETIME  Sets a start time.
+//   --help                Show this message and exit.
+
 
