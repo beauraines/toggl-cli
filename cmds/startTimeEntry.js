@@ -1,7 +1,7 @@
 const Client = require('../client');
 const dayjs = require('dayjs');
 
-exports.command = 'start [options] [description]'
+exports.command = 'start'
 exports.desc = 'Starts a time entry'
 exports.builder = {
     description: {
@@ -15,17 +15,17 @@ exports.builder = {
 exports.handler = async function (argv) {
 
     // console.info(`${argv.$0} ${argv._.join(' ')} - this command is not yet supported.`);
-
-    console.debug(JSON.stringify(argv));
+    console.debug(argv);
     // TODO validate options
     // TODO check that description was provided or provide a default
     let params = {};
-    params.description = argv.description || 'no description';
+    params.description = argv.description || argv._.slice(1).join(' ') || 'no description';
+    // TODO lookup workspace
     params.workspaceId = 403916;
+    // TODO lookup project
     params.projectId = 174558624;
-    console.debug(params);
-    let timeEntry // = await createTimeEntry(params);
-    console.info(`Started ${timeEntry?.description}`);
+    let timeEntry = await createTimeEntry(params);
+    console.info(`Started ${timeEntry?.description} for project ${params.projectId}`);
 }
 
 
