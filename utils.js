@@ -7,8 +7,7 @@ exports.defaultProjectId = 174558624;
 exports.getProjects = async function(workspaceId) {
     const client = Client();
     projects = await client.workspaces.projects(workspaceId);
-    // TODO what is this magic number 56426359
-    let activeProjects = projects.filter(x => x.active && x.cid == 56426359 )
+    let activeProjects = projects.filter(x => x.active)
     return activeProjects;
 }
 
