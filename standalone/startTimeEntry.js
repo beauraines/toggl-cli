@@ -1,6 +1,7 @@
 const togglClient = require('toggl-client');
 const dayjs = require('dayjs');
 const yargs = require("yargs");
+const utils = require('../utils');
 require('dotenv').config()
 
 
@@ -18,8 +19,8 @@ async function main() {
     let description = options._.join(' ');
     // TODO check that description was provided or provide a default
     let params = {description};
-    params.workspaceId = 403916;
-    params.projectId = 174558624;
+    params.workspaceId = utils.defaultWorkspaceId;
+    params.projectId = utils.defaultProjectId;;
     console.debug(params);
     timeEntry = await createTimeEntry(params);
     console.info(`Started ${timeEntry.description}`);

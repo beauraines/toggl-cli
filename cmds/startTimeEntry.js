@@ -1,4 +1,5 @@
 const Client = require('../client');
+const utils = require('../utils');
 const dayjs = require('dayjs');
 
 exports.command = 'start'
@@ -21,10 +22,10 @@ exports.handler = async function (argv) {
     let params = {};
     params.description = argv.description || argv._.slice(1).join(' ') || 'no description';
     // TODO lookup workspace
-    params.workspaceId = 403916;
+    params.workspaceId = utils.defaultWorkspaceId;
     // TODO lookup project
-    params.projectId = 174558624;
-    let timeEntry = await createTimeEntry(params);
+    params.projectId = utils.defaultProjectId;
+    let timeEntry //= await createTimeEntry(params);
     console.info(`Started ${timeEntry?.description} for project ${params.projectId}`);
 }
 

@@ -1,5 +1,6 @@
 const Client = require('../client');
 const dayjs = require('dayjs');
+const utils = require('../utils');
 var dur = require('dayjs/plugin/duration')
 var relativeTime = require('dayjs/plugin/relativeTime')
 dayjs.extend(relativeTime)
@@ -10,8 +11,8 @@ exports.desc = 'Reports today\'s activities by project'
 exports.builder = {}
 exports.handler = async function (argv) {
     const client = Client();
-    let workspace = await getWorkspace();
-    let projects = await getProjects(workspace.id);
+    let workspace = await utils.getWorkspace();
+    let projects = await utils.getProjects(workspace.id);
     let params = { start_date: dayjs().startOf('day').toISOString() };
 
 
@@ -49,20 +50,3 @@ exports.handler = async function (argv) {
 
 
 }
-
-// TODO these should move to some utility
-async function getWorkspace() {
-    const client = Client();
-    workspaces = await client.workspaces.list();
-    return workspaces[0];
-}
-
-// TODO these should move to some utility
-async function getProjects(workspaceId) {
-    const client = Client();
-    projects = await client.workspaces.projects(workspaceId);
-    // TODO what is this magic number 56426359
-    let activeProjects = projects.filter(x => x.active && x.cid == 56426359 )
-    return activeProjects;
-}
-
