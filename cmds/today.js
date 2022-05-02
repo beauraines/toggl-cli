@@ -32,8 +32,6 @@ exports.handler = async function (argv) {
                 total+=e.duration; // UNLESS e.duration is less than zero - meaning currently running
             } else {
                 let startTime = dayjs.unix(e.duration*-1);
-                console.log(`computed ${startTime}`);
-                console.log(`timeentry.start ${e.start}`);
                 let duration = dayjs().diff(startTime,'s');
                 total+=duration;
             }
@@ -46,7 +44,7 @@ exports.handler = async function (argv) {
             duration:  dayjs.duration(total*1000).format('H:mm:ss')
         });
     })
-    console.log(report);
+    console.log(JSON.stringify(report));
 
 
 }
