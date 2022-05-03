@@ -39,12 +39,35 @@ exports.handler = async function (argv) {
         let project = projects.find(x=> x.id == p);
         report.push({
             project,
+            project_name: project.name,
             seconds: total,
             duration_formatted:  dayjs.duration(total*1000).format('H[h] m[m]'),
             duration:  dayjs.duration(total*1000).format('H:mm:ss')
         });
     })
-    console.log(JSON.stringify(report));
+    // TODO make format a CLI option
+    let format = 'table'; // csv | json | table defaults to table
+    displayDailyReport(report,format);
 
 
 }
+
+// TODO should this be moved to a formatter file?
+function displayDailyReport(report,format) {
+    switch (format) {
+        case 'csv':
+            // TODO maybe use jsontocsv
+            console.log(JSON.stringify(report));
+            break;
+        case 'json':
+            console.log(JSON.stringify(report));
+            break;
+        case 'table':
+        default:
+            console.table(report,['project_name','duration_formatted']);
+            break;
+    }
+    
+    
+}
+
