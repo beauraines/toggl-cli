@@ -37,7 +37,8 @@ function displayReportJson(data) {
             let entry = {
                 project: project.title.project,
                 date: day,
-                duration: duration
+                duration: duration,
+                total: total
             }
             json.push(entry);
         });
@@ -51,7 +52,10 @@ function displayReportText(data) {
         let startOfWeek = dayjs().startOf('week');
         project.totals.map((total, i) => {
             // TODO see https://runkit.com/6022b36c23da0600130851a0/6022b36c7614ed001ad11853 for formatting options
-            let duration = dayjs.duration(total, 'milliseconds').format('H[h] m[m]');
+            var dur = dayjs.duration(total, 'milliseconds');
+            var hours = (dur.days() * 24) + dur.hours()
+            let duration = `${hours}h ${dur.minutes()}m `
+            // let duration = `${hours}h ${dur.minutes()}m ${dur.seconds()}s`
             let day = startOfWeek.add(i, 'days').format('ddd MMM D');
             i == 7 ? console.info(`\tTotal : ${duration}`) : console.info(`\t ${day} - ${duration}`);
         });
