@@ -14,8 +14,11 @@ exports.handler = async function (argv) {
     let workspace = await getWorkspace();
     let params = { since: dayjs().startOf('week').toISOString() };
     weeklyReport = await client.reports.weekly(workspace.id,params);
-    displayReportText(weeklyReport.data);
+    // displayReportText(weeklyReport.data);
     // displayReportJson(weeklyReport.data);
+    console.log(weeklyReport.data)
+    console.table(weeklyReport.data,['title','totals'])
+
 }
 
 async function getWorkspace() {
@@ -24,6 +27,30 @@ async function getWorkspace() {
     return workspaces[0];
 }
 
+
+
+// We need to get the data shaped like
+// which happens to be very much like displayReportText() is doing
+// except its writing to the console instead of an object
+
+// {
+//     "Project 1": {
+//         "2022-01-01": 1100,
+//         "2022-01-02": 1100,
+//         "2022-01-03": 1100,
+//         "2022-01-04": 1100,
+//         "2022-01-05": 1100
+//     },
+//     "Worked": {
+//         "2022-01-01": 1100,
+//         "2022-01-02": 1100,
+//         "2022-01-03": 1100,
+//         "2022-01-04": 1100,
+//         "2022-01-05": 1100
+//     }
+// }
+
+// Then console.table() will work "nicely"
 
 function displayReportJson(data) {
     let json = []
@@ -44,6 +71,7 @@ function displayReportJson(data) {
         });
     });
     console.log(JSON.stringify(json));
+    console.table(json);
 } 
 
 function displayReportText(data) {
