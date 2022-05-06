@@ -10,7 +10,7 @@ exports.handler = async function (argv) {
     currentTimeEntry = await client.timeEntries.current();
     if (currentTimeEntry) {
         stopped =  await client.timeEntries.stop(currentTimeEntry.id);
-        let duration = dayjs.duration({seconds: stopped.duration}).humanize();
+        let duration = dayjs.duration(stopped.duration*1000).format('H[h] m[m]');
         console.log(`Stopped ${stopped.description} after ${duration}`);
 }
 }

@@ -24,3 +24,9 @@ exports.getProjectByName = async function(workspaceId,string) {
     let projects = await client.workspaces.projects(workspaceId);
     return projects.find(x=>x.name.toLowerCase().includes(string.toLowerCase()));
 }
+
+exports.getProjectById = async function(workspaceId,projectId) {
+    const client = Client();
+    let projects = await client.workspaces.projects(workspaceId);
+    return projects.find(x=>x.id == projectId);
+}
