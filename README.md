@@ -13,34 +13,55 @@ This was made possible because [saintedlama](https://github.com/saintedlama) had
 4. `TOGGL_TIMEZONE=America/Los_Angeles` (defaults to `America/New_York`)
 ## Dependencies
 
-1. toggl-client - saintedlama/toggl-client because the latest hasn't been released to npm
-2. dayjs
+1. toggl-client - Used from [saintedlama/toggl-client](https://github.com/saintedlama/toggl-client) repository as the latest code hasn't been released to npm
 3. dotenv
 4. yargs
 
+
+
+## Features
+
+| Feature                              | Available | Comments |
+| ------------------------------------ | --------- | -------- |
+| Start time entry                     | ✅         |          |
+| Start time entry with description    | ✅         |          |
+| Start time entry with project        | ✅         |          |
+| stop time entry                      | ✅         |          |
+| Continue named time entry            |           |          |
+| Report today by project              | ✅         |          |
+| Report this week by project by day   | ✅         |          |
+| Edit time entry                      |           |          |
+| Use config from file                 |           |          |
+| Save config to file                  |           |          |
+| Refactor: Display and format modules |           |          |
+| Client: reset PAT                    |           |          |
+| Client: other user feature?          |           |          |
+| Client: specify client name          |           |          |
+| Colorize output                      |           |          |
+| Better table output                  |           |          |
 ## Development Road Map
 
 Priority order... I think.
 
-1. today - improve the output
-   1. duration to display helper function?
-2. weekly - improve the output format
+1. ~today - improve the output~
+2. ~weekly - improve the output format~
 3. ~now - format the display time entry output~
 4. toggl continue - this command is not yet supported.
-5. read configuration (token, default workspace) from files (client and utils)
-6. now - update running description, project, start time
-7. now - update start time with overlap detection and adjust prior time entry
-8. project list - format the output, group by client
-9. Add ability to lookup project by name not just id
-10. start - add project name to output, add time started
-11. toggl workspace add - this command is not yet supported.
-12. toggl workspace list - improve output 
-13. colorized output
-14. config - some way to save /me information to a file
+5. duration to display helper function?
+6. read configuration (token, default workspace) from files (client and utils)
+7. now - update running description, project, start time
+8. now - update start time with overlap detection and adjust prior time entry
+9. project list - format the output, group by client
+10. Add ability to lookup project by name not just id
+11. start - add project name to output, add time started
+12. toggl workspace add - this command is not yet supported.
+13. toggl workspace list - improve output 
+14. colorized output
+15. config - some way to save /me information to a file
     1.  default workspace?
     2.  API key?
     3.  display formats?
-15. toggl project add - this command is not yet supported.
+16. toggl project add - this command is not yet supported.
 
 
 
