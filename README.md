@@ -10,6 +10,7 @@ This was made possible because [saintedlama](https://github.com/saintedlama) had
 1. `TOGGL_API_TOKEN` (required)
 2. `TOGGL_DEFAULT_WORKSPACE_ID` (required)
 3. `TOGGL_DEFAULT_PROJECT_ID` (optional)
+4. `TOGGL_TIMEZONE=America/Los_Angeles` (defaults to `America/New_York`)
 ## Dependencies
 
 1. toggl-client - saintedlama/toggl-client because the latest hasn't been released to npm
@@ -24,17 +25,7 @@ Priority order... I think.
 1. today - improve the output
    1. duration to display helper function?
 2. weekly - improve the output format
-3. now - format the display time entry output
-   
-        Time tracking - cli #2462957088
-        Billable: False
-        Duration: 0:00:42
-        Project: Worked (#174558624)
-        Start: 9:41:22 AM 04/22/2022
-        Stop: 
-        Tags: 
-        Task: 
-        Workspace: beau.raines's workspace (#403916)
+3. ~now - format the display time entry output~
 4. toggl continue - this command is not yet supported.
 5. read configuration (token, default workspace) from files (client and utils)
 6. now - update running description, project, start time

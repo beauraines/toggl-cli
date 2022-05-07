@@ -8,13 +8,25 @@ exports.defaultProjectId = process.env.TOGGL_DEFAULT_PROJECT_ID;
 
 exports.getProjects = async function(workspaceId) {
     const client = Client();
-    projects = await client.workspaces.projects(workspaceId);
+    let projects = await client.workspaces.projects(workspaceId);
     let activeProjects = projects.filter(x => x.active)
     return activeProjects;
 }
 
 exports.getWorkspace = async function() {
     const client = Client();
-    workspaces = await client.workspaces.list();
+    let workspaces = await client.workspaces.list();
     return workspaces[0];
+}
+
+exports.getProjectByName = async function(workspaceId,string) {
+    const client = Client();
+    let projects = await client.workspaces.projects(workspaceId);
+    return projects.find(x=>x.name.toLowerCase().includes(string.toLowerCase()));
+}
+
+exports.getProjectById = async function(workspaceId,projectId) {
+    const client = Client();
+    let projects = await client.workspaces.projects(workspaceId);
+    return projects.find(x=>x.id == projectId);
 }

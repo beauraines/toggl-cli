@@ -16,17 +16,24 @@ exports.builder = {
 exports.handler = async function (argv) {
 
     // console.info(`${argv.$0} ${argv._.join(' ')} - this command is not yet supported.`);
-    console.debug(argv);
+    // console.debug(argv);
     // TODO validate options
     // TODO check that description was provided or provide a default
     let params = {};
     params.description = argv.description || argv._.slice(1).join(' ') || 'no description';
     // TODO lookup workspace
     params.workspaceId = utils.defaultWorkspaceId;
-    // TODO lookup project
-    params.projectId = utils.defaultProjectId || null;
+    let project;
+    if(isNaN(argv.projectId)) {
+        project = await utils.getProjectByName(params.workspaceId,argv.projectId)
+     } else {
+        project = await utils.getProjectById(params.workspaceId,argv.projectId)
+     }
+         
+    params.projectId = project.id || utils.defaultProjectId || null;
+    // TODO check for invalid projectId or catch the error when creating fails
     let timeEntry = await createTimeEntry(params);
-    console.info(`Started ${timeEntry?.description} for project ${params.projectId}`);
+    console.info(`Started ${timeEntry?.description} for project ${project.name}`);
 }
 
 
