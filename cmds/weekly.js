@@ -1,7 +1,7 @@
 const Client = require('../client');
 const dayjs = require('dayjs');
 var dur = require('dayjs/plugin/duration')
-var relativeTime = require('dayjs/plugin/relativeTime')
+var relativeTime = require('dayjs/plugin/relativeTime');
 dayjs.extend(relativeTime)
 dayjs.extend(dur);
 
@@ -23,19 +23,33 @@ exports.handler = async function (argv) {
     let reportData = []
     weeklyReport.data.map(project=>{
         let row = {
-            projectId: project.pid,
             projectName: project.title.project,
+            projectId: project.pid
         }
         for (let i = 0; i < project.totals.length; i++) {
             const element = project.totals[i];
-            let date = dayjs().startOf('week').add(i,'days').format('YYYY-MM-DD');
-            // dayjs.duration(stopped.duration*1000).format('H[h] m[m]');
-            // let duration = dayjs.duration(stopped.duration*1000).format('H[h] m[m]');
+            let date = dayjs().startOf('week').add(i,'days').format('ddd MM-DD');
+            // TODO this should not be a magic number
             date = i==7 ? 'Total' : date;
-            row[date] = element; // TODO convert from milliseconds to duration
+            let duration = element ? element :0 ;
+            row[date] = dayjs.duration(duration).format('H[h] m[m]'); // TODO convert from milliseconds to duration
         }
         reportData.push(row);
     })
+    let totalRow = {
+        projectName: 'Total',
+        projectId: '',
+    }
+    weeklyReport.week_totals
+    for (let i = 0; i < weeklyReport.week_totals.length; i++) {
+        const element = weeklyReport.week_totals[i];
+        let date = dayjs().startOf('week').add(i,'days').format('ddd MM-DD');
+        // TODO this should not be a magic number
+        date = i==7 ? 'Total' : date;
+        let duration = element ? element :0 ;
+        totalRow[date] = dayjs.duration(duration).format('H[h] m[m]'); // TODO convert from milliseconds to duration
+    }
+    reportData.push(totalRow);
     console.table(reportData);
 }
 
@@ -47,29 +61,7 @@ async function getWorkspace() {
 
 
 
-// We need to get the data shaped like
-// which happens to be very much like displayReportText() is doing
-// except its writing to the console instead of an object
-
-// {
-//     "Project 1": {
-//         "2022-01-01": 1100,
-//         "2022-01-02": 1100,
-//         "2022-01-03": 1100,
-//         "2022-01-04": 1100,
-//         "2022-01-05": 1100
-//     },
-//     "Worked": {
-//         "2022-01-01": 1100,
-//         "2022-01-02": 1100,
-//         "2022-01-03": 1100,
-//         "2022-01-04": 1100,
-//         "2022-01-05": 1100
-//     }
-// }
-
-// Then console.table() will work "nicely"
-
+// TODO figure out what to do with these
 function displayReportJson(data) {
     let json = []
     data.map(project => {
@@ -92,6 +84,7 @@ function displayReportJson(data) {
     console.table(json);
 } 
 
+// TODO figure out what do to with these
 function displayReportText(data) {
     data.map(project => {
         console.info(project.title.project);
