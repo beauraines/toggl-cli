@@ -1,28 +1,44 @@
-exports.command = 'continue <description>'
-exports.desc = 'Continues an existing time entry'
+const Client = require('../client');
+const utils = require('../utils');
+
+exports.command = 'continue [description]'
+exports.desc = `Continues an existing time entry. If description is included it will search for the most`+
+    `recent entry including that description. If no description is provided, the most recent entry will be restarted.`
 exports.builder = {
     description: {
         describe: 'The time entry to continue',
         type: 'string'
     }
+    //   -s, --start DATETIME  Sets a start time.
 }
 exports.handler = async function (argv) {
-    console.info(`${argv.$0} ${argv._.join(' ')} - this command is not yet supported.`);
-    console.info(`Would have tried to continue the time entry with ${argv.description}`)
+    let client = Client();
+    let timeEntries = await client.timeEntries.list();  // Gets time entries for last 9 days, up to 1000 entries
+    let matchingTimeEntry;
+    switch (argv.description) {
+        case undefined:
+            matchingTimeEntry = timeEntries.slice(-1)[0];
+            break;
+        default:
+            let searchName = argv.description.toLowerCase();
+            matchingTimeEntry = timeEntries.find(x=>x.description.toLowerCase().includes(searchName)) || {};
+            break;
+    }
+    
+    let params = {
+        projectId: matchingTimeEntry?.pid,
+        workspaceId: matchingTimeEntry?.wid,
+        description: matchingTimeEntry?.description || 'no description',
+        billable: matchingTimeEntry?.billable,
+        dur: matchingTimeEntry?.dur
+    }
+
+    let timeEntry = await utils.createTimeEntry(params);
+    let project = await utils.getProjectById(timeEntry.wid,timeEntry.pid)
+    console.info(`Started ${timeEntry?.description} for project ${project?.name}`);
+
+
 }
 
-
-// from toggl-cli
-// Usage: toggl continue [OPTIONS] [DESCR]
-
-//   If DESCR is specified then it will search this entry and continue it,
-//   otherwise it continues the last time entry.
-
-//   The underhood behaviour of Toggl is that it actually creates a new entry
-//   with the same description.
-
-// Options:
-//   -s, --start DATETIME  Sets a start time.
-//   --help                Show this message and exit.
 
 

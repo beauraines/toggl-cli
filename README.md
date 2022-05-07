@@ -27,7 +27,7 @@ This was made possible because [saintedlama](https://github.com/saintedlama) had
 | Start time entry with description    | ✅         |          |
 | Start time entry with project        | ✅         |          |
 | stop time entry                      | ✅         |          |
-| Continue named time entry            |           |          |
+| Continue named time entry            | ✅         |          |
 | Report today by project              | ✅         |          |
 | Report this week by project by day   | ✅         |          |
 | Edit time entry                      |           |          |

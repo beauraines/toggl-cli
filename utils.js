@@ -1,4 +1,6 @@
 const Client = require('./client');
+const dayjs = require('dayjs');
+const appName = require('./package.json').name
 
 // TODO read from file or GET /me
 exports.defaultWorkspaceId = process.env.TOGGL_DEFAULT_WORKSPACE_ID;
@@ -29,4 +31,21 @@ exports.getProjectById = async function(workspaceId,projectId) {
     const client = Client();
     let projects = await client.workspaces.projects(workspaceId);
     return projects.find(x=>x.id == projectId);
+}
+
+exports.createTimeEntry = async function (params) {
+    const client = Client();
+
+    timeEntry = await client.timeEntries.create(
+        {
+            description: params.description,
+            wid: params.workspaceId,
+            pid: params.projectId,
+            start: dayjs().toISOString(),
+            duration: -1 * dayjs().unix(),
+            created_with: appName,
+            at: dayjs().toISOString()
+        }
+    );
+    return timeEntry
 }

@@ -1,5 +1,5 @@
 {
-  "name": "toggl-node",
+  "name": "toggl-cli-node",
   "version": "0.5.1",
   "description": "",
   "main": "cli.js",

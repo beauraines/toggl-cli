@@ -1,6 +1,4 @@
-const Client = require('../client');
 const utils = require('../utils');
-const dayjs = require('dayjs');
 
 exports.command = 'start'
 exports.desc = 'Starts a time entry'
@@ -30,26 +28,8 @@ exports.handler = async function (argv) {
         project = await utils.getProjectById(params.workspaceId,argv.projectId)
      }
          
-    params.projectId = project.id || utils.defaultProjectId || null;
+    params.projectId = project?.id || utils.defaultProjectId || null;
     // TODO check for invalid projectId or catch the error when creating fails
-    let timeEntry = await createTimeEntry(params);
-    console.info(`Started ${timeEntry?.description} for project ${project.name}`);
-}
-
-
-async function createTimeEntry(params) {
-    const client = Client();
-
-    timeEntry = await client.timeEntries.create(
-        {
-            description: params.description,
-            wid: params.workspaceId,
-            pid: params.projectId,
-            start: dayjs().toISOString(),
-            duration: -1 * dayjs().unix(),
-            created_with: 'My app',
-            at: dayjs().toISOString()
-        }
-    );
-    return timeEntry
+    let timeEntry = await utils.createTimeEntry(params);
+    console.info(`Started ${timeEntry?.description} for project ${project?.name}`);
 }
