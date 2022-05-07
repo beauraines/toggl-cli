@@ -16,9 +16,27 @@ exports.handler = async function (argv) {
     weeklyReport = await client.reports.weekly(workspace.id,params);
     // displayReportText(weeklyReport.data);
     // displayReportJson(weeklyReport.data);
-    console.log(weeklyReport.data)
-    console.table(weeklyReport.data,['title','totals'])
+    // console.log(weeklyReport.data)
+    // console.table(weeklyReport.data,['title','totals'])
+    // console.log(JSON.stringify(weeklyReport));
 
+    let reportData = []
+    weeklyReport.data.map(project=>{
+        let row = {
+            projectId: project.pid,
+            projectName: project.title.project,
+        }
+        for (let i = 0; i < project.totals.length; i++) {
+            const element = project.totals[i];
+            let date = dayjs().startOf('week').add(i,'days').format('YYYY-MM-DD');
+            // dayjs.duration(stopped.duration*1000).format('H[h] m[m]');
+            // let duration = dayjs.duration(stopped.duration*1000).format('H[h] m[m]');
+            date = i==7 ? 'Total' : date;
+            row[date] = element; // TODO convert from milliseconds to duration
+        }
+        reportData.push(row);
+    })
+    console.table(reportData);
 }
 
 async function getWorkspace() {
