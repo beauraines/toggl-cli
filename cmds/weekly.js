@@ -1,4 +1,5 @@
 const Client = require('../client');
+const utils = require('../utils')
 const dayjs = require('dayjs');
 var dur = require('dayjs/plugin/duration')
 var relativeTime = require('dayjs/plugin/relativeTime');
@@ -11,7 +12,7 @@ exports.desc = 'Weekly project summary by day'
 exports.builder = {}
 exports.handler = async function (argv) {
     const client = Client();
-    let workspace = await getWorkspace();
+    let workspace = await utils.getWorkspace();
     let params = { since: dayjs().startOf('week').toISOString() };
     weeklyReport = await client.reports.weekly(workspace.id,params);
     // displayReportText(weeklyReport.data);
@@ -32,7 +33,7 @@ exports.handler = async function (argv) {
             // TODO this should not be a magic number
             date = i==7 ? 'Total' : date;
             let duration = element ? element :0 ;
-            row[date] = dayjs.duration(duration).format('H[h] m[m]'); // TODO convert from milliseconds to duration
+            row[date] =  utils.formatDuration(duration);
         }
         reportData.push(row);
     })
@@ -47,19 +48,11 @@ exports.handler = async function (argv) {
         // TODO this should not be a magic number
         date = i==7 ? 'Total' : date;
         let duration = element ? element :0 ;
-        totalRow[date] = dayjs.duration(duration).format('H[h] m[m]'); // TODO convert from milliseconds to duration
+        totalRow[date] = utils.formatDuration(duration);
     }
     reportData.push(totalRow);
     console.table(reportData);
 }
-
-async function getWorkspace() {
-    const client = Client();
-    workspaces = await client.workspaces.list();
-    return workspaces[0];
-}
-
-
 
 // TODO figure out what to do with these
 function displayReportJson(data) {

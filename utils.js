@@ -49,3 +49,16 @@ exports.createTimeEntry = async function (params) {
     );
     return timeEntry
 }
+
+/**
+ * 
+ * @param {number} milliseconds 
+ * @returns {string} duration formatted as 25h 32m where duration greater than a day displays
+ * total hours
+ */
+ exports.formatDuration = function (milliseconds) {
+    var dur = dayjs.duration(milliseconds);
+    var hours = (dur.days() * 24) + dur.hours();
+    let duration = `${hours}h ${dur.minutes()}m`;
+    return duration;
+}
