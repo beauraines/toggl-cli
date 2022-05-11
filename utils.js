@@ -62,3 +62,12 @@ exports.createTimeEntry = async function (params) {
     let duration = `${hours}h ${dur.minutes()}m`;
     return duration;
 }
+
+/**
+ * 
+ * @param {number} milliseconds 
+ * @returns {String} the duration formatted as H:mm:ss
+ */
+ exports.formatDurationAsTime = function (milliseconds) {
+    return dayjs.duration(milliseconds).format('H:mm:ss');
+}

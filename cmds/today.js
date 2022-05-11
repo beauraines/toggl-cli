@@ -41,8 +41,8 @@ exports.handler = async function (argv) {
             project,
             project_name: project.name,
             seconds: total,
-            duration_formatted:  dayjs.duration(total*1000).format('H[h] m[m]'),
-            duration:  dayjs.duration(total*1000).format('H:mm:ss')
+            duration_formatted:  utils.formatDuration(total*1000),
+            duration:  utils.formatDurationAsTime(total*1000)
         });
     })
     // TODO make format a CLI option
