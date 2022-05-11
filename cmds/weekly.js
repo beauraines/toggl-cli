@@ -30,8 +30,7 @@ exports.handler = async function (argv) {
         for (let i = 0; i < project.totals.length; i++) {
             const element = project.totals[i];
             let date = dayjs().startOf('week').add(i,'days').format('ddd MM-DD');
-            // TODO this should not be a magic number
-            date = i==7 ? 'Total' : date;
+            date = i==weeklyReport.week_totals.length+1 ? 'Total' : date;
             let duration = element ? element :0 ;
             row[date] =  utils.formatDuration(duration);
         }
@@ -45,8 +44,7 @@ exports.handler = async function (argv) {
     for (let i = 0; i < weeklyReport.week_totals.length; i++) {
         const element = weeklyReport.week_totals[i];
         let date = dayjs().startOf('week').add(i,'days').format('ddd MM-DD');
-        // TODO this should not be a magic number
-        date = i==7 ? 'Total' : date;
+        date = i==weeklyReport.week_totals.length+1 ? 'Total' : date;
         let duration = element ? element :0 ;
         totalRow[date] = utils.formatDuration(duration);
     }
