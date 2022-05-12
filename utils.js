@@ -1,12 +1,11 @@
 const Client = require('./client');
 const dayjs = require('dayjs');
 const appName = require('./package.json').name
+const config = require('./config');
 
-// TODO read from file or GET /me
-exports.defaultWorkspaceId = process.env.TOGGL_DEFAULT_WORKSPACE_ID;
+exports.defaultWorkspaceId = config.defaultWorkspaceId;
 
-// TODO read from file or ENV
-exports.defaultProjectId = process.env.TOGGL_DEFAULT_PROJECT_ID;
+exports.defaultProjectId = config.projectId;
 
 exports.getProjects = async function(workspaceId) {
     const client = Client();
