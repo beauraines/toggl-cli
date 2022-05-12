@@ -1,5 +1,4 @@
 const togglClient = require('toggl-client');
-require('dotenv').config();
 const config = require('./config'); 
 
 module.exports = function() {
@@ -9,6 +8,7 @@ module.exports = function() {
         client = togglClient({ apiToken });
     } catch (error) {
        console.error(error); 
+       process.exit(1);
     }
     
     return client;
