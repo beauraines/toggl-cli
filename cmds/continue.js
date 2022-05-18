@@ -35,7 +35,7 @@ exports.handler = async function (argv) {
 
     let timeEntry = await utils.createTimeEntry(params);
     let project = await utils.getProjectById(timeEntry.wid,timeEntry.pid)
-    console.info(`Started ${timeEntry?.description} for project ${project?.name}`);
+    console.info(`Continued ${timeEntry?.description} for project ${project?.name}`);
 
 
 }
