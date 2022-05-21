@@ -71,3 +71,13 @@ exports.createTimeEntry = async function (params) {
  exports.formatDurationAsTime = function (milliseconds) {
     return dayjs.duration(milliseconds).format('H:mm:ss');
 }
+
+/**
+ * Formats a dateTime to YYYY-MM-DD HH:mm
+ * @param {Date} dateTime 
+ * @returns {String}
+ */
+ exports.convertUtcTime = function(dateTime) {
+    let tz = process.env.TOGGL_TIMEZONE || 'America/New_York';
+    return dayjs(dateTime).tz(tz).format('YYYY-MM-DD HH:mm');
+}
