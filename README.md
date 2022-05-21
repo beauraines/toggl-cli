@@ -39,6 +39,9 @@ This was made possible because [saintedlama](https://github.com/saintedlama) had
 | Client: specify client name          |           |          |
 | Colorize output                      |           |          |
 | Better table output                  |           |          |
+| List recent time entries             | ✅        |          |
+| Command line completion              |           |   [#6](https://github.com/beauraines/toggl-cli-node/issues/6)       |
+
 ## Development Road Map
 
 Priority order... I think.
@@ -46,8 +49,8 @@ Priority order... I think.
 1. ~today - improve the output~
 2. ~weekly - improve the output format~
 3. ~now - format the display time entry output~
-4. toggl continue - this command is not yet supported.
-5. duration to display helper function?
+4. ~toggl continue~
+5. ~duration to display helper function?~
 6. read configuration (token, default workspace) from files (client and utils)
 7. now - update running description, project, start time
 8. now - update start time with overlap detection and adjust prior time entry
