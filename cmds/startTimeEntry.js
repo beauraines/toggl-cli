@@ -22,14 +22,16 @@ exports.handler = async function (argv) {
     // TODO lookup workspace
     params.workspaceId = utils.defaultWorkspaceId;
     let project;
-    if(isNaN(argv.projectId)) {
-        project = await utils.getProjectByName(params.workspaceId,argv.projectId)
-     } else {
-        project = await utils.getProjectById(params.workspaceId,argv.projectId)
-     }
+    if (argv.projectId) {
+        if(isNaN(argv.projectId)) {
+            project = await utils.getProjectByName(params.workspaceId,argv.projectId)
+         } else {
+            project = await utils.getProjectById(params.workspaceId,argv.projectId)
+         }
+    }
          
     params.projectId = project?.id || utils.defaultProjectId || null;
     // TODO check for invalid projectId or catch the error when creating fails
     let timeEntry = await utils.createTimeEntry(params);
-    console.info(`Started ${timeEntry?.description} for project ${project?.name}`);
+    console.info(`Started ${timeEntry?.description} ${project?.name ? `for project ${project.name}` : 'without a project'}`);
 }
