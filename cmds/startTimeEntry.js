@@ -7,9 +7,9 @@ exports.builder = {
         describe: 'Time entry name',
         type: "string:"
     },
-    p: { alias: "projectId", describe: "project id", type: "string", demandOption: false },
+    p: { alias: ["projectId","project"], describe: "The case insensitive project name or project id.", type: "string", demandOption: false },
     // TODO default to default workspace
-    w: { alias: "workspaceId", describe: "workspace id", type: "number", demandOption: false }
+    w: { alias: ["workspaceId","workspace"], describe: "The case insensitive workspace name or workspace id.", type: "number", demandOption: false }
 }
 exports.handler = async function (argv) {
 
