@@ -52,11 +52,17 @@ exports.createTimeEntry = async function (params) {
 
 /**
  * 
- * @param {number} milliseconds 
+ * @param {number} milliseconds , if negative the time entry is assumed to be running
  * @returns {string} duration formatted as 25h 32m where duration greater than a day displays
  * total hours
  */
  exports.formatDuration = function (milliseconds) {
+    if (milliseconds < 0 ) {
+        let seconds = milliseconds/1000;
+        let startTime = dayjs.unix(seconds*-1);
+        let duration = dayjs().diff(startTime,'s');
+        return dayjs.duration(duration*1000).format('H[h] m[m]');
+    }
     var dur = dayjs.duration(milliseconds);
     var hours = (dur.days() * 24) + dur.hours();
     let duration = `${hours}h ${dur.minutes()}m`;
