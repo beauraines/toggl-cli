@@ -21,10 +21,10 @@ exports.handler = async function (argv) {
             break;
         default:
             let searchName = argv.description.toLowerCase();
-            matchingTimeEntry = timeEntries.find(x=>x.description.toLowerCase().includes(searchName)) || {};
+            matchingTimeEntry = timeEntries.find(x=>x.description.toLowerCase().includes(searchName));
             break;
     }
-    
+
     let params = {
         projectId: matchingTimeEntry?.pid,
         workspaceId: matchingTimeEntry?.wid,
@@ -33,7 +33,7 @@ exports.handler = async function (argv) {
         dur: matchingTimeEntry?.dur
     }
     
-    if (matchingTimeEntry != {}) {
+    if (matchingTimeEntry ) {
         let timeEntry = await utils.createTimeEntry(params);
         let project = await utils.getProjectById(timeEntry.wid,timeEntry.pid)
         console.info(`Continued ${timeEntry?.description} for project ${project?.name}`);
