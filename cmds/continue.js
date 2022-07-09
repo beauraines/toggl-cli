@@ -32,11 +32,14 @@ exports.handler = async function (argv) {
         billable: matchingTimeEntry?.billable,
         dur: matchingTimeEntry?.dur
     }
-
-    let timeEntry = await utils.createTimeEntry(params);
-    let project = await utils.getProjectById(timeEntry.wid,timeEntry.pid)
-    console.info(`Continued ${timeEntry?.description} for project ${project?.name}`);
-
+    
+    if (matchingTimeEntry != {}) {
+        let timeEntry = await utils.createTimeEntry(params);
+        let project = await utils.getProjectById(timeEntry.wid,timeEntry.pid)
+        console.info(`Continued ${timeEntry?.description} for project ${project?.name}`);
+    } else {
+        console.info('No matching time entry found!');
+    }
 
 }
 
