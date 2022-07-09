@@ -39,7 +39,7 @@ exports.handler = async function (argv) {
         let project = projects.find(x=> x.id == p);
         report.push({
             project,
-            project_name: project.name,
+            project_name: project?.name,
             seconds: total,
             duration_formatted:  utils.formatDuration(total*1000),
             duration:  utils.formatDurationAsTime(total*1000)
