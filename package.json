@@ -15,7 +15,7 @@
   "dependencies": {
     "dayjs": "^1.11.5",
     "dotenv": "^16.0.0",
-    "toggl-client": "github:saintedlama/toggl-client",
+    "toggl-client": "github:saintedlama/toggl-client#250191a",
     "yargs": "^17.5.1"
   }
 }
