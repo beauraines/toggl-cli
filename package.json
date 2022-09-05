@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "dayjs": "^1.11.5",
-    "dotenv": "^16.0.0",
+    "dotenv": "^16.0.2",
     "toggl-client": "github:saintedlama/toggl-client#250191a",
     "yargs": "^17.5.1"
   }
