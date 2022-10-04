@@ -16,6 +16,6 @@
     "dayjs": "^1.11.5",
     "dotenv": "^16.0.3",
     "toggl-client": "github:saintedlama/toggl-client#250191a",
-    "yargs": "^17.5.1"
+    "yargs": "^17.6.0"
   }
 }
