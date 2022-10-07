@@ -25,7 +25,7 @@ exports.handler = async function (argv) {
     weeklyReport.data.map(project=>{
         let row = {
             projectName: project.title.project,
-            projectId: project.pid
+            // projectId: project.pid
         }
         for (let i = 0; i < project.totals.length; i++) {
             const element = project.totals[i];
@@ -38,7 +38,7 @@ exports.handler = async function (argv) {
     })
     let totalRow = {
         projectName: 'Total',
-        projectId: '',
+        // projectId: '',
     }
     weeklyReport.week_totals
     for (let i = 0; i < weeklyReport.week_totals.length; i++) {
