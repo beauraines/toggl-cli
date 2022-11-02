@@ -45,6 +45,18 @@ exports.handler = async function (argv) {
             duration:  utils.formatDurationAsTime(total*1000)
         });
     })
+    
+    // Compute total row
+    let totalRow = {
+        project_name: 'Total',
+    }
+    totalRow.seconds = report.reduce((total,project)=>{
+        return total + project.seconds
+    },0)
+    totalRow.duration_formatted = utils.formatDuration(totalRow.seconds*1000)
+    totalRow.duration = utils.formatDurationAsTime(totalRow.seconds*1000)
+    report.push(totalRow)
+
     // TODO make format a CLI option
     let format = 'table'; // csv | json | table defaults to table
     displayDailyReport(report,format);
