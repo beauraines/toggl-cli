@@ -87,3 +87,43 @@ exports.createTimeEntry = async function (params) {
     let tz = process.env.TOGGL_TIMEZONE || 'America/New_York';
     return dayjs(dateTime).tz(tz).format('YYYY-MM-DD HH:mm');
 }
+
+exports.appName = appName;
+
+/**
+ * Displays a time entry on the console
+ * @param {TimeEntry} timeEntry 
+ */
+exports.displayTimeEntry = async function(timeEntry) {
+    if (!timeEntry) {
+        console.log('There is no time entry running!');
+    } else {
+        console.info(`${timeEntry.description} #${timeEntry.id}`);
+        console.info(`Billable: ${timeEntry.billable}`);
+
+        // TODO this should be abstracted for reuse
+        let startTime = dayjs.unix(timeEntry.duration*-1);
+        let duration = dayjs().diff(startTime,'s');
+        let durationFormatted = dayjs.duration(duration*1000).format('H[h] m[m]');
+
+        console.info(`Duration: ${durationFormatted}`);
+
+        let projects =  await this.getProjects(timeEntry.wid);
+        let project = projects.find(x=> x.id == timeEntry.pid);
+
+        console.info(`Project: ${project?.name} (#${timeEntry.pid})`);
+        
+        let tz = process.env.TOGGL_TIMEZONE || 'America/New_York';
+        let startTimeFormatted = dayjs(timeEntry.start).tz(tz).format('YYYY-MM-DD HH:mm');
+        let stopTimeFormatted = dayjs(timeEntry.stop).tz(tz).format('YYYY-MM-DD HH:mm');
+
+        console.info(`Start: ${startTimeFormatted}`); 
+        console.info(`Stop: ${stopTimeFormatted}`); // This will always be blank for the current entry, but will be useful for a time entry 
+        // console.info(`Tags: `); // Not going to include these in the near term
+        // console.info(`Task: `); // Not going to include these in the near term
+
+        let workspace = await this.getWorkspace();
+        console.info(`Workspace: ${workspace.name} (#${timeEntry.wid})`);
+    }
+     
+}

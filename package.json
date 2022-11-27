@@ -1,6 +1,6 @@
 {
   "name": "toggl-cli-node",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "",
   "main": "cli.js",
   "bin": {
@@ -10,8 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Beau Raines <beau.raines@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "dayjs": "^1.11.6",
     "dotenv": "^16.0.3",
