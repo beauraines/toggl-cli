@@ -1,6 +1,6 @@
 {
   "name": "toggl-cli-node",
-  "version": "0.7.0",
+  "version": "0.7.0-prerelease",
   "description": "",
   "main": "cli.js",
   "bin": {
@@ -9,8 +9,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "toggl",
+    "cli",
+    "time",
+    "tracking"
+  ],
   "author": "Beau Raines <beau.raines@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beauraines/rtm-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/beauraines/rtm-api/issues"
+  },
   "license": "MIT",
   "dependencies": {
     "dayjs": "^1.11.6",
