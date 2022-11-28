@@ -4,6 +4,7 @@ const dayjs = require('dayjs');
 let utc = require('dayjs/plugin/utc')
 let timezone = require('dayjs/plugin/timezone'); 
 const { duration } = require('dayjs');
+const yargs = require('yargs');
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
@@ -20,7 +21,8 @@ exports.builder = {
 exports.handler = async function (argv) {
     if ( ! (argv.d || argv.p || argv.s || argv.e)) {
         console.error('At least one option must be provided, description, project, start or end')
-        process.exit(1)
+        yargs.help();
+        yargs.exit(1, new Error('At least one option must be provided, description, project, start or end'))
     }
     client = new Client();
     currentTimeEntry = await client.timeEntries.current();
