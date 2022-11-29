@@ -1,6 +1,6 @@
 {
   "name": "toggl-cli-node",
-  "version": "0.7.0-prerelease",
+  "version": "0.7.1-prerelease",
   "description": "",
   "main": "cli.js",
   "bin": {
@@ -18,17 +18,17 @@
   "author": "Beau Raines <beau.raines@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/beauraines/rtm-api.git"
+    "url": "git+https://github.com/beauraines/toggl-cli-node.git"
   },
   "bugs": {
-    "url": "https://github.com/beauraines/rtm-api/issues"
+    "url": "https://github.com/beauraines/toggl-cli-node/issues"
   },
   "license": "MIT",
   "dependencies": {
     "dayjs": "^1.11.6",
     "dotenv": "^16.0.3",
     "open": "^8.4.0",
-    "toggl-client": "github:saintedlama/toggl-client#250191a",
+    "toggl-client": "github:beauraines/toggl-client#e2727f7",
     "yargs": "^17.6.0"
   }
 }
