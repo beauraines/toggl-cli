@@ -12,9 +12,8 @@ exports.desc = 'Displays the current running time entry'
 exports.builder = {}
 exports.handler = async function (argv) {
 
-    client = new Client();
-    currentTimeEntry = await client.timeEntries.current();
-    // TODO - improve the output
+    let client = new Client();
+    let currentTimeEntry = await client.timeEntries.current();
     await utils.displayTimeEntry(currentTimeEntry);
 }
 
