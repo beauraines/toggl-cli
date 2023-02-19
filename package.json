@@ -28,7 +28,7 @@
     "dayjs": "^1.11.6",
     "dotenv": "^16.0.3",
     "open": "^8.4.0",
-    "toggl-client": "github:beauraines/toggl-client#e2727f7",
+    "toggl-client": "github:beauraines/toggl-client#non-esm-v9",
     "yargs": "^17.6.0"
   }
 }
