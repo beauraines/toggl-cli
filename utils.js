@@ -39,8 +39,8 @@ exports.createTimeEntry = async function (params) {
     timeEntry = await client.timeEntries.create(
         {
             description: params.description,
-            wid: params.workspaceId,
-            pid: params.projectId,
+            workspace_id: +params.workspaceId, // Needs to be a number
+            project_id: params.projectId,
             start: dayjs().toISOString(),
             duration: -1 * dayjs().unix(),
             created_with: appName,
