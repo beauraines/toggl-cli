@@ -13,6 +13,8 @@ exports.builder = {}
 exports.handler = async function (argv) {
     const client = Client();
     let workspace = await utils.getWorkspace();
+    // since is now start_date
+    // TODO THis should be filtered after the fact, because weekly will only provide a single week's data
     let params = { since: dayjs().startOf('week').toISOString() };
     weeklyReport = await client.reports.weekly(workspace.id,params);
     // displayReportText(weeklyReport.data);
@@ -22,7 +24,9 @@ exports.handler = async function (argv) {
     // console.log(JSON.stringify(weeklyReport));
 
     let reportData = []
-    weeklyReport.data.map(project=>{
+    // TODO weekly report is now an array not an opject
+    // console.log(weeklyReport)
+    weeklyReport.map(project=>{
         let row = {
             projectName: project.title.project,
             // projectId: project.pid
