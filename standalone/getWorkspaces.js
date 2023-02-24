@@ -1,9 +1,10 @@
-const togglClient = require('toggl-client');
+import togglClient from 'toggl-client';
 const client = togglClient();
-require('dotenv').config()
+import dotenv from 'dotenv'
+dotenv.config()
 
 async function main() {
-    workspaces = await client.workspaces.list();
+    const workspaces = await client.workspaces.list();
     console.log(workspaces);
 }
 

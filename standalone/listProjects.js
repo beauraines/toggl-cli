@@ -1,20 +1,21 @@
-const togglClient = require('toggl-client');
-const client = togglClient();
-require('dotenv').config()
+import togglClient from 'toggl-client'
+import dotenv from 'dotenv'
+const client = togglClient()
+dotenv.config()
 
-async function main() {
-    workspaces = await client.workspaces.list();
-    
-    workspace = workspaces[0];
+async function main () {
+  const workspaces = await client.workspaces.list()
 
-    console.info('Workspace: ' + workspace.name);
-    console.info('id: ' + workspace.id);
-    
-    projects = await client.workspaces.projects(workspace.id);
-    
-    let activeProjects = projects.filter(x => x.active )
-    console.info(`Found ${activeProjects.length} projects`);
-    activeProjects.map(p => {console.log(p.name + " " + p.id )})
+  const workspace = workspaces[0]
+
+  console.info('Workspace: ' + workspace.name)
+  console.info('id: ' + workspace.id)
+
+  const projects = await client.workspaces.projects(workspace.id)
+
+  const activeProjects = projects.filter(x => x.active)
+  console.info(`Found ${activeProjects.length} projects`)
+  activeProjects.map(p =>  { console.log(p.name + ' ' + p.id) })
 }
 
 main()
