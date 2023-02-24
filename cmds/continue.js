@@ -1,5 +1,6 @@
 const Client = require('../client');
 const utils = require('../utils');
+const dayjs = require('dayjs')
 
 exports.command = 'continue [description]'
 exports.desc = `Continues an existing time entry. If description is included it will search for the most`+
@@ -13,7 +14,12 @@ exports.builder = {
 }
 exports.handler = async function (argv) {
     let client = Client();
-    let timeEntries = await client.timeEntries.list();  // Gets time entries for last 9 days, up to 1000 entries
+    let timeEntries = await client.timeEntries.list(
+        {
+            start_date:dayjs().subtract(14,'days').toISOString(),
+            end_date:dayjs().toISOString()
+        }
+    );  // Gets time entries for last 14 days, up to 1000 entries
     let matchingTimeEntry;
     switch (argv.description) {
         case undefined:

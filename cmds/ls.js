@@ -9,7 +9,8 @@ exports.builder = {
 }
 exports.handler = async function (argv) {
     let client = Client();
-    timeEntries = await client.timeEntries.list();
+    // TODO update these dates
+    timeEntries = await client.timeEntries.list({start_date:dayjs().subtract(14,'days').toISOString(),end_date:dayjs().toISOString()});
 
     let report =[];
     timeEntries.forEach(element => {
