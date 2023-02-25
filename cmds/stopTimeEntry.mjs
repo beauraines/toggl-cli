@@ -12,5 +12,7 @@ export const handler = async function (argv) {
     const stopped = await client.timeEntries.stop(currentTimeEntry.id)
     const duration = dayjs.duration(stopped.duration * 1000).format('H[h] m[m]')
     console.log(`Stopped ${stopped.description} after ${duration}`)
+  } else {
+    console.log('There is no time entry running!')
   }
 }
