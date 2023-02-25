@@ -8,7 +8,8 @@ dayjs.extend(utc)
 dayjs.extend(timezone)
 
 export const command = 'edit'
-export const desc = 'Edits the current running time entry'
+// FIXME editing not working
+export const desc = 'SOMETHING IS NOT RIGHT Edits the current running time entry'
 
 export const builder = {
   d: { alias: ['description'], describe: 'Time entry name', type: 'string:' },
