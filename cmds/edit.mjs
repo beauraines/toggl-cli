@@ -1,8 +1,8 @@
 import Client from '../client.js'
-import utils from '../utils.js'
-import dayjs, { duration } from 'dayjs'
-import utc from 'dayjs/plugin/utc'
-import timezone from 'dayjs/plugin/timezone'
+import { defaultWorkspaceId, getProjectByName, getProjectById, appName, displayTimeEntry } from '../utils.js'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc.js'
+import timezone from 'dayjs/plugin/timezone.js'
 import yargs from 'yargs'
 dayjs.extend(utc)
 dayjs.extend(timezone)
@@ -28,13 +28,13 @@ export const handler = async function (argv) {
 
   const params = {}
 
-  params.wid = utils.defaultWorkspaceId
+  params.wid = defaultWorkspaceId
   let project
   if (argv.projectId) {
     if (isNaN(argv.projectId)) {
-      project = await utils.getProjectByName(params.wid, argv.projectId)
+      project = await getProjectByName(params.wid, argv.projectId)
     } else {
-      project = await utils.getProjectById(params.wid, argv.projectId)
+      project = await getProjectById(params.wid, argv.projectId)
     }
   }
 
@@ -53,7 +53,7 @@ export const handler = async function (argv) {
     endTime = parseTime(argv.endTime)
   }
 
-  params.created_with = utils.appName
+  params.created_with = appName
   params.at = dayjs().toISOString()
   project ? params.pid = project.id : undefined
   startTime ? params.start = startTime.toISOString() : undefined
@@ -62,7 +62,7 @@ export const handler = async function (argv) {
   argv.description ? params.description = argv.description : undefined
 
   const timeEntry = await client.timeEntries.update(currentTimeEntry.id, params)
-  await utils.displayTimeEntry(timeEntry)
+  await displayTimeEntry(timeEntry)
 }
 
 /**

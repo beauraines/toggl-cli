@@ -4,4 +4,5 @@ import * as continueEntry from './continue.mjs'
 import * as current from './currentTimeEntry.mjs'
 import * as workspace from './workspace.mjs'
 import * as projects from './projects.mjs'
-export const commands = [ls, me, continueEntry,current, workspace,projects]
+import * as edit from './edit.mjs'
+export const commands = [ls, me, continueEntry, current, workspace, projects, edit]
