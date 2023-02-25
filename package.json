@@ -1,14 +1,17 @@
 {
   "name": "toggl-cli-node",
-  "version": "0.7.1-prerelease",
+  "version": "0.8.0",
   "description": "",
   "main": "cli.js",
   "bin": {
     "toggl": "./cli.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . ./**/*.js ./**/*.js",
+    "lint:fix": "eslint . ./**/*.js ./**/*.mjs --fix"
   },
+  "type": "module",
   "keywords": [
     "toggl",
     "cli",
@@ -28,7 +31,14 @@
     "dayjs": "^1.11.6",
     "dotenv": "^16.0.3",
     "open": "^8.4.0",
-    "toggl-client": "github:beauraines/toggl-client#e2727f7",
+    "toggl-client": "^2.0.0",
     "yargs": "^17.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.34.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1"
   }
 }
