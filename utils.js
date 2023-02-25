@@ -116,7 +116,7 @@ export const displayTimeEntry = async function (timeEntry) {
 
     console.info(`Duration: ${durationFormatted}`)
 
-    const projects = await this.getProjects(timeEntry.wid)
+    const projects = await getProjects(timeEntry.wid)
     const project = projects.find(x => x.id == timeEntry.pid)
 
     console.info(`Project: ${project?.name} (#${timeEntry.pid})`)
@@ -130,7 +130,7 @@ export const displayTimeEntry = async function (timeEntry) {
     // console.info(`Tags: `); // Not going to include these in the near term
     // console.info(`Task: `); // Not going to include these in the near term
 
-    const workspace = await this.getWorkspace()
+    const workspace = await getWorkspace()
     console.info(`Workspace: ${workspace.name} (#${timeEntry.wid})`)
   }
 }
