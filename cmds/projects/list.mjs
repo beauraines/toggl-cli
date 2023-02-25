@@ -1,9 +1,14 @@
-import togglClient from 'toggl-client'
-import dotenv from 'dotenv'
-const client = togglClient()
-dotenv.config()
+import Client from '../../client.js'
 
-async function main () {
+export const command = 'list'
+export const desc = 'Lists projects from the current workspace'
+
+export const builder = {
+
+}
+
+export const handler = async function (argv) {
+  const client = Client()
   const workspaces = await client.workspaces.list()
 
   const workspace = workspaces[0]
@@ -16,6 +21,6 @@ async function main () {
   const activeProjects = projects.filter(x => x.active)
   console.info(`Found ${activeProjects.length} projects`)
   activeProjects.map(p => { console.log(p.name + ' ' + p.id) })
-}
 
-main()
+  console.log(activeProjects[0])
+}

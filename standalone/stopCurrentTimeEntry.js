@@ -1,22 +1,21 @@
-const togglClient = require('toggl-client');
-const dayjs = require('dayjs');
-var duration = require('dayjs/plugin/duration')
-var relativeTime = require('dayjs/plugin/relativeTime')
+import togglClient from 'toggl-client'
+import dayjs from 'dayjs'
+import duration from 'dayjs/plugin/duration.js'
+import relativeTime from 'dayjs/plugin/relativeTime.js'
+import dotenv from 'dotenv'
 dayjs.extend(relativeTime)
-dayjs.extend(duration);
-require('dotenv').config()
+dayjs.extend(duration)
+dotenv.config()
 
-const client = togglClient();
+const client = togglClient()
 
-async function main() {
-    currentTimeEntry = await client.timeEntries.current();
-    // TODO check if there is actually something to stop
-    stopped =  await client.timeEntries.stop(currentTimeEntry.id);
+async function main () {
+  const currentTimeEntry = await client.timeEntries.current()
+  // TODO check if there is actually something to stop
+  const stopped = await client.timeEntries.stop(currentTimeEntry.id)
 
-    let duration = dayjs.duration({seconds: stopped.duration}).humanize();
-    console.log(`Stopped ${stopped.description} after ${duration}`);
-
+  const duration = dayjs.duration({ seconds: stopped.duration }).humanize()
+  console.log(`Stopped ${stopped.description} after ${duration}`)
 }
-
 
 main()
