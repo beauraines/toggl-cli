@@ -8,8 +8,7 @@ dayjs.extend(timezone);
 dayjs.extend(duration);
 
 // TODO Importing JSON modules is an experimental feature. This feature could change at any time
-
-import  name  from './package.json' assert { type: "json" }
+import  app  from './package.json' assert { type: "json" }
 
 // TODO read from file or GET /me
 export const defaultWorkspaceId = process.env.TOGGL_DEFAULT_WORKSPACE_ID
@@ -52,8 +51,7 @@ export const createTimeEntry = async function (params) {
       pid: params.projectId,
       start: dayjs().toISOString(),
       duration: -1 * dayjs().unix(),
-      // FIXME when running start with no entry Toggl API responded with status code 400. Response: "created_with needs to be valid string"
-      created_with: name,
+      created_with: appName,
       at: dayjs().toISOString()
     }
   )
@@ -98,7 +96,7 @@ export const convertUtcTime = function (dateTime) {
   return dayjs(dateTime).tz(tz).format('YYYY-MM-DD HH:mm')
 }
 
-export const appName = name
+export const appName = app.name
 
 /**
  * Displays a time entry on the console
