@@ -1,8 +1,8 @@
 import Client from '../client.js'
 import dayjs from 'dayjs'
-import utils from '../utils.js'
-import dur from 'dayjs/plugin/duration'
-import relativeTime from 'dayjs/plugin/relativeTime'
+import {getWorkspace,getProjects, formatDuration,formatDurationAsTime} from '../utils.js'
+import dur from 'dayjs/plugin/duration.js'
+import relativeTime from 'dayjs/plugin/relativeTime.js'
 dayjs.extend(relativeTime)
 dayjs.extend(dur)
 
@@ -12,8 +12,8 @@ export const builder = {}
 
 export const handler = async function (argv) {
   const client = Client()
-  const workspace = await utils.getWorkspace()
-  const projects = await utils.getProjects(workspace.id)
+  const workspace = await getWorkspace()
+  const projects = await getProjects(workspace.id)
   const params = { start_date: dayjs().startOf('day').toISOString() }
 
   const timeEntries = await client.timeEntries.list(params)
@@ -41,8 +41,8 @@ export const handler = async function (argv) {
       project,
       project_name: project?.name,
       seconds: total,
-      duration_formatted: utils.formatDuration(total * 1000),
-      duration: utils.formatDurationAsTime(total * 1000)
+      duration_formatted: formatDuration(total * 1000),
+      duration: formatDurationAsTime(total * 1000)
     })
   })
 
@@ -53,8 +53,8 @@ export const handler = async function (argv) {
   totalRow.seconds = report.reduce((total, project) => {
     return total + project.seconds
   }, 0)
-  totalRow.duration_formatted = utils.formatDuration(totalRow.seconds * 1000)
-  totalRow.duration = utils.formatDurationAsTime(totalRow.seconds * 1000)
+  totalRow.duration_formatted = formatDuration(totalRow.seconds * 1000)
+  totalRow.duration = formatDurationAsTime(totalRow.seconds * 1000)
   report.push(totalRow)
 
   // TODO make format a CLI option
