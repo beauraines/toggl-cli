@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint *.js",
-    "lint:fix": "eslint *.js --fix"
+    "lint": "eslint ./**/*.js",
+    "lint:fix": "eslint ./**/*.js ./**/*.mjs --fix"
   },
   "type": "module",
   "keywords": [
