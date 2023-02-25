@@ -15,7 +15,7 @@ async function main () {
 
   const activeProjects = projects.filter(x => x.active)
   console.info(`Found ${activeProjects.length} projects`)
-  activeProjects.map(p =>  { console.log(p.name + ' ' + p.id) })
+  activeProjects.map(p => { console.log(p.name + ' ' + p.id) })
 }
 
 main()

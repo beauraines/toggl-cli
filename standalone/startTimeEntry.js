@@ -2,12 +2,11 @@ import togglClient from 'toggl-client'
 import dayjs from 'dayjs'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
-import {defaultWorkspaceId,defaultProjectId} from '../utils.js'
+import { defaultWorkspaceId, defaultProjectId } from '../utils.js'
 import dotenv from 'dotenv'
 dotenv.config()
 
 const client = togglClient()
-
 
 const options = yargs(hideBin(process.argv))
   .usage('Usage: $0 -p <project_id> -w <workspace_id> [time entry description]')
@@ -41,7 +40,7 @@ async function createTimeEntry (params) {
       at: dayjs().toISOString()
     }
   )
-//   console.log(timeEntry)
+  //   console.log(timeEntry)
   return timeEntry
 }
 
