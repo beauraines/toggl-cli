@@ -1,13 +1,11 @@
 import Client from './client.js'
 import dayjs from 'dayjs'
-// FIXME trying to get the date functions to work
-// import utc from 'dayjs/plugin/utc.js';
-// import timezone from 'dayjs/plugin/timezone.js';
-// dayjs.extend(utc);
-// dayjs.extend(timezone);
-
-// FIXME The requested module '../utils.js' does not provide an export named 'default'
-
+import utc  from "dayjs/plugin/utc.js";
+import timezone from 'dayjs/plugin/timezone.js';
+import duration from 'dayjs/plugin/duration.js';
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.extend(duration);
 
 import  name  from './package.json' assert { type: "json" }
 
