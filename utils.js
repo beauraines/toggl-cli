@@ -7,9 +7,6 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(duration);
 
-// TODO Importing JSON modules is an experimental feature. This feature could change at any time
-import  app  from './package.json' assert { type: "json" }
-
 // TODO read from file or GET /me
 export const defaultWorkspaceId = process.env.TOGGL_DEFAULT_WORKSPACE_ID
 
@@ -96,7 +93,7 @@ export const convertUtcTime = function (dateTime) {
   return dayjs(dateTime).tz(tz).format('YYYY-MM-DD HH:mm')
 }
 
-export const appName = app.name
+export const appName = 'toggl-cli-node'
 
 /**
  * Displays a time entry on the console
