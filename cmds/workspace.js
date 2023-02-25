@@ -1,6 +1,8 @@
-exports.command = 'workspace <command>'
-exports.desc = 'Manage workspaces'
-exports.builder = function (yargs) {
+export const command = 'workspace <command>'
+export const desc = 'Manage workspaces'
+
+export const builder = function (yargs) {
   return yargs.commandDir('workspaces')
 }
-exports.handler = function (argv) {}
+
+export const handler = function (argv) {}

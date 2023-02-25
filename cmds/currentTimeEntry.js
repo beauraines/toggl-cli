@@ -1,22 +1,18 @@
-const Client = require('../client');
-const utils = require('../utils');
-const dayjs = require('dayjs');
-let utc = require('dayjs/plugin/utc')
-let timezone = require('dayjs/plugin/timezone') 
-dayjs.extend(utc);
-dayjs.extend(timezone);
+import Client from '../client.js'
+import utils from '../utils.js'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
+export const command = 'now'
+export const desc = 'Displays the current running time entry'
+export const builder = {}
 
-exports.command = 'now'
-exports.desc = 'Displays the current running time entry'
-exports.builder = {}
-exports.handler = async function (argv) {
-
-    client = new Client();
-    currentTimeEntry = await client.timeEntries.current();
-    // TODO - improve the output
-    await utils.displayTimeEntry(currentTimeEntry);
+export const handler = async function (argv) {
+  const client = new Client()
+  const currentTimeEntry = await client.timeEntries.current()
+  // TODO - improve the output
+  await utils.displayTimeEntry(currentTimeEntry)
 }
-
-
-

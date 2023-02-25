@@ -1,16 +1,14 @@
-const Client = require('../../client');
+import Client from '../../client'
 
+export const command = 'list'
+export const desc = 'Lists workspaces'
 
-exports.command = 'list'
-exports.desc = 'Lists workspaces'
-exports.builder = {
-    
-}
-exports.handler = async function (argv) {
-    let client = Client();
-    workspaces = await client.workspaces.list();
-    console.log(workspaces);
+export const builder = {
+
 }
 
-
-
+export const handler = async function (argv) {
+  const client = Client()
+  const workspaces = await client.workspaces.list()
+  console.log(workspaces)
+}

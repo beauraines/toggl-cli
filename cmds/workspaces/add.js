@@ -1,9 +1,7 @@
-exports.command = 'add'
-exports.desc = 'Creates a new workspace.'
-exports.builder = {}
-exports.handler = async function (argv) {
-    console.info(`${argv.$0} ${argv._.join(' ')} - this command is not yet supported.`);
+export const command = 'add'
+export const desc = 'Creates a new workspace.'
+export const builder = {}
+
+export const handler = async function (argv) {
+  console.info(`${argv.$0} ${argv._.join(' ')} - this command is not yet supported.`)
 }
-
-
-

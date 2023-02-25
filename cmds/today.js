@@ -1,85 +1,80 @@
-const Client = require('../client');
-const dayjs = require('dayjs');
-const utils = require('../utils');
-var dur = require('dayjs/plugin/duration')
-var relativeTime = require('dayjs/plugin/relativeTime')
+import Client from '../client.js'
+import dayjs from 'dayjs'
+import utils from '../utils.js'
+import dur from 'dayjs/plugin/duration'
+import relativeTime from 'dayjs/plugin/relativeTime'
 dayjs.extend(relativeTime)
-dayjs.extend(dur);
+dayjs.extend(dur)
 
-exports.command = 'today'
-exports.desc = 'Reports today\'s activities by project'
-exports.builder = {}
-exports.handler = async function (argv) {
-    const client = Client();
-    let workspace = await utils.getWorkspace();
-    let projects = await utils.getProjects(workspace.id);
-    let params = { start_date: dayjs().startOf('day').toISOString() };
+export const command = 'today'
+export const desc = 'Reports today\'s activities by project'
+export const builder = {}
 
+export const handler = async function (argv) {
+  const client = Client()
+  const workspace = await utils.getWorkspace()
+  const projects = await utils.getProjects(workspace.id)
+  const params = { start_date: dayjs().startOf('day').toISOString() }
 
-    timeEntries = await client.timeEntries.list(params);
+  const timeEntries = await client.timeEntries.list(params)
 
-    let todaysProjects = [];
-    timeEntries.map(e => {
-        todaysProjects.push(e.pid);
+  let todaysProjects = []
+  timeEntries.map(e => {
+    todaysProjects.push(e.pid)
+  })
+  todaysProjects = [...new Set(todaysProjects)]
+
+  const report = []
+  todaysProjects.map(p => {
+    let total = 0
+    timeEntries.filter(x => x.pid == p).map(e => {
+      if (e.duration >= 0) {
+        total += e.duration // UNLESS e.duration is less than zero - meaning currently running
+      } else {
+        const startTime = dayjs.unix(e.duration * -1)
+        const duration = dayjs().diff(startTime, 's')
+        total += duration
+      }
     })
-    todaysProjects = [...new Set(todaysProjects)];
-
-    let report = []
-    todaysProjects.map(p =>{
-        let total=0;
-        timeEntries.filter(x => x.pid == p).map(e =>{
-            if (e.duration >= 0) {
-                total+=e.duration; // UNLESS e.duration is less than zero - meaning currently running
-            } else {
-                let startTime = dayjs.unix(e.duration*-1);
-                let duration = dayjs().diff(startTime,'s');
-                total+=duration;
-            }
-        })
-        let project = projects.find(x=> x.id == p);
-        report.push({
-            project,
-            project_name: project?.name,
-            seconds: total,
-            duration_formatted:  utils.formatDuration(total*1000),
-            duration:  utils.formatDurationAsTime(total*1000)
-        });
+    const project = projects.find(x => x.id == p)
+    report.push({
+      project,
+      project_name: project?.name,
+      seconds: total,
+      duration_formatted: utils.formatDuration(total * 1000),
+      duration: utils.formatDurationAsTime(total * 1000)
     })
-    
-    // Compute total row
-    let totalRow = {
-        project_name: 'Total',
-    }
-    totalRow.seconds = report.reduce((total,project)=>{
-        return total + project.seconds
-    },0)
-    totalRow.duration_formatted = utils.formatDuration(totalRow.seconds*1000)
-    totalRow.duration = utils.formatDurationAsTime(totalRow.seconds*1000)
-    report.push(totalRow)
+  })
 
-    // TODO make format a CLI option
-    let format = 'table'; // csv | json | table defaults to table
-    displayDailyReport(report,format);
+  // Compute total row
+  const totalRow = {
+    project_name: 'Total'
+  }
+  totalRow.seconds = report.reduce((total, project) => {
+    return total + project.seconds
+  }, 0)
+  totalRow.duration_formatted = utils.formatDuration(totalRow.seconds * 1000)
+  totalRow.duration = utils.formatDurationAsTime(totalRow.seconds * 1000)
+  report.push(totalRow)
 
-
+  // TODO make format a CLI option
+  const format = 'table' // csv | json | table defaults to table
+  displayDailyReport(report, format)
 }
 
 // TODO should this be moved to a formatter file?
-function displayDailyReport(report,format) {
-    switch (format) {
-        case 'csv':
-            // TODO maybe use jsontocsv
-            console.log(JSON.stringify(report));
-            break;
-        case 'json':
-            console.log(JSON.stringify(report));
-            break;
-        case 'table':
-        default:
-            console.table(report,['project_name','duration_formatted']);
-            break;
-    }
-    
-    
+function displayDailyReport (report, format) {
+  switch (format) {
+    case 'csv':
+      // TODO maybe use jsontocsv
+      console.log(JSON.stringify(report))
+      break
+    case 'json':
+      console.log(JSON.stringify(report))
+      break
+    case 'table':
+    default:
+      console.table(report, ['project_name', 'duration_formatted'])
+      break
+  }
 }
-

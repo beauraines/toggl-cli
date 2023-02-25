@@ -1,10 +1,11 @@
-const open = require('open')
+import open from 'open'
 
-exports.command = 'web'
-exports.desc = 'Opens toggl track website with default browser'
-exports.builder = {}
-exports.handler = async function (argv) {
-    let timerUrl = 'https://track.toggl.com/timer'
-    console.log(`Opening ${timerUrl}`)
-    open(timerUrl)
+export const command = 'web'
+export const desc = 'Opens toggl track website with default browser'
+export const builder = {}
+
+export const handler = async function (argv) {
+  const timerUrl = 'https://track.toggl.com/timer'
+  console.log(`Opening ${timerUrl}`)
+  open(timerUrl)
 }
