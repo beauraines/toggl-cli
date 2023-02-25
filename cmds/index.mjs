@@ -9,4 +9,18 @@ import * as web from './web.mjs'
 import * as startTimeEntry from './startTimeEntry.mjs'
 import * as stopTimeEntry from './stopTimeEntry.mjs'
 import * as today from './today.mjs'
-export const commands = [ls, me, continueEntry, current, workspace, projects, edit, web, startTimeEntry, stopTimeEntry, today]
+import * as weekly from './weekly.mjs'
+export const commands = [
+  continueEntry,
+  current,
+  edit,
+  ls,
+  me,
+  projects,
+  startTimeEntry,
+  stopTimeEntry,
+  today,
+  web,
+  weekly,
+  workspace
+]

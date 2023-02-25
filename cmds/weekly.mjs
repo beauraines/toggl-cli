@@ -1,8 +1,8 @@
 import Client from '../client.js'
-import utils from '../utils.js'
+import {getWorkspace,formatDuration} from '../utils.js'
 import dayjs from 'dayjs'
-import dur from 'dayjs/plugin/duration'
-import relativeTime from 'dayjs/plugin/relativeTime'
+import dur from 'dayjs/plugin/duration.js'
+import relativeTime from 'dayjs/plugin/relativeTime.js'
 dayjs.extend(relativeTime)
 dayjs.extend(dur)
 
@@ -12,7 +12,7 @@ export const builder = {}
 
 export const handler = async function (argv) {
   const client = Client()
-  const workspace = await utils.getWorkspace()
+  const workspace = await getWorkspace()
   const params = { since: dayjs().startOf('week').toISOString() }
   const weeklyReport = await client.reports.weekly(workspace.id, params)
   // displayReportText(weeklyReport.data);
@@ -32,7 +32,7 @@ export const handler = async function (argv) {
       let date = dayjs().startOf('week').add(i, 'days').format('ddd MM-DD')
       date = i == weeklyReport.week_totals.length - 1 ? 'Total' : date
       const duration = element || 0
-      row[date] = utils.formatDuration(duration)
+      row[date] = formatDuration(duration)
     }
     reportData.push(row)
   })
@@ -46,7 +46,7 @@ export const handler = async function (argv) {
     let date = dayjs().startOf('week').add(i, 'days').format('ddd MM-DD')
     date = i == weeklyReport.week_totals.length - 1 ? 'Total' : date
     const duration = element || 0
-    totalRow[date] = utils.formatDuration(duration)
+    totalRow[date] = formatDuration(duration)
   }
   reportData.push(totalRow)
   console.table(reportData)
