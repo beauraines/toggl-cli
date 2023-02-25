@@ -8,6 +8,7 @@ dayjs.extend(timezone);
 dayjs.extend(duration);
 
 // TODO Importing JSON modules is an experimental feature. This feature could change at any time
+
 import  name  from './package.json' assert { type: "json" }
 
 // TODO read from file or GET /me
@@ -51,6 +52,7 @@ export const createTimeEntry = async function (params) {
       pid: params.projectId,
       start: dayjs().toISOString(),
       duration: -1 * dayjs().unix(),
+      // FIXME when running start with no entry Toggl API responded with status code 400. Response: "created_with needs to be valid string"
       created_with: name,
       at: dayjs().toISOString()
     }

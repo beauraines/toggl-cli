@@ -1,4 +1,4 @@
-import utils from '../utils.js'
+import { defaultWorkspaceId,getProjectByName, createTimeEntry, getProjectById, defaultProjectId } from '../utils.js'
 
 export const command = 'start'
 export const desc = 'Starts a time entry'
@@ -21,18 +21,18 @@ export const handler = async function (argv) {
   const params = {}
   params.description = argv.description || argv._.slice(1).join(' ') || 'no description'
   // TODO lookup workspace
-  params.workspaceId = utils.defaultWorkspaceId
+  params.workspaceId = defaultWorkspaceId
   let project
   if (argv.projectId) {
     if (isNaN(argv.projectId)) {
-      project = await utils.getProjectByName(params.workspaceId, argv.projectId)
+      project = await getProjectByName(params.workspaceId, argv.projectId)
     } else {
-      project = await utils.getProjectById(params.workspaceId, argv.projectId)
+      project = await getProjectById(params.workspaceId, argv.projectId)
     }
   }
 
-  params.projectId = project?.id || utils.defaultProjectId || null
+  params.projectId = project?.id || defaultProjectId || null
   // TODO check for invalid projectId or catch the error when creating fails
-  const timeEntry = await utils.createTimeEntry(params)
+  const timeEntry = await createTimeEntry(params)
   console.info(`Started ${timeEntry?.description} ${project?.name ? `for project ${project.name}` : 'without a project'}`)
 }
