@@ -1,6 +1,6 @@
-import Client from '../../client'
+import Client from '../../client.js'
 
-export const command = 'list'
+export const command = 'workspace-list'
 export const desc = 'Lists workspaces'
 
 export const builder = {

@@ -1,4 +1,4 @@
-export const command = 'add'
+export const command = 'workspace-add'
 export const desc = 'Creates a new workspace.'
 export const builder = {}
 
