@@ -1,5 +1,5 @@
 import Client from '../client.js'
-import utils from '../utils.js'
+import {displayTimeEntry} from '../utils.js'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
@@ -14,5 +14,5 @@ export const handler = async function (argv) {
   const client = new Client()
   const currentTimeEntry = await client.timeEntries.current()
   // TODO - improve the output
-  await utils.displayTimeEntry(currentTimeEntry)
+  await displayTimeEntry(currentTimeEntry)
 }

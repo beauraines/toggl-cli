@@ -1,5 +1,5 @@
 import Client from '../client.js'
-import utils from '../utils.js'
+import {createTimeEntry, getProjectById} from '../utils.js'
 
 export const command = 'continue [description]'
 
@@ -37,8 +37,8 @@ export const handler = async function (argv) {
   }
 
   if (matchingTimeEntry) {
-    const timeEntry = await utils.createTimeEntry(params)
-    const project = await utils.getProjectById(timeEntry.wid, timeEntry.pid)
+    const timeEntry = await createTimeEntry(params)
+    const project = await getProjectById(timeEntry.wid, timeEntry.pid)
     console.info(`Continued ${timeEntry?.description} for project ${project?.name}`)
   } else {
     console.info('No matching time entry found!')
