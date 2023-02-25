@@ -1,6 +1,6 @@
 {
   "name": "toggl-cli-node",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "",
   "main": "cli.js",
   "bin": {
@@ -31,7 +31,7 @@
     "dayjs": "^1.11.6",
     "dotenv": "^16.0.3",
     "open": "^8.4.0",
-    "toggl-client": "../toggl-client",
+    "toggl-client": "^3.0.0",
     "yargs": "^17.6.0"
   },
   "devDependencies": {

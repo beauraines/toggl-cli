@@ -1,5 +1,7 @@
 # toggl-cli-node
 
+**UPDATED TO USE Toggl v9 API**
+
 A command line interface for [toggl](https://toggl.com) written in node, based on the python [TogglCli](https://github.com/AuHau/toggl-cli) project. Attempting to use similar syntax.
 
 This was made possible because [saintedlama](https://github.com/saintedlama) had already built a node API for toggl.
