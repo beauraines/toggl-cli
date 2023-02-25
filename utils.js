@@ -44,8 +44,8 @@ export const createTimeEntry = async function (params) {
   const timeEntry = await client.timeEntries.create(
     {
       description: params.description,
-      wid: params.workspaceId,
-      pid: params.projectId,
+      workspace_id: params.workspaceId,
+      project_id: params.projectId,
       start: dayjs().toISOString(),
       duration: -1 * dayjs().unix(),
       created_with: appName,

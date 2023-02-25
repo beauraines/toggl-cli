@@ -7,7 +7,8 @@ dayjs.extend(relativeTime)
 dayjs.extend(dur)
 
 export const command = 'week'
-export const desc = 'Weekly project summary by day'
+// FIXME descriptions
+export const desc = 'NOT WORKING in V9 Weekly project summary by day'
 export const builder = {}
 
 export const handler = async function (argv) {
@@ -24,32 +25,46 @@ export const handler = async function (argv) {
 
   const reportData = []
   // TODO weekly report is now an array not an opject
-  weeklyReport.map(project => {
+  // [
+  //   {
+  //     user_id: 530321,
+  //     project_id: 174558624,
+  //     seconds: [
+  //          0,    0, 710,
+  //       2266, 1380,   0,
+  //        844
+  //     ]
+  //   },
+  // ]
+  console.log(weeklyReport)
+  for (const project of weeklyReport) {
     const row = {
-      projectName: project.title.project
+      projectName: project.project_id // FIXME look up project name
       // projectId: project.pid
     }
-    for (let i = 0; i < project.totals.length; i++) {
-      const element = project.totals[i]
-      let date = dayjs().startOf('week').add(i, 'days').format('ddd MM-DD')
-      date = i == weeklyReport.week_totals.length - 1 ? 'Total' : date
-      const duration = element || 0
-      row[date] = formatDuration(duration)
-    }
+    // TODO compute each days time total
+    // for (let i = 0; i < project.totals.length; i++) {
+    //   const element = project.totals[i]
+    //   let date = dayjs().startOf('week').add(i, 'days').format('ddd MM-DD')
+    //   date = i == weeklyReport.week_totals.length - 1 ? 'Total' : date
+    //   const duration = element || 0
+    //   row[date] = formatDuration(duration)
+    // }
     reportData.push(row)
-  })
+  }
   const totalRow = {
     projectName: 'Total'
     // projectId: '',
   }
-  weeklyReport.week_totals
-  for (let i = 0; i < weeklyReport.week_totals.length; i++) {
-    const element = weeklyReport.week_totals[i]
-    let date = dayjs().startOf('week').add(i, 'days').format('ddd MM-DD')
-    date = i == weeklyReport.week_totals.length - 1 ? 'Total' : date
-    const duration = element || 0
-    totalRow[date] = formatDuration(duration)
-  }
+  // TODO fix for updated structure
+  // weeklyReport.week_totals
+  // for (let i = 0; i < weeklyReport.week_totals.length; i++) {
+  //   const element = weeklyReport.week_totals[i]
+  //   let date = dayjs().startOf('week').add(i, 'days').format('ddd MM-DD')
+  //   date = i == weeklyReport.week_totals.length - 1 ? 'Total' : date
+  //   const duration = element || 0
+  //   totalRow[date] = formatDuration(duration)
+  // }
   reportData.push(totalRow)
   console.table(reportData)
 }

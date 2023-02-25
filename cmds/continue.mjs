@@ -24,6 +24,8 @@ export const handler = async function (argv) {
     }
   ) // Gets time entries for last 14 days, up to 1000 entries
 
+  timeEntries.sort((a, b) => dayjs(a.start).toDate() - dayjs(b.start).toDate())
+
   let matchingTimeEntry
   switch (argv.description) {
     case undefined:
