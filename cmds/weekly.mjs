@@ -1,5 +1,5 @@
 import Client from '../client.js'
-import {getWorkspace,formatDuration} from '../utils.js'
+import { getWorkspace, formatDuration } from '../utils.js'
 import dayjs from 'dayjs'
 import dur from 'dayjs/plugin/duration.js'
 import relativeTime from 'dayjs/plugin/relativeTime.js'
@@ -13,6 +13,7 @@ export const builder = {}
 export const handler = async function (argv) {
   const client = Client()
   const workspace = await getWorkspace()
+  // TODO THis should be filtered after the fact, because weekly will only provide a single week's data
   const params = { since: dayjs().startOf('week').toISOString() }
   const weeklyReport = await client.reports.weekly(workspace.id, params)
   // displayReportText(weeklyReport.data);
@@ -22,7 +23,8 @@ export const handler = async function (argv) {
   // console.log(JSON.stringify(weeklyReport));
 
   const reportData = []
-  weeklyReport.data.map(project => {
+  // TODO weekly report is now an array not an opject
+  weeklyReport.map(project => {
     const row = {
       projectName: project.title.project
       // projectId: project.pid

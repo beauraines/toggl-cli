@@ -1,5 +1,6 @@
 import Client from '../client.js'
-import {createTimeEntry, getProjectById} from '../utils.js'
+import { createTimeEntry, getProjectById } from '../utils.js'
+import dayjs from 'dayjs'
 
 export const command = 'continue [description]'
 
@@ -16,7 +17,13 @@ export const builder = {
 
 export const handler = async function (argv) {
   const client = Client()
-  const timeEntries = await client.timeEntries.list() // Gets time entries for last 9 days, up to 1000 entries
+  const timeEntries = await client.timeEntries.list(
+    {
+      start_date: dayjs().subtract(14, 'days').toISOString(),
+      end_date: dayjs().toISOString()
+    }
+  ) // Gets time entries for last 14 days, up to 1000 entries
+
   let matchingTimeEntry
   switch (argv.description) {
     case undefined:

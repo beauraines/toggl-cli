@@ -8,17 +8,18 @@ export const builder = {}
 export const handler = async function (argv) {
   const client = Client()
   const currentUser = await client.user.current()
-  // console.log(currentUser.data);
+  // console.log(currentUser);
 
-  console.log(`Default workspace: ${currentUser.data.default_wid}`)
-  console.log(`API Token: ${currentUser.data.api_token}`)
-  console.log(`Fullname: ${currentUser.data.fullname}`)
-  console.log(`Timezone: ${currentUser.data.timezone}`)
-  console.log(`Date format: ${currentUser.data.date_format}`)
-  console.log(`jquery date format: ${currentUser.data.jquery_date_format}`)
-  console.log(`jquery_timeofday_format: ${currentUser.data.jquery_timeofday_format}`)
+  console.log(`Default workspace: ${currentUser.default_workspace_id}`)
+  console.log(`API Token: ${currentUser.api_token}`)
+  console.log(`Fullname: ${currentUser.fullname}`)
+  console.log(`Timezone: ${currentUser.timezone}`)
+  // TODO These look like they come from the `/preferences` endpoint
+  // console.log(`Date format: ${currentUser.date_format}`);
+  // console.log(`jquery date format: ${currentUser.jquery_date_format}`);
+  // console.log(`jquery_timeofday_format: ${currentUser.jquery_timeofday_format}`);
 
-  const weekStart = dayjs().day(currentUser.data.beginning_of_week).format('dddd')
+  const weekStart = dayjs().day(currentUser.beginning_of_week).format('dddd')
   console.log(`beginning_of_week: ${weekStart}`)
 
   // Api token:
@@ -33,9 +34,10 @@ export const handler = async function (argv) {
   // Timezone: America/Los_Angeles
   // Workspace: beau.raines's workspace (#403916)
 
-  const workspaces = currentUser.data.workspaces.map(w => w.name).join(', ')
+  const workspaces = (await client.workspaces.list()).map(w => w.name).join(', ')
   console.log('')
   console.log(`Workspaces: ${workspaces}`)
+  // FIXME since is no longer in the response
   const since = dayjs.unix(currentUser.since)
   console.log('')
   console.log(`Toggl user since ${since}`)

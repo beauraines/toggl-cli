@@ -1,5 +1,6 @@
 import Client from '../client.js'
 import { convertUtcTime, formatDuration } from '../utils.js'
+import dayjs from 'dayjs'
 
 export const command = 'ls'
 export const desc = 'Lists time entries'
@@ -10,7 +11,8 @@ export const builder = {
 
 export const handler = async function (argv) {
   const client = Client()
-  const timeEntries = await client.timeEntries.list()
+  // TODO update these dates
+  const timeEntries = await client.timeEntries.list({start_date:dayjs().subtract(14,'days').toISOString(),end_date:dayjs().toISOString()});
 
   const report = []
   timeEntries.forEach(element => {
