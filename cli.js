@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 
-const yargs = require("yargs");
+import yargs from 'yargs'
+import { hideBin } from 'yargs/helpers'
+import { commands } from './cmds/index.mjs'
 
-
-
-
-require('yargs/yargs')(process.argv.slice(2))
+yargs(hideBin(process.argv))
   .scriptName('toggl')
-  .commandDir('cmds')
-  .completion('completion','Outputs bash/zsh-completion shortcuts for commands and options to add to .bashrc or .bash_profile')
+  .completion('completion', 'Outputs bash/zsh-completion shortcuts for commands and options to add to .bashrc or .bash_profile')
+  .command(commands)
   .demandCommand()
   .help()
-  .argv
+  .parse()
