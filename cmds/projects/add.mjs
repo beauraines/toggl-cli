@@ -1,4 +1,4 @@
-export const command = 'add'
+export const command = 'project-add'
 export const desc = 'Creates a new project.'
 export const builder = {}
 
