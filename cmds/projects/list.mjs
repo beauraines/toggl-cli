@@ -1,4 +1,4 @@
-import Client from '../../client'
+import Client from '../../client.js'
 
 export const command = 'list'
 export const desc = 'Lists projects from the current workspace'
@@ -11,7 +11,7 @@ export const handler = async function (argv) {
   const client = Client()
   const workspaces = await client.workspaces.list()
 
-  workspace = workspaces[0]
+  const workspace = workspaces[0]
 
   console.info('Workspace: ' + workspace.name)
   console.info('id: ' + workspace.id)

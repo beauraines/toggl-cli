@@ -7,6 +7,7 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(duration);
 
+// TODO Importing JSON modules is an experimental feature. This feature could change at any time
 import  name  from './package.json' assert { type: "json" }
 
 // TODO read from file or GET /me

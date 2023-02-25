@@ -3,11 +3,14 @@
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 import { commands } from './cmds/index.mjs'
+import { projects } from './cmds/projects/index.mjs'
 
 yargs(hideBin(process.argv))
   .scriptName('toggl')
   .completion('completion', 'Outputs bash/zsh-completion shortcuts for commands and options to add to .bashrc or .bash_profile')
   .command(commands)
+  // FIXME this should be nested
+  .command(projects)
   .demandCommand()
   .help()
   .parse()
