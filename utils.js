@@ -44,8 +44,8 @@ export const createTimeEntry = async function (params) {
   const timeEntry = await client.timeEntries.create(
     {
       description: params.description,
-      wid: params.workspaceId,
-      pid: params.projectId,
+      workspace_id: params.workspaceId,
+      project_id: params.projectId,
       start: dayjs().toISOString(),
       duration: -1 * dayjs().unix(),
       created_with: appName,
@@ -116,7 +116,7 @@ export const displayTimeEntry = async function (timeEntry) {
     const projects = await getProjects(timeEntry.wid)
     const project = projects.find(x => x.id == timeEntry.pid)
 
-    console.info(`Project: ${project?.name} (#${timeEntry.pid})`)
+    console.info(`Project: ${project?.name} (#${timeEntry.pid})`);
 
     const tz = process.env.TOGGL_TIMEZONE || 'America/New_York'
     const startTimeFormatted = dayjs(timeEntry.start).tz(tz).format('YYYY-MM-DD HH:mm')

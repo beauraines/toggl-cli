@@ -1,5 +1,5 @@
 import Client from '../client.js'
-import {getWorkspace,formatDuration} from '../utils.js'
+import { getWorkspace, formatDuration } from '../utils.js'
 import dayjs from 'dayjs'
 import dur from 'dayjs/plugin/duration.js'
 import relativeTime from 'dayjs/plugin/relativeTime.js'
@@ -7,12 +7,14 @@ dayjs.extend(relativeTime)
 dayjs.extend(dur)
 
 export const command = 'week'
-export const desc = 'Weekly project summary by day'
+// FIXME descriptions
+export const desc = 'NOT WORKING in V9 Weekly project summary by day'
 export const builder = {}
 
 export const handler = async function (argv) {
   const client = Client()
   const workspace = await getWorkspace()
+  // TODO THis should be filtered after the fact, because weekly will only provide a single week's data
   const params = { since: dayjs().startOf('week').toISOString() }
   const weeklyReport = await client.reports.weekly(workspace.id, params)
   // displayReportText(weeklyReport.data);
@@ -22,32 +24,47 @@ export const handler = async function (argv) {
   // console.log(JSON.stringify(weeklyReport));
 
   const reportData = []
-  weeklyReport.data.map(project => {
+  // TODO weekly report is now an array not an opject
+  // [
+  //   {
+  //     user_id: 530321,
+  //     project_id: 174558624,
+  //     seconds: [
+  //          0,    0, 710,
+  //       2266, 1380,   0,
+  //        844
+  //     ]
+  //   },
+  // ]
+  console.log(weeklyReport)
+  for (const project of weeklyReport) {
     const row = {
-      projectName: project.title.project
+      projectName: project.project_id // FIXME look up project name
       // projectId: project.pid
     }
-    for (let i = 0; i < project.totals.length; i++) {
-      const element = project.totals[i]
-      let date = dayjs().startOf('week').add(i, 'days').format('ddd MM-DD')
-      date = i == weeklyReport.week_totals.length - 1 ? 'Total' : date
-      const duration = element || 0
-      row[date] = formatDuration(duration)
-    }
+    // TODO compute each days time total
+    // for (let i = 0; i < project.totals.length; i++) {
+    //   const element = project.totals[i]
+    //   let date = dayjs().startOf('week').add(i, 'days').format('ddd MM-DD')
+    //   date = i == weeklyReport.week_totals.length - 1 ? 'Total' : date
+    //   const duration = element || 0
+    //   row[date] = formatDuration(duration)
+    // }
     reportData.push(row)
-  })
+  }
   const totalRow = {
     projectName: 'Total'
     // projectId: '',
   }
-  weeklyReport.week_totals
-  for (let i = 0; i < weeklyReport.week_totals.length; i++) {
-    const element = weeklyReport.week_totals[i]
-    let date = dayjs().startOf('week').add(i, 'days').format('ddd MM-DD')
-    date = i == weeklyReport.week_totals.length - 1 ? 'Total' : date
-    const duration = element || 0
-    totalRow[date] = formatDuration(duration)
-  }
+  // TODO fix for updated structure
+  // weeklyReport.week_totals
+  // for (let i = 0; i < weeklyReport.week_totals.length; i++) {
+  //   const element = weeklyReport.week_totals[i]
+  //   let date = dayjs().startOf('week').add(i, 'days').format('ddd MM-DD')
+  //   date = i == weeklyReport.week_totals.length - 1 ? 'Total' : date
+  //   const duration = element || 0
+  //   totalRow[date] = formatDuration(duration)
+  // }
   reportData.push(totalRow)
   console.table(reportData)
 }

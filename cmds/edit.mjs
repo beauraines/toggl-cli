@@ -8,7 +8,8 @@ dayjs.extend(utc)
 dayjs.extend(timezone)
 
 export const command = 'edit'
-export const desc = 'Edits the current running time entry'
+// FIXME editing not working
+export const desc = 'SOMETHING IS NOT RIGHT Edits the current running time entry'
 
 export const builder = {
   d: { alias: ['description'], describe: 'Time entry name', type: 'string:' },
@@ -28,13 +29,13 @@ export const handler = async function (argv) {
 
   const params = {}
 
-  params.wid = defaultWorkspaceId
+  params.workspace_id = defaultWorkspaceId
   let project
   if (argv.projectId) {
     if (isNaN(argv.projectId)) {
-      project = await getProjectByName(params.wid, argv.projectId)
+      project = await getProjectByName(params.workspace_id, argv.projectId)
     } else {
-      project = await getProjectById(params.wid, argv.projectId)
+      project = await getProjectById(params.workspace_id, argv.projectId)
     }
   }
 
@@ -55,7 +56,7 @@ export const handler = async function (argv) {
 
   params.created_with = appName
   params.at = dayjs().toISOString()
-  project ? params.pid = project.id : undefined
+  project ? params.project_id = project.id : undefined
   startTime ? params.start = startTime.toISOString() : undefined
   endTime ? params.stop = endTime.toISOString() : undefined
   endTime ? params.duration = endTime.diff(startTime, 'seconds') : undefined

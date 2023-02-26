@@ -1,7 +1,7 @@
 import Client from '../../client.js'
 
 export const command = 'list'
-export const desc = 'Lists projects from the current workspace'
+export const desc = 'Lists active projects from the current workspace'
 
 export const builder = {
 
@@ -22,5 +22,4 @@ export const handler = async function (argv) {
   console.info(`Found ${activeProjects.length} projects`)
   activeProjects.map(p => { console.log(p.name + ' ' + p.id) })
 
-  console.log(activeProjects[0])
 }

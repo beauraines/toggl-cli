@@ -14,7 +14,10 @@ export const handler = async function (argv) {
   const client = Client()
   const workspace = await getWorkspace()
   const projects = await getProjects(workspace.id)
-  const params = { start_date: dayjs().startOf('day').toISOString() }
+  const params = { 
+    start_date: dayjs().startOf('day').toISOString(),
+    end_date: dayjs().toISOString()
+  }
 
   const timeEntries = await client.timeEntries.list(params)
 

@@ -1,5 +1,7 @@
 # toggl-cli-node
 
+**UPDATED TO USE Toggl v9 API**
+
 A command line interface for [toggl](https://toggl.com) written in node, based on the python [TogglCli](https://github.com/AuHau/toggl-cli) project. Attempting to use similar syntax.
 
 This was made possible because [saintedlama](https://github.com/saintedlama) had already built a node API for toggl.
@@ -21,26 +23,26 @@ This was made possible because [saintedlama](https://github.com/saintedlama) had
 
 ## Features
 
-| Feature                              | Available | Comments |
-| ------------------------------------ | --------- | -------- |
-| Start time entry                     | ✅         |          |
-| Start time entry with description    | ✅         |          |
-| Start time entry with project        | ✅         |          |
-| stop time entry                      | ✅         |          |
-| Continue named time entry            | ✅         |          |
-| Report today by project              | ✅         |          |
-| Report this week by project by day   | ✅         |          |
-| Edit time entry                      |           |          |
-| Use config from file                 |           |          |
-| Save config to file                  |           |          |
-| Refactor: Display and format modules |           |          |
-| Client: reset PAT                    |           |          |
-| Client: other user feature?          |           |          |
-| Client: specify client name          |           |          |
-| Colorize output                      |           |          |
-| Better table output                  |           |          |
-| List recent time entries             | ✅        |          |
-| Command line completion              |           |   [#6](https://github.com/beauraines/toggl-cli-node/issues/6)       |
+| Feature                              | Available | Comments                                                    |
+| ------------------------------------ | --------- | ----------------------------------------------------------- |
+| Start time entry                     | ✅         |                                                             |
+| Start time entry with description    | ✅         |                                                             |
+| Start time entry with project        | ✅         |                                                             |
+| stop time entry                      | ✅         |                                                             |
+| Continue named time entry            | ✅         |                                                             |
+| Report today by project              | ✅         |                                                             |
+| Report this week by project by day   | ✅         |                                                             |
+| Edit time entry                      | ✅         |                                                             |
+| Use config from file                 |           |                                                             |
+| Save config to file                  |           |                                                             |
+| Refactor: Display and format modules |           |                                                             |
+| Client: reset PAT                    |           |                                                             |
+| Client: other user feature?          |           |                                                             |
+| Client: specify client name          |           |                                                             |
+| Colorize output                      |           |                                                             |
+| Better table output                  |           |                                                             |
+| List recent time entries             | ✅         |                                                             |
+| Command line completion              | ✅         | [#6](https://github.com/beauraines/toggl-cli-node/issues/6) |
 
 ## Development Road Map
 
