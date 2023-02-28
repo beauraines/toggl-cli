@@ -1,6 +1,6 @@
 {
   "name": "toggl-cli-node",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "",
   "main": "cli.js",
   "bin": {
@@ -9,7 +9,9 @@
   "scripts": {
     "test": "jest",
     "lint": "eslint . ./**/*.js ./**/*.js",
-    "lint:fix": "eslint . ./**/*.js ./**/*.mjs --fix"
+    "lint:fix": "eslint . ./**/*.js ./**/*.mjs --fix",
+    "release": "standard-version",
+    "should-release": "should-release"
   },
   "type": "module",
   "keywords": [
@@ -41,6 +43,8 @@
     "eslint-plugin-jest": "^27.2.1",
     "eslint-plugin-n": "^15.6.1",
     "eslint-plugin-promise": "^6.1.1",
-    "jest": "^29.4.3"
+    "jest": "^29.4.3",
+    "should-release": "^1.2.0",
+    "standard-version": "^9.5.0"
   }
 }
