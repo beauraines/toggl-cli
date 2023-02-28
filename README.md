@@ -81,3 +81,5 @@ There are several features that I do not use from Toggl, so including them is a 
 ## How to Contribute
 
 I need to clean up and refactor the code and establish a few more helper and utility functions, but I'm open to contributions!
+
+
