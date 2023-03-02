@@ -21,15 +21,15 @@ export const builder = {
 export const handler = async function (argv) {
   if (!(argv.d || argv.p || argv.s || argv.e)) {
     console.error('At least one option must be provided, description, project, start or end')
-    yargs.help()
-    yargs.exit(1, new Error('At least one option must be provided, description, project, start or end'))
+    yargs().help()
+    yargs().exit(1, new Error('At least one option must be provided, description, project, start or end'))
   }
   const client = new Client()
   const currentTimeEntry = await client.timeEntries.current()
 
   const params = {}
 
-  params.workspace_id = defaultWorkspaceId
+  params.workspace_id = +defaultWorkspaceId
   let project
   if (argv.projectId) {
     if (isNaN(argv.projectId)) {
@@ -56,12 +56,11 @@ export const handler = async function (argv) {
 
   params.created_with = appName
   params.at = dayjs().toISOString()
-  project ? params.project_id = project.id : undefined
+  project ? params.project_id = +project.id : undefined
   startTime ? params.start = startTime.toISOString() : undefined
   endTime ? params.stop = endTime.toISOString() : undefined
   endTime ? params.duration = endTime.diff(startTime, 'seconds') : undefined
   argv.description ? params.description = argv.description : undefined
-
   const timeEntry = await client.timeEntries.update(currentTimeEntry.id, params)
   await displayTimeEntry(timeEntry)
 }
