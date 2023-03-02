@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.4](https://github.com/beauraines/toggl-cli-node/compare/v0.10.3...v0.10.4) (2023-03-02)
+
+
+### Bug Fixes
+
+* Cannot edit time entries ([ec6611a](https://github.com/beauraines/toggl-cli-node/commit/ec6611aee147ff0355af664ee7bf05aa6b2c4f38)), closes [#40](https://github.com/beauraines/toggl-cli-node/issues/40)
+
 ### [0.10.3](https://github.com/beauraines/toggl-cli-node/compare/v0.10.2...v0.10.3) (2023-03-02)
 
 
