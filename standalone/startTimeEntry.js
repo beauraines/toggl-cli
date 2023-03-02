@@ -22,7 +22,7 @@ async function main () {
   const params = { description }
   params.workspaceId = options.workspaceId || defaultWorkspaceId
   params.projectId = options.projectId || defaultProjectId
-  console.debug(params)
+  // console.debug(params)
   const timeEntry = await createTimeEntry(params)
   console.info(`Started ${timeEntry.description} with project id ${timeEntry.pid}`)
 }
@@ -32,8 +32,8 @@ async function createTimeEntry (params) {
   const timeEntry = await client.timeEntries.create(
     {
       description: params.description,
-      wid: params.workspaceId,
-      pid: params.projectId,
+      workspace_id: +params.workspaceId,
+      project_id: +params.projectId,
       start: dayjs().toISOString(),
       duration: -1 * dayjs().unix(),
       created_with: 'My app',
