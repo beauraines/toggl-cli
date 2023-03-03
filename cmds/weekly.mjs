@@ -1,5 +1,5 @@
 import Client from '../client.js'
-import { getWorkspace, formatDuration } from '../utils.js'
+import { getWorkspace, formatDuration, getProjectById } from '../utils.js'
 import dayjs from 'dayjs'
 import dur from 'dayjs/plugin/duration.js'
 import relativeTime from 'dayjs/plugin/relativeTime.js'
@@ -14,6 +14,7 @@ export const builder = {}
 export const handler = async function (argv) {
   const client = Client()
   const workspace = await getWorkspace()
+  // TODO check the date range because the dates aren't lining up properly
   // TODO THis should be filtered after the fact, because weekly will only provide a single week's data
   const params = { since: dayjs().startOf('week').toISOString() }
   const weeklyReport = await client.reports.weekly(workspace.id, params)
@@ -36,20 +37,19 @@ export const handler = async function (argv) {
   //     ]
   //   },
   // ]
-  console.log(weeklyReport)
+  // console.log(weeklyReport)
   for (const project of weeklyReport) {
+    const currentProject = await getProjectById(workspace.id,project.project_id)
     const row = {
-      projectName: project.project_id // FIXME look up project name
-      // projectId: project.pid
+      projectName: currentProject.name 
     }
     // TODO compute each days time total
-    // for (let i = 0; i < project.totals.length; i++) {
-    //   const element = project.totals[i]
-    //   let date = dayjs().startOf('week').add(i, 'days').format('ddd MM-DD')
-    //   date = i == weeklyReport.week_totals.length - 1 ? 'Total' : date
-    //   const duration = element || 0
-    //   row[date] = formatDuration(duration)
-    // }
+    for (let i = 0; i < project.seconds.length; i++) {
+      const element = project.seconds[i]
+      let date = dayjs().startOf('week').add(i, 'days').format('ddd MM-DD')
+      const duration = element || 0
+      row[date] = formatDuration(duration*1000)
+    }
     reportData.push(row)
   }
   const totalRow = {
