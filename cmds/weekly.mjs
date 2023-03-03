@@ -14,57 +14,37 @@ export const builder = {}
 export const handler = async function (argv) {
   const client = Client()
   const workspace = await getWorkspace()
-  // TODO check the date range because the dates aren't lining up properly
-  // TODO THis should be filtered after the fact, because weekly will only provide a single week's data
-  const params = { since: dayjs().startOf('week').toISOString() }
-  const weeklyReport = await client.reports.weekly(workspace.id, params)
-  // displayReportText(weeklyReport.data);
-  // displayReportJson(weeklyReport.data);
-  // console.log(weeklyReport.data)
-  // console.table(weeklyReport.data,['title','totals'])
-  // console.log(JSON.stringify(weeklyReport));
+
+  const params = { } // Leave this for future options, like rounding
+  const weeklyReport = await client.reports.weekly(workspace.id,params)
 
   const reportData = []
-  // TODO weekly report is now an array not an opject
-  // [
-  //   {
-  //     user_id: 530321,
-  //     project_id: 174558624,
-  //     seconds: [
-  //          0,    0, 710,
-  //       2266, 1380,   0,
-  //        844
-  //     ]
-  //   },
-  // ]
-  // console.log(weeklyReport)
+  const totals = [0, 0, 0, 0, 0, 0, 0] // ? Is there a better way to do this?
   for (const project of weeklyReport) {
-    const currentProject = await getProjectById(workspace.id,project.project_id)
+    const currentProject = await getProjectById(workspace.id, project.project_id)
     const row = {
-      projectName: currentProject.name 
+      projectName: currentProject.name
     }
-    // TODO compute each days time total
+
     for (let i = 0; i < project.seconds.length; i++) {
       const element = project.seconds[i]
-      let date = dayjs().startOf('week').add(i, 'days').format('ddd MM-DD')
+      const date = dayjs().startOf('week').add(i, 'days').format('ddd MM-DD')
       const duration = element || 0
-      row[date] = formatDuration(duration*1000)
+      row[date] = formatDuration(duration * 1000)
+      totals[i] += duration
     }
     reportData.push(row)
   }
+
   const totalRow = {
     projectName: 'Total'
-    // projectId: '',
   }
-  // TODO fix for updated structure
-  // weeklyReport.week_totals
-  // for (let i = 0; i < weeklyReport.week_totals.length; i++) {
-  //   const element = weeklyReport.week_totals[i]
-  //   let date = dayjs().startOf('week').add(i, 'days').format('ddd MM-DD')
-  //   date = i == weeklyReport.week_totals.length - 1 ? 'Total' : date
-  //   const duration = element || 0
-  //   totalRow[date] = formatDuration(duration)
-  // }
+
+  for (let i = 0; i < totals.length; i++) {
+    const seconds = totals[i]
+    const date = dayjs().startOf('week').add(i, 'days').format('ddd MM-DD')
+    totalRow[date] = formatDuration(seconds * 1000)
+  }
   reportData.push(totalRow)
   console.table(reportData)
 }
