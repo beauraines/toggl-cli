@@ -33,7 +33,7 @@ export const handler = async function (argv) {
       const duration = element || 0
       row[date] = formatDuration(duration * 1000)
       totals[i] += duration // for use with a daily total row
-      row['Total'] += duration // accumulate the projects weekly totoal
+      row.Total += duration // accumulate the projects weekly totoal
     }
     reportData.push(row)
   }
@@ -47,14 +47,13 @@ export const handler = async function (argv) {
     const seconds = totals[i]
     const date = dayjs().startOf('week').add(i, 'days').format('ddd MM-DD')
     totalRow[date] = formatDuration(seconds * 1000)
-    totalRow['Total'] += seconds // accumulate the projects weekly totoal
-
+    totalRow.Total += seconds // accumulate the projects weekly totoal
   }
   reportData.push(totalRow)
 
-  // TODO formatDuration on the `Total` property
-  console.log(reportData)
-  // TODO update the order so total is at the end - an alternative would be to build the dates up front
+  for (const project of reportData) {
+    project.Total = formatDuration(project.Total * 1000)
+  }
   console.table(reportData)
 }
 
