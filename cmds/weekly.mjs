@@ -16,7 +16,7 @@ export const handler = async function (argv) {
   const workspace = await getWorkspace()
 
   const params = { } // Leave this for future options, like rounding
-  const weeklyReport = await client.reports.weekly(workspace.id,params)
+  const weeklyReport = await client.reports.weekly(workspace.id, params)
 
   const reportData = []
   const totals = [0, 0, 0, 0, 0, 0, 0] // ? Is there a better way to do this?
