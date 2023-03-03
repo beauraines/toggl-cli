@@ -8,7 +8,7 @@ dayjs.extend(dur)
 
 export const command = 'week'
 // FIXME descriptions
-export const desc = 'NOT WORKING in V9 Weekly project summary by day'
+export const desc = 'Weekly project summary by day'
 export const builder = {}
 
 export const handler = async function (argv) {
