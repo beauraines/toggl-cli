@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.5](https://github.com/beauraines/toggl-cli-node/compare/v0.10.4...v0.10.5) (2023-03-04)
+
+
+### Bug Fixes
+
+* makes weekly report work in v9 API ([#42](https://github.com/beauraines/toggl-cli-node/issues/42)) ([5de62c8](https://github.com/beauraines/toggl-cli-node/commit/5de62c833bb05840efadd3065ca60ce4c1bb6d1b))
+
 ### [0.10.4](https://github.com/beauraines/toggl-cli-node/compare/v0.10.3...v0.10.4) (2023-03-02)
 
 
