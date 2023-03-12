@@ -59,8 +59,8 @@ export const handler = async function (argv) {
   project ? params.project_id = +project.id : undefined
   startTime ? params.start = startTime.toISOString() : undefined
   endTime ? params.stop = endTime.toISOString() : undefined
-  endTime ? params.duration = endTime.diff(startTime, 'seconds') : undefined
   argv.description ? params.description = argv.description : undefined
+  debug(params)
   const timeEntry = await client.timeEntries.update(currentTimeEntry.id, params)
   await displayTimeEntry(timeEntry)
 }
