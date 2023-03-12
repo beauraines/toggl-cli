@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.6](https://github.com/beauraines/toggl-cli/compare/v0.10.5...v0.10.6) (2023-03-12)
+
+
+### Bug Fixes
+
+* update git links in npm registry ([b9e1a9e](https://github.com/beauraines/toggl-cli/commit/b9e1a9e0554ba7f677effd38c7475a87ea6f4c37))
+
 ### [0.10.5](https://github.com/beauraines/toggl-cli-node/compare/v0.10.4...v0.10.5) (2023-03-04)
 
 
