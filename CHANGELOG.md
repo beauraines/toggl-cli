@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.7](https://github.com/beauraines/toggl-cli/compare/v0.10.6...v0.10.7) (2023-03-12)
+
+
+### Features
+
+* updates app name sent with API requests ([9cf9a2b](https://github.com/beauraines/toggl-cli/commit/9cf9a2b4f6c1e638e2e3d8e251d0f15469627181))
+
+
+### Bug Fixes
+
+* can edit time entries ([36cd1aa](https://github.com/beauraines/toggl-cli/commit/36cd1aa7519becda6abddee0e4e3fad37730822e))
+
 ### [0.10.6](https://github.com/beauraines/toggl-cli/compare/v0.10.5...v0.10.6) (2023-03-12)
 
 
