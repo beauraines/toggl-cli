@@ -23,10 +23,10 @@
   "author": "Beau Raines <beau.raines@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/beauraines/toggl-cli-node.git"
+    "url": "git+https://github.com/beauraines/toggl-cli.git"
   },
   "bugs": {
-    "url": "https://github.com/beauraines/toggl-cli-node/issues"
+    "url": "https://github.com/beauraines/toggl-cli/issues"
   },
   "license": "MIT",
   "dependencies": {
