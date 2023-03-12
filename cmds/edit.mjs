@@ -9,13 +9,14 @@ dayjs.extend(timezone)
 
 export const command = 'edit'
 // FIXME editing not working
-export const desc = 'SOMETHING IS NOT RIGHT Edits the current running time entry'
+export const desc = `Edits the current running time entry. Only updating the time is supported `+
+`and the time must be parsable by dayjs, e.g. 4:50PM or '12:00 AM'.`
 
 export const builder = {
   d: { alias: ['description'], describe: 'Time entry name', type: 'string:' },
   p: { alias: ['projectId', 'project'], describe: 'The case insensitive project name or project id.', type: 'string', demandOption: false },
-  s: { alias: ['start', 'startTime'], describe: 'The case insensitive project name or project id.', type: 'string', demandOption: false },
-  e: { alias: ['end', 'endTime'], describe: 'The case insensitive project name or project id.', type: 'string', demandOption: false }
+  s: { alias: ['start', 'startTime'], describe: 'The start time for the task, e.g. 13:00 12:45AM.', type: 'string', demandOption: false },
+  e: { alias: ['end', 'endTime'], describe: 'The end time for the task, e.g. 13:00 12:45AM.', type: 'string', demandOption: false }
 }
 
 export const handler = async function (argv) {
