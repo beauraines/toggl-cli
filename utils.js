@@ -93,7 +93,7 @@ export const convertUtcTime = function (dateTime) {
   return dayjs(dateTime).tz(tz).format('YYYY-MM-DD HH:mm')
 }
 
-export const appName = 'toggl-cli-node'
+export const appName = '@beauraines/toggl-cli'
 
 /**
  * Displays a time entry on the console
