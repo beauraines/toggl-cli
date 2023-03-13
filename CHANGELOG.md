@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.8](https://github.com/beauraines/toggl-cli/compare/v0.10.7...v0.10.8) (2023-03-13)
+
+
+### Features
+
+* **today report:** improves output ([0025d4a](https://github.com/beauraines/toggl-cli/commit/0025d4a4ab2f81ea31e27cd06d4ce0e69e3288f5))
+* **weekly report:** improves table output format ([4e58b1a](https://github.com/beauraines/toggl-cli/commit/4e58b1a7bbf6fcdc815be44e87f7aeca44583a09))
+
+
+### Bug Fixes
+
+* lintfix ([e52684c](https://github.com/beauraines/toggl-cli/commit/e52684c022a02bdf4add209fdc0a7681095a85ee))
+
 ### [0.10.7](https://github.com/beauraines/toggl-cli/compare/v0.10.6...v0.10.7) (2023-03-12)
 
 
