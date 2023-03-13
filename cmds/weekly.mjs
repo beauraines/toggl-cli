@@ -3,7 +3,7 @@ import { getWorkspace, formatDuration, getProjectById } from '../utils.js'
 import dayjs from 'dayjs'
 import dur from 'dayjs/plugin/duration.js'
 import relativeTime from 'dayjs/plugin/relativeTime.js'
-import Table from "cli-table3";
+import Table from 'cli-table3'
 dayjs.extend(relativeTime)
 dayjs.extend(dur)
 
@@ -55,9 +55,9 @@ export const handler = async function (argv) {
   for (const project of reportData) {
     project.Total = formatDuration(project.Total * 1000)
   }
-  
-  let head = Object.keys(reportData[0])
-  let table = new Table({
+
+  const head = Object.keys(reportData[0])
+  const table = new Table({
     head
   })
   for (const project of reportData) {

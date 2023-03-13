@@ -1,9 +1,9 @@
 import Client from '../client.js'
 import dayjs from 'dayjs'
-import {getWorkspace,getProjects, formatDuration,formatDurationAsTime} from '../utils.js'
+import { getWorkspace, getProjects, formatDuration, formatDurationAsTime } from '../utils.js'
 import dur from 'dayjs/plugin/duration.js'
 import relativeTime from 'dayjs/plugin/relativeTime.js'
-import Table from "cli-table3";
+import Table from 'cli-table3'
 dayjs.extend(relativeTime)
 dayjs.extend(dur)
 
@@ -15,7 +15,7 @@ export const handler = async function (argv) {
   const client = Client()
   const workspace = await getWorkspace()
   const projects = await getProjects(workspace.id)
-  const params = { 
+  const params = {
     start_date: dayjs().startOf('day').toISOString(),
     end_date: dayjs().toISOString()
   }
@@ -78,7 +78,7 @@ function displayDailyReport (report, format) {
       break
     case 'table':
     default:
-      let table = new Table({
+      const table = new Table({
         head: ['Project', 'Duration']
       })
       for (const project of report) {
