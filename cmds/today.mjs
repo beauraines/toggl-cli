@@ -3,6 +3,7 @@ import dayjs from 'dayjs'
 import {getWorkspace,getProjects, formatDuration,formatDurationAsTime} from '../utils.js'
 import dur from 'dayjs/plugin/duration.js'
 import relativeTime from 'dayjs/plugin/relativeTime.js'
+import Table from "cli-table3";
 dayjs.extend(relativeTime)
 dayjs.extend(dur)
 
@@ -77,7 +78,13 @@ function displayDailyReport (report, format) {
       break
     case 'table':
     default:
-      console.table(report, ['project_name', 'duration_formatted'])
+      let table = new Table({
+        head: ['Project', 'Duration']
+      })
+      for (const project of report) {
+        table.push([project.project_name, project.duration_formatted])
+      }
+      console.log(table.toString())
       break
   }
 }
