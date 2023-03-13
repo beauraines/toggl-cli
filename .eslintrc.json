@@ -12,6 +12,6 @@
         "sourceType": "module"
     },
     "rules": {
-        "allowTernary": true 
+        "no-unused-expressions": "warn"
     }
 }
