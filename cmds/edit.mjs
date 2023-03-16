@@ -1,16 +1,19 @@
+/* eslint-disable no-unused-expressions */
 import Client from '../client.js'
 import { defaultWorkspaceId, getProjectByName, getProjectById, appName, displayTimeEntry } from '../utils.js'
 import dayjs from 'dayjs'
+import debugClient from 'debug'
 import utc from 'dayjs/plugin/utc.js'
 import timezone from 'dayjs/plugin/timezone.js'
 import yargs from 'yargs'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
+const debug = debugClient('rtm-cli-edit');
+
 export const command = 'edit'
 // FIXME editing not working
-export const desc = `Edits the current running time entry. Only updating the time is supported `+
-`and the time must be parsable by dayjs, e.g. 4:50PM or '12:00 AM'.`
+export const desc = 'Edits the current running time entry. Only updating the time is supported and the time must be parsable by dayjs, e.g. 4:50PM or \'12:00 AM\'.'
 
 export const builder = {
   d: { alias: ['description'], describe: 'Time entry name', type: 'string:' },
