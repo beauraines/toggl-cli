@@ -13,7 +13,7 @@ export const builder = {
 export const handler = async function (argv) {
   const client = Client()
   // TODO update these dates
-  const timeEntries = await client.timeEntries.list({start_date:dayjs().subtract(14,'days').toISOString(),end_date:dayjs().toISOString()});
+  const timeEntries = await client.timeEntries.list({ start_date: dayjs().subtract(14, 'days').toISOString(), end_date: dayjs().toISOString() })
 
   const report = []
   timeEntries.forEach(element => {
@@ -27,12 +27,12 @@ export const handler = async function (argv) {
     )
   })
 
-      const table = new Table({
-        head: ['description', 'start', 'stop', 'duration']
-      })
-      for (const entry of report) {
-        table.push([entry.description, entry.start, entry.stop, entry.duration])
-      }
-      console.log(table.toString())
+  const table = new Table({
+    head: ['description', 'start', 'stop', 'duration']
+  })
+  for (const entry of report) {
+    table.push([entry.description, entry.start, entry.stop, entry.duration])
+  }
+  console.log(table.toString())
   // console.table(report, ['description', 'start', 'stop', 'duration'])
 }
