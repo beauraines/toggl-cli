@@ -1,6 +1,7 @@
 import Client from '../client.js'
 import { convertUtcTime, formatDuration } from '../utils.js'
 import dayjs from 'dayjs'
+import Table from 'cli-table3'
 
 export const command = 'ls'
 export const desc = 'Lists time entries'
@@ -26,5 +27,12 @@ export const handler = async function (argv) {
     )
   })
 
-  console.table(report, ['description', 'start', 'stop', 'duration'])
+      const table = new Table({
+        head: ['description', 'start', 'stop', 'duration']
+      })
+      for (const entry of report) {
+        table.push([entry.description, entry.start, entry.stop, entry.duration])
+      }
+      console.log(table.toString())
+  // console.table(report, ['description', 'start', 'stop', 'duration'])
 }
