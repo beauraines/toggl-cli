@@ -30,6 +30,7 @@ export const handler = async function (argv) {
   const table = new Table({
     head: ['description', 'start', 'stop', 'duration']
   })
+//TODO put these in reverse chronological order
   for (const entry of report) {
     table.push([entry.description, entry.start, entry.stop, entry.duration])
   }
