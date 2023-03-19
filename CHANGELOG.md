@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.11](https://github.com/beauraines/toggl-cli/compare/v0.10.10...v0.10.11) (2023-03-19)
+
+
+### Features
+
+* improvements to the ls command ([#52](https://github.com/beauraines/toggl-cli/issues/52)) ([5c9effc](https://github.com/beauraines/toggl-cli/commit/5c9effc10f2c85435441d1cb3bdbb1e821df88b3))
+
 ### [0.10.10](https://github.com/beauraines/toggl-cli/compare/v0.10.9...v0.10.10) (2023-03-16)
 
 
