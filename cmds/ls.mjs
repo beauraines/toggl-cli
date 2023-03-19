@@ -14,7 +14,7 @@ export const handler = async function (argv) {
   const client = Client()
   // TODO update these dates
   const timeEntries = await client.timeEntries.list({ start_date: dayjs().subtract(14, 'days').toISOString(), end_date: dayjs().toISOString() })
-
+  timeEntries.sort((a,b) => (a.start > b.start) ? 1 : -1)
   const report = []
   timeEntries.forEach(element => {
     report.push(
