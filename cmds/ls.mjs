@@ -6,7 +6,7 @@ import Table from 'cli-table3'
 
 const debug = debugClient('toggl-cli-ls');
 
-export const command = 'ls'
+export const command = 'ls [searchStrings...]'
 export const desc = 'Lists recent time entries. Defaults to the last 14 days.'
 
 export const builder = {
@@ -17,11 +17,15 @@ export const handler = async function (argv) {
   debug(argv)
   const client = Client()
   const days = argv.days
-  const timeEntries = await client.timeEntries.list({
+  let timeEntries = await client.timeEntries.list({
 	  start_date: dayjs().subtract(days, 'days').startOf('day').toISOString(),
 	  end_date: dayjs().toISOString()
   })
   timeEntries.sort((a, b) => (a.start > b.start) ? 1 : -1)
+  if ( argv.searchStrings ) {
+	  const searchString = argv.searchStrings.join(' ')
+	  debug(searchString)
+	  timeEntries = timeEntries.filter(x => x.description.includes(searchString))}
   const report = []
   timeEntries.forEach(element => {
     report.push(
