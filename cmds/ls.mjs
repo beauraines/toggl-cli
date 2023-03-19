@@ -4,17 +4,20 @@ import dayjs from 'dayjs'
 import Table from 'cli-table3'
 
 export const command = 'ls'
-export const desc = 'Lists time entries'
+export const desc = 'Lists recent time entries. Defaults to the last 14 days.'
 
 export const builder = {
-
+  d: { alias: ['days'], describe: 'The number of days to return.', type: 'number', demandOption: false, default: 14 }
 }
 
 export const handler = async function (argv) {
   const client = Client()
-  // TODO update these dates
-  const timeEntries = await client.timeEntries.list({ start_date: dayjs().subtract(14, 'days').toISOString(), end_date: dayjs().toISOString() })
-  timeEntries.sort((a,b) => (a.start > b.start) ? 1 : -1)
+  const days = argv.days
+  const timeEntries = await client.timeEntries.list({
+	  start_date: dayjs().subtract(days, 'days').startOf('day').toISOString(),
+	  end_date: dayjs().toISOString()
+  })
+  timeEntries.sort((a, b) => (a.start > b.start) ? 1 : -1)
   const report = []
   timeEntries.forEach(element => {
     report.push(
@@ -30,7 +33,6 @@ export const handler = async function (argv) {
   const table = new Table({
     head: ['description', 'start', 'stop', 'duration']
   })
-//TODO put these in reverse chronological order
   for (const entry of report) {
     table.push([entry.description, entry.start, entry.stop, entry.duration])
   }
