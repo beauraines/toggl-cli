@@ -24,12 +24,13 @@ export const handler = async function (argv) {
     }
   ) // Gets time entries for last 14 days, up to 1000 entries
 
-  timeEntries.sort((a, b) => dayjs(a.start).toDate() - dayjs(b.start).toDate())
+  // Sort to guarantee its most recent to oldest)
+  timeEntries.sort((a, b) => dayjs(b.start).toDate() - dayjs(a.start).toDate())
 
   let matchingTimeEntry
   switch (argv.description) {
     case undefined:
-      matchingTimeEntry = timeEntries.slice(-1)[0]
+      matchingTimeEntry = timeEntries[0]
       break
     default:
       { const searchName = argv.description.toLowerCase()
