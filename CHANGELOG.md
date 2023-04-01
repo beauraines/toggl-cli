@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.13](https://github.com/beauraines/toggl-cli/compare/v0.10.12...v0.10.13) (2023-04-01)
+
+
+### Features
+
+* Improve table layout ([4652fc3](https://github.com/beauraines/toggl-cli/commit/4652fc3f5e54ca6f0031dfcc035746147b028a5d)), closes [#56](https://github.com/beauraines/toggl-cli/issues/56)
+
 ### [0.10.12](https://github.com/beauraines/toggl-cli/compare/v0.10.11...v0.10.12) (2023-03-23)
 
 ### [0.10.11](https://github.com/beauraines/toggl-cli/compare/v0.10.10...v0.10.11) (2023-03-19)
