@@ -1,4 +1,5 @@
 import Client from './client.js'
+import chalk from 'chalk';
 import dayjs from 'dayjs'
 import utc  from "dayjs/plugin/utc.js";
 import timezone from 'dayjs/plugin/timezone.js';
@@ -103,15 +104,15 @@ export const displayTimeEntry = async function (timeEntry) {
   if (!timeEntry) {
     console.log('There is no time entry running!')
   } else {
-    console.info(`${timeEntry.description} #${timeEntry.id}`)
-    console.info(`Billable: ${timeEntry.billable}`)
+    console.info(`${chalk.blueBright(timeEntry.description)} ${chalk.yellow('#'+timeEntry.id)}`)
+    console.info(`Billable: ${chalk.gray(timeEntry.billable)}`)
 
     // TODO this should be abstracted for reuse
     const startTime = dayjs.unix(timeEntry.duration * -1)
     const duration = dayjs().diff(startTime, 's')
     const durationFormatted = dayjs.duration(duration * 1000).format('H[h] m[m]')
 
-    console.info(`Duration: ${durationFormatted}`)
+    console.info(`Duration: ${chalk.green(durationFormatted)}`)
 
     const projects = await getProjects(timeEntry.wid)
     const project = projects.find(x => x.id == timeEntry.pid)
