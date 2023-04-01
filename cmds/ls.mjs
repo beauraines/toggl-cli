@@ -40,11 +40,23 @@ export const handler = async function (argv) {
   })
 
   const table = new Table({
-    head: ['description', 'start', 'stop', 'duration']
+    head: ['Description', 'Start', 'Stop', 'Duration'],
+    chars: { mid: '', 'left-mid': '', 'mid-mid': '', 'right-mid': '' }
   })
-  for (const entry of report) {
-    table.push([entry.description, entry.start, entry.stop, entry.duration])
+  for (let i = 0; i < report.length; i++) {
+    // First row chars
+    const chars = {
+      midMid: '┼',
+      mid: '─',
+      leftMid: '├',
+      rightMid: '┤'
+    }
+    const entry = report[i]
+    if (i === 0) {
+      table.push([entry.description, entry.start, entry.stop, entry.duration].map((content) => ({ content, chars })))
+    } else {
+      table.push([entry.description, entry.start, entry.stop, entry.duration])
+    }
   }
   console.log(table.toString())
-  // console.table(report, ['description', 'start', 'stop', 'duration'])
 }

@@ -1,4 +1,5 @@
 import Client from '../client.js'
+import chalk from 'chalk'
 import { getWorkspace, formatDuration, getProjectById } from '../utils.js'
 import dayjs from 'dayjs'
 import dur from 'dayjs/plugin/duration.js'
@@ -58,10 +59,25 @@ export const handler = async function (argv) {
 
   const head = Object.keys(reportData[0])
   const table = new Table({
-    head
+    head,
+    chars: { mid: '', 'left-mid': '', 'mid-mid': '', 'right-mid': '' }
   })
-  for (const project of reportData) {
-    table.push(Object.values(project))
+  for (let i = 0; i < reportData.length; i++) {
+    // First row chars
+    const chars = {
+      midMid: '┼',
+      mid: '─',
+      leftMid: '├',
+      rightMid: '┤'
+    }
+    const project = reportData[i]
+    if (i == 0 ) {
+      table.push(Object.values(project).map((content) => ({ content: chalk.grey(content), chars })))
+    } else if ( i == reportData.length - 1) {
+      table.push(Object.values(project).map((content) => ( {content: chalk.bold(content), chars })))
+    } else {
+      table.push(Object.values(project).map((content) => ({ content: chalk.grey(content) })))
+    }
   }
   console.log(table.toString())
 }

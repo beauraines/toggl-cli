@@ -1,4 +1,5 @@
 import Client from '../client.js'
+import chalk from 'chalk'
 import dayjs from 'dayjs'
 import { getWorkspace, getProjects, formatDuration, formatDurationAsTime } from '../utils.js'
 import dur from 'dayjs/plugin/duration.js'
@@ -79,10 +80,25 @@ function displayDailyReport (report, format) {
     case 'table':
     default:
       const table = new Table({
-        head: ['Project', 'Duration']
+        head: ['Project', 'Duration'],
+        chars: { mid: '', 'left-mid': '', 'mid-mid': '', 'right-mid': '' }
       })
-      for (const project of report) {
-        table.push([project.project_name, project.duration_formatted])
+      for (let i = 0; i < report.length; i++) {
+        // First row chars
+        const chars = {
+          midMid: '┼',
+          mid: '─',
+          leftMid: '├',
+          rightMid: '┤'
+        }
+        const project = report[i]
+        if (i == 0) {
+          table.push([project.project_name, project.duration_formatted].map((content) => ({ content: chalk.grey(content), chars })))
+        } else if ( i == report.length - 1) {
+          table.push([project.project_name, project.duration_formatted].map((content) => ( {content: chalk.bold(content), chars })))
+        } else {
+          table.push([chalk.grey(project.project_name), chalk.grey(project.duration_formatted)])
+        }
       }
       console.log(table.toString())
       break
