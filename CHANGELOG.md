@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.14](https://github.com/beauraines/toggl-cli/compare/v0.10.13...v0.10.14) (2023-04-01)
+
+
+### Features
+
+* adds color to current time entry ([ec660a7](https://github.com/beauraines/toggl-cli/commit/ec660a7fe383167fe306b0c1438814242066458a))
+
 ### [0.10.13](https://github.com/beauraines/toggl-cli/compare/v0.10.12...v0.10.13) (2023-04-01)
 
 
