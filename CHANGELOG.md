@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.15](https://github.com/beauraines/toggl-cli/compare/v0.10.14...v0.10.15) (2023-04-07)
+
+
+### Bug Fixes
+
+* **deps:** bump toggl-client from 3.2.0 to 3.3.0 ([#65](https://github.com/beauraines/toggl-cli/issues/65)) ([020de32](https://github.com/beauraines/toggl-cli/commit/020de3229d48466af935e5d42570c878427cbdfe))
+
 ### [0.10.14](https://github.com/beauraines/toggl-cli/compare/v0.10.13...v0.10.14) (2023-04-01)
 
 
