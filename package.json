@@ -30,7 +30,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "chalk": "^4.0.0",
+    "chalk": "^5.2.0",
     "cli-table3": "^0.6.3",
     "dayjs": "^1.11.6",
     "debug": "^4.3.4",
