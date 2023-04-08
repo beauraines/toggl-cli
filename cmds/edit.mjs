@@ -9,7 +9,7 @@ import yargs from 'yargs'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-const debug = debugClient('rtm-cli-edit');
+const debug = debugClient('toggl-cli-edit');
 
 export const command = 'edit'
 // FIXME editing not working
