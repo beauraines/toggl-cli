@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.16](https://github.com/beauraines/toggl-cli/compare/v0.10.15...v0.10.16) (2023-04-08)
+
+
+### Bug Fixes
+
+* **weekly report:** handles entries without project ([4668dbe](https://github.com/beauraines/toggl-cli/commit/4668dbe4d1cf77648209090035197691d7f3c508)), closes [#63](https://github.com/beauraines/toggl-cli/issues/63)
+
 ### [0.10.15](https://github.com/beauraines/toggl-cli/compare/v0.10.14...v0.10.15) (2023-04-07)
 
 
