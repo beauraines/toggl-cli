@@ -2,11 +2,15 @@ import Client from '../client.js'
 import chalk from 'chalk'
 import { getWorkspace, formatDuration, getProjectById } from '../utils.js'
 import dayjs from 'dayjs'
+import debugClient from 'debug';
 import dur from 'dayjs/plugin/duration.js'
 import relativeTime from 'dayjs/plugin/relativeTime.js'
 import Table from 'cli-table3'
 dayjs.extend(relativeTime)
 dayjs.extend(dur)
+
+const debug = debugClient('toggl-cli-week');
+
 
 export const command = 'week'
 // FIXME descriptions
@@ -19,13 +23,14 @@ export const handler = async function (argv) {
 
   const params = { } // Leave this for future options, like rounding
   const weeklyReport = await client.reports.weekly(workspace.id, params)
-
+  debug(weeklyReport)
   const reportData = []
   const totals = [0, 0, 0, 0, 0, 0, 0] // ? Is there a better way to do this?
   for (const project of weeklyReport) {
     const currentProject = await getProjectById(workspace.id, project.project_id)
+    debug(currentProject)
     const row = {
-      projectName: currentProject.name,
+      projectName: currentProject ? currentProject.name : 'No Project',
       Total: 0
     }
 
