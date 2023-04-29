@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.17](https://github.com/beauraines/toggl-cli/compare/v0.10.16...v0.10.17) (2023-04-29)
+
+
+### Bug Fixes
+
+* **deps:** bump yargs from 17.7.1 to 17.7.2 ([be029e7](https://github.com/beauraines/toggl-cli/commit/be029e74c0dceaf230255ca69cdc8d5ee658be2a))
+
 ### [0.10.16](https://github.com/beauraines/toggl-cli/compare/v0.10.15...v0.10.16) (2023-04-08)
 
 
