@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.18](https://github.com/beauraines/toggl-cli/compare/v0.10.17...v0.10.18) (2023-06-03)
+
+
+### Bug Fixes
+
+* **deps:** bump dotenv from 16.0.3 to 16.1.3 ([5aba3a8](https://github.com/beauraines/toggl-cli/commit/5aba3a810521a590974cf2372a7923aea67e96cf))
+
 ### [0.10.17](https://github.com/beauraines/toggl-cli/compare/v0.10.16...v0.10.17) (2023-04-29)
 
 
