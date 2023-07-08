@@ -20,7 +20,7 @@ export const builder = {
 }
 
 export const handler = async function (argv) {
-  const client = Client()
+  const client = await Client()
   const workspace = await getWorkspace()
 
   const weekOffset = argv.previous ? 1 : 0

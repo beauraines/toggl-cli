@@ -15,32 +15,32 @@ export const defaultWorkspaceId = process.env.TOGGL_DEFAULT_WORKSPACE_ID
 export const defaultProjectId = process.env.TOGGL_DEFAULT_PROJECT_ID
 
 export const getProjects = async function (workspaceId) {
-  const client = Client()
+  const client = await Client()
   const projects = await client.workspaces.projects(workspaceId)
   const activeProjects = projects.filter(x => x.active)
   return activeProjects
 }
 
 export const getWorkspace = async function () {
-  const client = Client()
+  const client = await Client()
   const workspaces = await client.workspaces.list()
   return workspaces[0]
 }
 
 export const getProjectByName = async function (workspaceId, string) {
-  const client = Client()
+  const client = await Client()
   const projects = await client.workspaces.projects(workspaceId)
   return projects.find(x => x.name.toLowerCase().includes(string.toLowerCase()))
 }
 
 export const getProjectById = async function (workspaceId, projectId) {
-  const client = Client()
+  const client = await Client()
   const projects = await client.workspaces.projects(workspaceId)
   return projects.find(x => x.id == projectId)
 }
 
 export const createTimeEntry = async function (params) {
-  const client = Client()
+  const client = await Client()
 
   const timeEntry = await client.timeEntries.create(
     {

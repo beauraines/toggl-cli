@@ -27,7 +27,7 @@ export const handler = async function (argv) {
     yargs().help()
     yargs().exit(1, new Error('At least one option must be provided, description, project, start or end'))
   }
-  const client = new Client()
+  const client = await Client()
   const currentTimeEntry = await client.timeEntries.current()
   debug(currentTimeEntry)
   const params = {}

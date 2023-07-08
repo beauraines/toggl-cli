@@ -13,7 +13,7 @@ export const desc = 'Reports today\'s activities by project'
 export const builder = {}
 
 export const handler = async function (argv) {
-  const client = Client()
+  const client = await Client()
   const workspace = await getWorkspace()
   const projects = await getProjects(workspace.id)
   const params = {
