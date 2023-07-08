@@ -8,65 +8,52 @@ This was made possible because [saintedlama](https://github.com/saintedlama) had
 
 ## Configuration
 
-1. Configure your environment, with environment variables or a `.env` file in the project root. Eventually, these will be read from a config file as an alternative
+### Configuration File
+
+You can create the `.toggl-cli.json` in your home directory manually using the template below or with the `toggl create-config` command. The values can be found in your Toggl [profile](https://track.toggl.com/profile) and from the URL for your account settings. The current workspace id is `https://track.toggl.com/${workspace_id}}/settings/general`. Don't forget to change the permissions `chmod 600` so that only you can read/write the configuration file as it has your API token.
+
+```json
+{
+  "api_token": "",
+  "default_workspace_id": "",
+  "timezone": "",
+  "default_project_id": ""
+}
+```
+### Environment Variables
+
+Configure your environment, with environment variables or a `.env` file in the project root. Environment variables will take precedence over a config file
+
 1. `TOGGL_API_TOKEN` (required)
 2. `TOGGL_DEFAULT_WORKSPACE_ID` (required)
 3. `TOGGL_DEFAULT_PROJECT_ID` (optional)
 4. `TOGGL_TIMEZONE=America/Los_Angeles` (defaults to `America/New_York`)
-## Dependencies
-
-1. toggl-client - Used from [saintedlama/toggl-client](https://github.com/saintedlama/toggl-client) repository as the latest code hasn't been released to npm
-3. dotenv
-4. yargs
-
 
 
 ## Features
 
-| Feature                              | Available | Comments                                                    |
-| ------------------------------------ | --------- | ----------------------------------------------------------- |
-| Start time entry                     | ✅         |                                                             |
-| Start time entry with description    | ✅         |                                                             |
-| Start time entry with project        | ✅         |                                                             |
-| stop time entry                      | ✅         |                                                             |
-| Continue named time entry            | ✅         |                                                             |
-| Report today by project              | ✅         |                                                             |
-| Report this week by project by day   | ✅         |                                                             |
-| Edit time entry                      | ✅         |                                                             |
-| Use config from file                 |           |                                                             |
-| Save config to file                  |           |                                                             |
-| Refactor: Display and format modules |           |                                                             |
-| Client: reset PAT                    |           |                                                             |
-| Client: other user feature?          |           |                                                             |
-| Client: specify client name          |           |                                                             |
-| Colorize output                      | ✅        |                                                             |
-| Better table output                  | ✅        |                                                             |
-| List recent time entries             | ✅         |                                                             |
-| Command line completion              | ✅         | [#6](https://github.com/beauraines/toggl-cli-node/issues/6) |
-
-## Development Road Map
-
-Priority order... I think.
-
-1. ~today - improve the output~
-2. ~weekly - improve the output format~
-3. ~now - format the display time entry output~
-4. ~toggl continue~
-5. ~duration to display helper function?~
-6. read configuration (token, default workspace) from files (client and utils)
-7. now - update running description, project, start time
-8. now - update start time with overlap detection and adjust prior time entry
-9. project list - format the output, group by client
-10. Add ability to lookup project by name not just id
-11. start - add project name to output, add time started
-12. toggl workspace add - this command is not yet supported.
-13. toggl workspace list - improve output 
-14. colorized output
-15. config - some way to save /me information to a file
-    1.  default workspace?
-    2.  API key?
-    3.  display formats?
-16. toggl project add - this command is not yet supported.
+| Feature                                  | Available | Comments                                                    |
+| ---------------------------------------- | --------- | ----------------------------------------------------------- |
+| Start time entry                         | ✅         |                                                             |
+| Start time entry with description        | ✅         |                                                             |
+| Start time entry with project            | ✅         |                                                             |
+| stop time entry                          | ✅         |                                                             |
+| Continue named time entry                | ✅         |                                                             |
+| Report today by project                  | ✅         |                                                             |
+| Report this week by project by day       | ✅         |                                                             |
+| Edit current time entry                  | ✅         |                                                             |
+| Use config from file                     | ✅         |                                                             |
+| Save config to file                      | ✅         |                                                             |
+| Refactor: Display and format modules     |            |                                                             |
+| Client: reset PAT                        |            | Is this really necessary?                                   |
+| Client: specify client name              | ✅         |                                                             |
+| Colorize output                          | ✅         |                                                             |
+| Better table output                      | ✅         |                                                             |
+| List recent time entries                 | ✅         |                                                             |
+| Command line completion                  | ✅         | [#6](https://github.com/beauraines/toggl-cli-node/issues/6) |
+| Delete time entry by id                  |            |                                                             |
+| Edit other time entries than the current |            |                                                             |
+| Display earlier time entries             |            |                                                             |
 
 
 
