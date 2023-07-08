@@ -6,7 +6,7 @@ export const desc = 'Stops the current running time entry'
 export const builder = {}
 
 export const handler = async function (argv) {
-  const client = Client()
+  const client = await Client()
   const currentTimeEntry = await client.timeEntries.current()
   if (currentTimeEntry) {
     const stopped = await client.timeEntries.stop(currentTimeEntry)

@@ -28,7 +28,7 @@ async function main () {
 }
 
 async function createTimeEntry (params) {
-//   const client = Client()
+//   const client = await Client()
   const timeEntry = await client.timeEntries.create(
     {
       description: params.description,

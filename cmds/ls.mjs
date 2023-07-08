@@ -16,7 +16,7 @@ export const builder = {
 
 export const handler = async function (argv) {
   debug(argv)
-  const client = Client()
+  const client = await Client()
   const days = argv.today ? 0 : argv.days
   let timeEntries = await client.timeEntries.list({
     start_date: dayjs().subtract(days, 'days').startOf('day').toISOString(),
