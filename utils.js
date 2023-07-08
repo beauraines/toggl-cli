@@ -4,43 +4,49 @@ import dayjs from 'dayjs'
 import utc  from "dayjs/plugin/utc.js";
 import timezone from 'dayjs/plugin/timezone.js';
 import duration from 'dayjs/plugin/duration.js';
+import { readConfig } from './config.js'
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(duration);
 
-// TODO read from file or GET /me
-export const defaultWorkspaceId = process.env.TOGGL_DEFAULT_WORKSPACE_ID
+let conf
+try {
+  conf = await readConfig('.toggl-cli.json')
+} catch (error) {
+  console.error('Using config from environment variables or create one with the create-config command')
+}
 
-// TODO read from file or ENV
-export const defaultProjectId = process.env.TOGGL_DEFAULT_PROJECT_ID
+export const defaultWorkspaceId = process.env.TOGGL_DEFAULT_WORKSPACE_ID || conf.default_workspace_id 
+
+export const defaultProjectId = process.env.TOGGL_DEFAULT_PROJECT_ID || conf.default_project_id
 
 export const getProjects = async function (workspaceId) {
-  const client = Client()
+  const client = await Client()
   const projects = await client.workspaces.projects(workspaceId)
   const activeProjects = projects.filter(x => x.active)
   return activeProjects
 }
 
 export const getWorkspace = async function () {
-  const client = Client()
+  const client = await Client()
   const workspaces = await client.workspaces.list()
   return workspaces[0]
 }
 
 export const getProjectByName = async function (workspaceId, string) {
-  const client = Client()
+  const client = await Client()
   const projects = await client.workspaces.projects(workspaceId)
   return projects.find(x => x.name.toLowerCase().includes(string.toLowerCase()))
 }
 
 export const getProjectById = async function (workspaceId, projectId) {
-  const client = Client()
+  const client = await Client()
   const projects = await client.workspaces.projects(workspaceId)
   return projects.find(x => x.id == projectId)
 }
 
 export const createTimeEntry = async function (params) {
-  const client = Client()
+  const client = await Client()
 
   const timeEntry = await client.timeEntries.create(
     {
@@ -90,7 +96,7 @@ export const formatDurationAsTime = function (milliseconds) {
  * @returns {String}
  */
 export const convertUtcTime = function (dateTime) {
-  const tz = process.env.TOGGL_TIMEZONE || 'America/New_York'
+  const tz = process.env.TOGGL_TIMEZONE || conf?.timezone || 'America/New_York'
   return dayjs(dateTime).tz(tz).format('YYYY-MM-DD HH:mm')
 }
 
@@ -119,7 +125,7 @@ export const displayTimeEntry = async function (timeEntry) {
 
     console.info(`Project: ${project?.name} (#${timeEntry.pid})`);
 
-    const tz = process.env.TOGGL_TIMEZONE || 'America/New_York'
+    const tz = process.env.TOGGL_TIMEZONE || conf?.timezone || 'America/New_York'
     const startTimeFormatted = dayjs(timeEntry.start).tz(tz).format('YYYY-MM-DD HH:mm')
     const stopTimeFormatted = timeEntry.stop ? dayjs(timeEntry.stop).tz(tz).format('YYYY-MM-DD HH:mm') : 'Currently Running'
 

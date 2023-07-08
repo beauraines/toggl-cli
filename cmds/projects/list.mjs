@@ -8,7 +8,7 @@ export const builder = {
 }
 
 export const handler = async function (argv) {
-  const client = Client()
+  const client = await Client()
   const workspaces = await client.workspaces.list()
 
   const workspace = workspaces[0]

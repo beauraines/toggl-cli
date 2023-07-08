@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/beauraines/toggl-cli/compare/v0.10.22...v2.0.0) (2023-07-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* ready for version 1.0.0
+Reads configuration (API token, timezone, default workspace and projects) from `.toggl-cli.json` from the users home. Adds a command to create the configuration file.
+
+### Features
+
+* Adds configuration file ([#91](https://github.com/beauraines/toggl-cli/issues/91)) ([b7d70bf](https://github.com/beauraines/toggl-cli/commit/b7d70bfdb60aa9353e4da18f85e8b279ddf8bf34))
+
 ### [0.10.22](https://github.com/beauraines/toggl-cli/compare/v0.10.21...v0.10.22) (2023-07-08)
 
 

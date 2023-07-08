@@ -6,7 +6,7 @@ export const desc = 'Displays the current user'
 export const builder = {}
 
 export const handler = async function (argv) {
-  const client = Client()
+  const client = await Client()
   const currentUser = await client.user.current()
   // console.log(currentUser);
 
