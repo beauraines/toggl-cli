@@ -10,13 +10,14 @@ export const command = 'ls [searchStrings...]'
 export const desc = 'Lists recent time entries. Defaults to the last 14 days.'
 
 export const builder = {
-  d: { alias: ['days'], describe: 'The number of days to return.', type: 'number', demandOption: false, default: 14 }
+  d: { alias: ['days'], describe: 'The number of days to return. Ignored if --today provided', type: 'number', demandOption: false, default: 14 },
+  today: {describe: 'Only returns today\'s time entries. Overrides --days.', type: 'boolean', demandOption: false}
 }
 
 export const handler = async function (argv) {
   debug(argv)
   const client = Client()
-  const days = argv.days
+  const days = argv.today ? 0 : argv.days
   let timeEntries = await client.timeEntries.list({
     start_date: dayjs().subtract(days, 'days').startOf('day').toISOString(),
     end_date: dayjs().toISOString()
@@ -36,7 +37,6 @@ export const handler = async function (argv) {
 
   const report = []
   timeEntries.forEach(element => {
-    console.log(element)
     report.push(
       {
         description: element.description,
