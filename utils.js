@@ -9,12 +9,16 @@ dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(duration);
 
-const conf = await config.readConfig('.toggl-cli.json')
+let conf
+try {
+  conf = await config.readConfig('.toggl-cli.json')
+} catch (error) {
+  console.error(error.message)
+  process.exit(1)
+}
 
-// TODO read from file or GET /me
 export const defaultWorkspaceId = conf.default_workspace_id || process.env.TOGGL_DEFAULT_WORKSPACE_ID
 
-// TODO read from file or ENV
 export const defaultProjectId = conf.default_project_id || process.env.TOGGL_DEFAULT_PROJECT_ID
 
 export const getProjects = async function (workspaceId) {

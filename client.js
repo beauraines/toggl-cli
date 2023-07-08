@@ -7,8 +7,14 @@ const debug = debugClient('toggl-cli-client')
 
 
 export default async function () {
-  const conf = await config.readConfig('.toggl-cli.json')
-  debug(conf)
+  let  conf
+  try {
+    conf = await config.readConfig('.toggl-cli.json')
+    debug(conf)
+  } catch (error) {
+    console.error(error.message)
+    process.exit(1)
+  }
 
   const apiToken = conf.api_token || process.env.TOGGL_API_TOKEN
   debug(apiToken)
@@ -17,7 +23,7 @@ export default async function () {
   try {
       client = togglClient({ apiToken });
   } catch (error) {
-     console.error(error);
+     console.error(error.message);
      console.error('There was a problem')
      process.exit(1)
    }
