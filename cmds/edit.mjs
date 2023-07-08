@@ -12,7 +12,6 @@ dayjs.extend(timezone)
 const debug = debugClient('toggl-cli-edit');
 
 export const command = 'edit'
-// FIXME editing not working
 export const desc = 'Edits the current running time entry. Only updating the time is supported and the time must be parsable by dayjs, e.g. 4:50PM or \'12:00 AM\'.'
 
 export const builder = {
@@ -30,7 +29,7 @@ export const handler = async function (argv) {
   }
   const client = new Client()
   const currentTimeEntry = await client.timeEntries.current()
-
+  debug(currentTimeEntry)
   const params = {}
 
   params.workspace_id = +defaultWorkspaceId
@@ -59,10 +58,16 @@ export const handler = async function (argv) {
   }
 
   params.created_with = appName
-  params.at = dayjs().toISOString()
   project ? params.project_id = +project.id : undefined
   startTime ? params.start = startTime.toISOString() : undefined
   endTime ? params.stop = endTime.toISOString() : undefined
+  if (startTime || endTime) {
+    const startTimeUnix = (startTime || dayjs(currentTimeEntry.start)).unix()
+    const endTimeUnix = (endTime || dayjs(currentTimeEntry.end) || dayjs()).unix()
+    let duration = endTimeUnix - startTimeUnix
+    duration = endTime ? duration : startTimeUnix * -1
+    params.duration = duration
+  }
   argv.description ? params.description = argv.description : undefined
   debug(params)
   const timeEntry = await client.timeEntries.update(currentTimeEntry.id, params)
