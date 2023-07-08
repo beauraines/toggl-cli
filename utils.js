@@ -4,15 +4,18 @@ import dayjs from 'dayjs'
 import utc  from "dayjs/plugin/utc.js";
 import timezone from 'dayjs/plugin/timezone.js';
 import duration from 'dayjs/plugin/duration.js';
+import { config } from "@beauraines/node-helpers";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(duration);
 
+const conf = await config.readConfig('.toggl-cli.json')
+
 // TODO read from file or GET /me
-export const defaultWorkspaceId = process.env.TOGGL_DEFAULT_WORKSPACE_ID
+export const defaultWorkspaceId = conf.default_workspace_id || process.env.TOGGL_DEFAULT_WORKSPACE_ID
 
 // TODO read from file or ENV
-export const defaultProjectId = process.env.TOGGL_DEFAULT_PROJECT_ID
+export const defaultProjectId = conf.default_project_id || process.env.TOGGL_DEFAULT_PROJECT_ID
 
 export const getProjects = async function (workspaceId) {
   const client = await Client()
@@ -90,7 +93,7 @@ export const formatDurationAsTime = function (milliseconds) {
  * @returns {String}
  */
 export const convertUtcTime = function (dateTime) {
-  const tz = process.env.TOGGL_TIMEZONE || 'America/New_York'
+  const tz = conf.timezone || process.env.TOGGL_TIMEZONE || 'America/New_York'
   return dayjs(dateTime).tz(tz).format('YYYY-MM-DD HH:mm')
 }
 
@@ -119,7 +122,7 @@ export const displayTimeEntry = async function (timeEntry) {
 
     console.info(`Project: ${project?.name} (#${timeEntry.pid})`);
 
-    const tz = process.env.TOGGL_TIMEZONE || 'America/New_York'
+    const tz = conf.timezone || process.env.TOGGL_TIMEZONE || 'America/New_York'
     const startTimeFormatted = dayjs(timeEntry.start).tz(tz).format('YYYY-MM-DD HH:mm')
     const stopTimeFormatted = timeEntry.stop ? dayjs(timeEntry.stop).tz(tz).format('YYYY-MM-DD HH:mm') : 'Currently Running'
 
