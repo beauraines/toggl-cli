@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.22](https://github.com/beauraines/toggl-cli/compare/v0.10.21...v0.10.22) (2023-07-08)
+
+
+### Features
+
+* **ls:** Adds today option ([adc9779](https://github.com/beauraines/toggl-cli/commit/adc977912859d599a2a02c53d3c6529b52ecc9b4))
+
+
+### Bug Fixes
+
+* **edit:** updates duration when editing a running entry ([60a6d47](https://github.com/beauraines/toggl-cli/commit/60a6d474e83379c69861e063afc48b74f88473a8))
+* **utils:** properly handles null time in displayTimeEntry ([0476db0](https://github.com/beauraines/toggl-cli/commit/0476db098c72f2997d916149dfdeb4f50d7a43ce))
+
 ### [0.10.21](https://github.com/beauraines/toggl-cli/compare/v0.10.20...v0.10.21) (2023-07-08)
 
 
