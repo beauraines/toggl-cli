@@ -1,29 +1,28 @@
 import dotenv from 'dotenv'
 import togglClient from 'toggl-client'
+import { config } from "@beauraines/node-helpers";
 dotenv.config()
+import debugClient from 'debug'
+const debug = debugClient('toggl-cli-client')
 
-export default function () {
-  if (!process.env.TOGGL_API_TOKEN) {
-    console.log('TOGGL_API_TOKEN environment variable is not set.')
-    console.log('For development, it can be set in the .env file in the project root')
-  }
 
-  // TODO Try to read rc file
+export default async function () {
+  const conf = await config.readConfig('.toggl-cli.json')
+  debug(conf)
 
-  // FIXME apiToken is not needed
-  const apiToken = process.env.TOGGL_API_TOKEN
-  const client = togglClient()
-  // const client = togglClient({ apiToken });
-  // ? Why doesn't a try/catch block work?
-  // try {
-  //     const client = togglClient({ apiToken });
-  // } catch (error) {
-  //    console.error(error);
-  // }
-  if (!client) {
-    console.error('There was a problem')
-    process.exit(1)
-  }
+  const apiToken = conf.api_token || process.env.TOGGL_API_TOKEN
+  debug(apiToken)
+
+  let client
+  try {
+      client = togglClient({ apiToken });
+  } catch (error) {
+     console.error(error);
+     console.error('There was a problem')
+     process.exit(1)
+   }
 
   return client
 }
+
+
