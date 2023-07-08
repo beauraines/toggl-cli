@@ -12,11 +12,10 @@ export default async function () {
     conf = await config.readConfig('.toggl-cli.json')
     debug(conf)
   } catch (error) {
-    console.error(error.message)
-    process.exit(1)
+    console.error('Using config from environment variables or create one with the create-config command')
   }
 
-  const apiToken = conf.api_token || process.env.TOGGL_API_TOKEN
+  const apiToken = conf?.api_token || process.env.TOGGL_API_TOKEN
   debug(apiToken)
 
   let client
