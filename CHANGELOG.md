@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.21](https://github.com/beauraines/toggl-cli/compare/v0.10.20...v0.10.21) (2023-07-08)
+
+
+### Features
+
+* **ls:** adds details to time entry listing ([7ad05c7](https://github.com/beauraines/toggl-cli/commit/7ad05c797729bbaa34dc2a6be99397e1a01c24a2)), closes [#72](https://github.com/beauraines/toggl-cli/issues/72)
+
 ### [0.10.20](https://github.com/beauraines/toggl-cli/compare/v0.10.19...v0.10.20) (2023-07-08)
 
 ### [0.10.19](https://github.com/beauraines/toggl-cli/compare/v0.10.18...v0.10.19) (2023-07-08)
