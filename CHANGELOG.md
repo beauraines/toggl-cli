@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.19](https://github.com/beauraines/toggl-cli/compare/v0.10.18...v0.10.19) (2023-07-08)
+
+
+### Features
+
+* **weekly report:** Add weekly report options ([73bb7fe](https://github.com/beauraines/toggl-cli/commit/73bb7fe8b815978feb39de5db4b6cc96811314cf)), closes [#44](https://github.com/beauraines/toggl-cli/issues/44)
+
+
+### Bug Fixes
+
+* **deps:** bump dayjs from 1.11.7 to 1.11.8 ([2b47fde](https://github.com/beauraines/toggl-cli/commit/2b47fde79a538cfe6a486e84a21e58cfa2ddd6b4))
+* **deps:** bump dotenv from 16.1.3 to 16.1.4 ([14eaefa](https://github.com/beauraines/toggl-cli/commit/14eaefa93394e93708dc05319db73d86ac6fe9e5))
+* **deps:** bump dotenv from 16.1.4 to 16.3.1 ([#83](https://github.com/beauraines/toggl-cli/issues/83)) ([6511956](https://github.com/beauraines/toggl-cli/commit/65119569c782afd7d22ae2532b23568d7517bc2a))
+
 ### [0.10.18](https://github.com/beauraines/toggl-cli/compare/v0.10.17...v0.10.18) (2023-06-03)
 
 
