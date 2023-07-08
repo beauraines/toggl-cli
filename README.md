@@ -39,7 +39,7 @@ This was made possible because [saintedlama](https://github.com/saintedlama) had
 | Client: reset PAT                    |           |                                                             |
 | Client: other user feature?          |           |                                                             |
 | Client: specify client name          |           |                                                             |
-| Colorize output                      |           |                                                             |
+| Colorize output                      | ✅        |                                                             |
 | Better table output                  | ✅        |                                                             |
 | List recent time entries             | ✅         |                                                             |
 | Command line completion              | ✅         | [#6](https://github.com/beauraines/toggl-cli-node/issues/6) |
