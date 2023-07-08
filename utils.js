@@ -121,7 +121,7 @@ export const displayTimeEntry = async function (timeEntry) {
 
     const tz = process.env.TOGGL_TIMEZONE || 'America/New_York'
     const startTimeFormatted = dayjs(timeEntry.start).tz(tz).format('YYYY-MM-DD HH:mm')
-    const stopTimeFormatted = dayjs(timeEntry.stop).tz(tz).format('YYYY-MM-DD HH:mm')
+    const stopTimeFormatted = timeEntry.stop ? dayjs(timeEntry.stop).tz(tz).format('YYYY-MM-DD HH:mm') : 'Currently Running'
 
     console.info(`Start: ${startTimeFormatted}`)
     console.info(`Stop: ${stopTimeFormatted}`) // This will always be blank for the current entry, but will be useful for a time entry
