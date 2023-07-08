@@ -15,13 +15,21 @@ const debug = debugClient('toggl-cli-week');
 export const command = 'week'
 // FIXME descriptions
 export const desc = 'Weekly project summary by day'
-export const builder = {}
+export const builder = {
+  p: { alias: ['previous','prior'], describe: 'Return the prior week\'s data', type: 'boolean', demandOption: false, requiresArg: false}
+}
 
 export const handler = async function (argv) {
   const client = Client()
   const workspace = await getWorkspace()
 
-  const params = { } // Leave this for future options, like rounding
+  const weekOffset = argv.previous ? 1 : 0
+  const startDate = dayjs().startOf('week').subtract(weekOffset,'weeks')
+
+  const params = {
+    start_date: startDate.format('YYYY-MM-DD')
+  }
+
   const weeklyReport = await client.reports.weekly(workspace.id, params)
   debug(weeklyReport)
   const reportData = []
@@ -36,11 +44,11 @@ export const handler = async function (argv) {
 
     for (let i = 0; i < project.seconds.length; i++) {
       const element = project.seconds[i]
-      const date = dayjs().startOf('week').add(i, 'days').format('ddd MM-DD')
+      const date = startDate.add(i, 'days').format('ddd MM-DD')
       const duration = element || 0
       row[date] = formatDuration(duration * 1000)
       totals[i] += duration // for use with a daily total row
-      row.Total += duration // accumulate the projects weekly totoal
+      row.Total += duration // accumulate the projects weekly total
     }
     reportData.push(row)
   }
@@ -52,9 +60,9 @@ export const handler = async function (argv) {
 
   for (let i = 0; i < totals.length; i++) {
     const seconds = totals[i]
-    const date = dayjs().startOf('week').add(i, 'days').format('ddd MM-DD')
+    const date = startDate.add(i, 'days').format('ddd MM-DD')
     totalRow[date] = formatDuration(seconds * 1000)
-    totalRow.Total += seconds // accumulate the projects weekly totoal
+    totalRow.Total += seconds // accumulate the projects weekly total
   }
   reportData.push(totalRow)
 
