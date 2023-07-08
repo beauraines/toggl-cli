@@ -27,20 +27,31 @@ export const handler = async function (argv) {
     debug(searchString)
     timeEntries = timeEntries.filter(x => x.description.includes(searchString))
   }
+
+  const workspaces = await client.workspaces.list()
+  const workspace = workspaces[0]
+  debug('Workspace: ' + workspace.name)
+  debug('id: ' + workspace.id)
+  const projects = await client.workspaces.projects(workspace.id)
+
   const report = []
   timeEntries.forEach(element => {
+    console.log(element)
     report.push(
       {
         description: element.description,
+        project: projects.filter(p => p.id == element.project_id)[0]?.name,
+        project_id: projects.filter(p => p.id == element.project_id)[0]?.id,
         start: convertUtcTime(element.start),
         stop: convertUtcTime(element.stop),
-        duration: formatDuration(element.duration * 1000)
+        duration: formatDuration(element.duration * 1000),
+        id: element.id
       }
     )
   })
 
   const table = new Table({
-    head: ['Description', 'Start', 'Stop', 'Duration'],
+    head: ['Description', 'Project', 'Start', 'Stop', 'Duration', 'Time Entry ID'],
     chars: { mid: '', 'left-mid': '', 'mid-mid': '', 'right-mid': '' }
   })
   for (let i = 0; i < report.length; i++) {
@@ -53,9 +64,9 @@ export const handler = async function (argv) {
     }
     const entry = report[i]
     if (i === 0) {
-      table.push([entry.description, entry.start, entry.stop, entry.duration].map((content) => ({ content, chars })))
+      table.push([entry.description, entry.project, entry.start, entry.stop, entry.duration, entry.id].map((content) => ({ content, chars })))
     } else {
-      table.push([entry.description, entry.start, entry.stop, entry.duration])
+      table.push([entry.description, entry.project, entry.start, entry.stop, entry.duration, entry.id])
     }
   }
   console.log(table.toString())
