@@ -22,7 +22,7 @@ You can create the `.toggl-cli.json` in your home directory manually using the t
 ```
 ### Environment Variables
 
-Configure your environment, with environment variables or a `.env` file in the project root. Environment variables will take precedence over a config file
+Configure your environment, with environment variables or a `.env` file in the project root. Environment variables will take precedence over a config file.
 
 1. `TOGGL_API_TOKEN` (required)
 2. `TOGGL_DEFAULT_WORKSPACE_ID` (required)
