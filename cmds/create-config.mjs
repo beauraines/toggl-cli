@@ -1,4 +1,4 @@
-import { config } from "@beauraines/node-helpers";
+import { createConfig } from '../config.js'
 import debugClient from 'debug';
 
 const debug = debugClient('toggl-cli-create-config');
@@ -17,7 +17,7 @@ export const handler = async function (argv) {
 
     let configFile
     try {
-        configFile = await config.createConfig('.toggl-cli.json',configProps)
+        configFile = await createConfig('.toggl-cli.json',configProps)
         console.log(`Configuration file written to ${configFile} in your home directory`)
         console.log(`Edit with your user information from Toggl.`)
     } catch (error) {

@@ -4,14 +4,14 @@ import dayjs from 'dayjs'
 import utc  from "dayjs/plugin/utc.js";
 import timezone from 'dayjs/plugin/timezone.js';
 import duration from 'dayjs/plugin/duration.js';
-import { config } from "@beauraines/node-helpers";
+import { readConfig } from './config.js'
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.extend(duration);
 
 let conf
 try {
-  conf = await config.readConfig('.toggl-cli.json')
+  conf = await readConfig('.toggl-cli.json')
 } catch (error) {
   console.error('Using config from environment variables or create one with the create-config command')
 }

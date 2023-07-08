@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
 import togglClient from 'toggl-client'
-import { config } from "@beauraines/node-helpers";
+import { readConfig } from './config.js'
 dotenv.config()
 import debugClient from 'debug'
 const debug = debugClient('toggl-cli-client')
@@ -9,7 +9,7 @@ const debug = debugClient('toggl-cli-client')
 export default async function () {
   let  conf
   try {
-    conf = await config.readConfig('.toggl-cli.json')
+    conf = await readConfig('.toggl-cli.json')
     debug(conf)
   } catch (error) {
     console.error('Using config from environment variables or create one with the create-config command')
