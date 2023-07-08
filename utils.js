@@ -16,9 +16,9 @@ try {
   console.error('Using config from environment variables or create one with the create-config command')
 }
 
-export const defaultWorkspaceId = conf?.default_workspace_id || process.env.TOGGL_DEFAULT_WORKSPACE_ID
+export const defaultWorkspaceId = process.env.TOGGL_DEFAULT_WORKSPACE_ID || conf.default_workspace_id 
 
-export const defaultProjectId = conf?.default_project_id || process.env.TOGGL_DEFAULT_PROJECT_ID
+export const defaultProjectId = process.env.TOGGL_DEFAULT_PROJECT_ID || conf.default_project_id
 
 export const getProjects = async function (workspaceId) {
   const client = await Client()
@@ -96,7 +96,7 @@ export const formatDurationAsTime = function (milliseconds) {
  * @returns {String}
  */
 export const convertUtcTime = function (dateTime) {
-  const tz = conf?.timezone || process.env.TOGGL_TIMEZONE || 'America/New_York'
+  const tz = process.env.TOGGL_TIMEZONE || conf?.timezone || 'America/New_York'
   return dayjs(dateTime).tz(tz).format('YYYY-MM-DD HH:mm')
 }
 
@@ -125,7 +125,7 @@ export const displayTimeEntry = async function (timeEntry) {
 
     console.info(`Project: ${project?.name} (#${timeEntry.pid})`);
 
-    const tz = conf?.timezone || process.env.TOGGL_TIMEZONE || 'America/New_York'
+    const tz = process.env.TOGGL_TIMEZONE || conf?.timezone || 'America/New_York'
     const startTimeFormatted = dayjs(timeEntry.start).tz(tz).format('YYYY-MM-DD HH:mm')
     const stopTimeFormatted = timeEntry.stop ? dayjs(timeEntry.stop).tz(tz).format('YYYY-MM-DD HH:mm') : 'Currently Running'
 

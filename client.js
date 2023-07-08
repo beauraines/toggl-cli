@@ -15,7 +15,7 @@ export default async function () {
     console.error('Using config from environment variables or create one with the create-config command')
   }
 
-  const apiToken = conf?.api_token || process.env.TOGGL_API_TOKEN
+  const apiToken = process.env.TOGGL_API_TOKEN || conf?.api_token
   debug(apiToken)
 
   let client
