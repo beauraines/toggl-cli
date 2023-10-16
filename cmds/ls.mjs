@@ -24,9 +24,9 @@ export const handler = async function (argv) {
   })
   timeEntries.sort((a, b) => (a.start > b.start) ? 1 : -1)
   if (argv.searchStrings) {
-    const searchString = argv.searchStrings.join(' ')
+    const searchString = argv.searchStrings.join(' ').toLowerCase()
     debug(searchString)
-    timeEntries = timeEntries.filter(x => x.description.includes(searchString))
+    timeEntries = timeEntries.filter(x => x.description.toLowerCase().includes(searchString))
   }
 
   const workspaces = await client.workspaces.list()
