@@ -43,7 +43,7 @@ export const handler = async function (argv) {
         project: projects.filter(p => p.id == element.project_id)[0]?.name,
         project_id: projects.filter(p => p.id == element.project_id)[0]?.id,
         start: convertUtcTime(element.start),
-        stop: convertUtcTime(element.stop),
+        stop: convertUtcTime(element.stop) == 'Invalid Date' ? 'Currently Running' : convertUtcTime(element.stop),
         duration: formatDuration(element.duration * 1000),
         id: element.id
       }
