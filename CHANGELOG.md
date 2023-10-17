@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/beauraines/toggl-cli/compare/v2.0.3...v2.1.0) (2023-10-17)
+
+
+### Features
+
+* **ls:** - improves ls display for running events ([554ed05](https://github.com/beauraines/toggl-cli/commit/554ed05106fa29f6ea09565f68bce8698710b422)), closes [#92](https://github.com/beauraines/toggl-cli/issues/92)
+
 ### [2.0.3](https://github.com/beauraines/toggl-cli/compare/v2.0.2...v2.0.3) (2023-10-16)
 
 ### [2.0.2](https://github.com/beauraines/toggl-cli/compare/v2.0.1...v2.0.2) (2023-10-16)
