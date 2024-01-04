@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.1](https://github.com/beauraines/toggl-cli/compare/v2.1.0...v2.1.1) (2024-01-04)
+
+
+### Bug Fixes
+
+* Improves handling of time entries with out a description ([#136](https://github.com/beauraines/toggl-cli/issues/136)) ([888248d](https://github.com/beauraines/toggl-cli/commit/888248d982a9bbd5bff1f46f8171c4911d4ea7b8)), closes [#135](https://github.com/beauraines/toggl-cli/issues/135)
+
 ## [2.1.0](https://github.com/beauraines/toggl-cli/compare/v2.0.3...v2.1.0) (2023-10-17)
 
 
