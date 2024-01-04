@@ -110,7 +110,7 @@ export const displayTimeEntry = async function (timeEntry) {
   if (!timeEntry) {
     console.log('There is no time entry running!')
   } else {
-    console.info(`${chalk.blueBright(timeEntry.description)} ${chalk.yellow('#'+timeEntry.id)}`)
+    console.info(`${chalk.blueBright(timeEntry.description ? timeEntry.description : 'no description')} ${chalk.yellow('#'+timeEntry.id)}`)
     console.info(`Billable: ${chalk.gray(timeEntry.billable)}`)
 
     // TODO this should be abstracted for reuse

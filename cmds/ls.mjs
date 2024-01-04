@@ -39,7 +39,7 @@ export const handler = async function (argv) {
   timeEntries.forEach(element => {
     report.push(
       {
-        description: element.description,
+        description: element.description ? element.description : 'no description',
         project: projects.filter(p => p.id == element.project_id)[0]?.name,
         project_id: projects.filter(p => p.id == element.project_id)[0]?.id,
         start: convertUtcTime(element.start),
