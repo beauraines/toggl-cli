@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.2](https://github.com/beauraines/toggl-cli/compare/v2.1.1...v2.1.2) (2024-01-12)
+
+
+### Bug Fixes
+
+* **weekly report:** Fixes spacing in header row values ([41f421a](https://github.com/beauraines/toggl-cli/commit/41f421aea1971afec95a56a73cdd3a8c0cdc6026))
+
 ### [2.1.1](https://github.com/beauraines/toggl-cli/compare/v2.1.0...v2.1.1) (2024-01-04)
 
 
