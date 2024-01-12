@@ -38,7 +38,7 @@ export const handler = async function (argv) {
     const currentProject = await getProjectById(workspace.id, project.project_id)
     debug(currentProject)
     const row = {
-      projectName: currentProject ? currentProject.name : 'No Project',
+      "Project Name": currentProject ? currentProject.name : 'No Project',
       Total: 0
     }
 
