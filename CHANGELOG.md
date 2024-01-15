@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.3](https://github.com/beauraines/toggl-cli/compare/v2.1.2...v2.1.3) (2024-01-15)
+
+
+### Bug Fixes
+
+* **weekly report:** fixes weekly report heading when there is no data ([#142](https://github.com/beauraines/toggl-cli/issues/142)) ([7514fd3](https://github.com/beauraines/toggl-cli/commit/7514fd3a3629632e2b08339222c828e61364bf24))
+
 ### [2.1.2](https://github.com/beauraines/toggl-cli/compare/v2.1.1...v2.1.2) (2024-01-12)
 
 
