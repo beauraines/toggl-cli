@@ -54,7 +54,7 @@ export const handler = async function (argv) {
   }
 
   const totalRow = {
-    projectName: 'Total',
+    "Project Name": 'Total',
     Total: 0
   }
 
