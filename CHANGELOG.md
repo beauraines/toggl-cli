@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.7](https://github.com/beauraines/toggl-cli/compare/v2.1.6...v2.1.7) (2024-04-14)
+
+
+### Bug Fixes
+
+* **deps:** bump cli-table3 from 0.6.3 to 0.6.4 ([#151](https://github.com/beauraines/toggl-cli/issues/151)) ([8aa717e](https://github.com/beauraines/toggl-cli/commit/8aa717e260d684854b40cac5da66332fe08ed89e))
+
 ### [2.1.6](https://github.com/beauraines/toggl-cli/compare/v2.1.5...v2.1.6) (2024-02-26)
 
 
