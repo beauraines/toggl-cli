@@ -14,3 +14,8 @@ updates:
       prefix: fix
       prefix-development: chore
       include: scope
+    groups:
+        dev-dependencies:
+          dependency-type: "development"
+          patterns:
+            - "*"
