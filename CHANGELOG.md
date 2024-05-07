@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.8](https://github.com/beauraines/toggl-cli/compare/v2.1.7...v2.1.8) (2024-05-07)
+
+
+### Bug Fixes
+
+* **deps:** bump dayjs from 1.11.10 to 1.11.11 ([#157](https://github.com/beauraines/toggl-cli/issues/157)) ([dbe0dde](https://github.com/beauraines/toggl-cli/commit/dbe0dde1874f38ae1e0d8d830bd4c3ac49feb3a9))
+
 ### [2.1.7](https://github.com/beauraines/toggl-cli/compare/v2.1.6...v2.1.7) (2024-04-14)
 
 
