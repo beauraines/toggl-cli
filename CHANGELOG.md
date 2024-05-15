@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/beauraines/toggl-cli/compare/v2.1.8...v2.2.0) (2024-05-15)
+
+
+### Features
+
+* Remove time entry by id ([#160](https://github.com/beauraines/toggl-cli/issues/160)) ([de37a85](https://github.com/beauraines/toggl-cli/commit/de37a85f4ac134f8480c4efa9a8e47de9dca4cd2))
+
 ### [2.1.8](https://github.com/beauraines/toggl-cli/compare/v2.1.7...v2.1.8) (2024-05-07)
 
 
