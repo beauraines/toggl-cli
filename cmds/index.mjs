@@ -8,6 +8,7 @@ import * as edit from './edit.mjs'
 import * as web from './web.mjs'
 import * as startTimeEntry from './startTimeEntry.mjs'
 import * as stopTimeEntry from './stopTimeEntry.mjs'
+import * as addTimeEntry from './addTimeEntry.mjs'
 import * as removeTimeEntry from './removeTimeEntry.mjs'
 import * as today from './today.mjs'
 import * as weekly from './weekly.mjs'
@@ -21,6 +22,7 @@ export const commands = [
   projects,
   startTimeEntry,
   stopTimeEntry,
+  addTimeEntry,
   removeTimeEntry,
   today,
   web,

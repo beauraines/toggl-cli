@@ -53,7 +53,7 @@ export const createTimeEntry = async function (params) {
       description: params.description,
       workspace_id: +params.workspaceId,
       project_id: +params.projectId,
-      start: dayjs().toISOString(),
+      start: params.start ? params.start : dayjs().toISOString(),
       duration: -1 * dayjs().unix(),
       created_with: appName,
       at: dayjs().toISOString()
@@ -114,9 +114,15 @@ export const displayTimeEntry = async function (timeEntry) {
     console.info(`Billable: ${chalk.gray(timeEntry.billable)}`)
 
     // TODO this should be abstracted for reuse
-    const startTime = dayjs.unix(timeEntry.duration * -1)
-    const duration = dayjs().diff(startTime, 's')
-    const durationFormatted = dayjs.duration(duration * 1000).format('H[h] m[m]')
+    let durationFormatted;
+    if (timeEntry.stop == null) {
+      const startTime = dayjs.unix(timeEntry.duration * -1)
+      const duration = dayjs().diff(startTime, 's')
+      durationFormatted = dayjs.duration(duration * 1000).format('H[h] m[m]')
+    } else {
+      const duration = dayjs(timeEntry.stop).diff(dayjs(timeEntry.start))
+      durationFormatted = dayjs.duration(duration).format('H[h] m[m]')
+    }
 
     console.info(`Duration: ${chalk.green(durationFormatted)}`)
 
