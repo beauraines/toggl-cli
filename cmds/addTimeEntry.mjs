@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import Client from '../client.js'
-import { defaultWorkspaceId, getProjectByName, getProjectById, appName, displayTimeEntry } from '../utils.js'
+import { defaultWorkspaceId, getProjectByName, getProjectById, appName, displayTimeEntry, parseTime } from '../utils.js'
 import dayjs from 'dayjs'
 import debugClient from 'debug'
 import utc from 'dayjs/plugin/utc.js'
@@ -65,23 +65,5 @@ export const handler = async function (argv) {
   debug(params)
   const timeEntry = await client.timeEntries.create(params)
   await displayTimeEntry(timeEntry)
-}
-
-/**
- * Parses a timelike string into a dayjs object of the current date and that time
- * @param {string} timeString timelike string e.g. 4:50PM '12:00 AM' etc.
- * @returns {object} dayjs object
- */
-function parseTime (timeString) {
-  let h, m
-  // Assumes time in format 4:50 PM
-  const time = timeString.split(':', 2)
-  h = time[0]
-  m = time[1].match(/[0-9]+/)[0]
-  if (timeString.match(/PM/i) && h <= 12) {
-    // + in front of string converts to a number, cool!
-    h = +h + 12
-  }
-  return dayjs().hour(h).minute(m).second(0)
 }
 
