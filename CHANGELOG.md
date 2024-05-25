@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/beauraines/toggl-cli/compare/v2.2.1...v2.3.0) (2024-05-25)
+
+
+### Features
+
+* Add time entry, include start with create ([#165](https://github.com/beauraines/toggl-cli/issues/165)) ([d73f181](https://github.com/beauraines/toggl-cli/commit/d73f181115ea0a92e4e1427d0f2c77337ef55132))
+
 ### [2.2.1](https://github.com/beauraines/toggl-cli/compare/v2.2.0...v2.2.1) (2024-05-17)
 
 
