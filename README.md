@@ -70,3 +70,14 @@ There are several features that I do not use from Toggl, so including them is a 
 I need to clean up and refactor the code and establish a few more helper and utility functions, but I'm open to contributions!
 
 
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
