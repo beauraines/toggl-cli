@@ -15,6 +15,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "saintedlama",
+      "name": "Christoph Walcher",
+      "avatar_url": "https://avatars.githubusercontent.com/u/123820?v=4",
+      "profile": "http://yieldthedog.github.com/",
+      "contributions": [
+        "tool",
+        "projectManagement"
+      ]
     }
   ],
   "contributorsPerLine": 7,
