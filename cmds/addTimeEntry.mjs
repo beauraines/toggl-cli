@@ -5,31 +5,23 @@ import dayjs from 'dayjs'
 import debugClient from 'debug'
 import utc from 'dayjs/plugin/utc.js'
 import timezone from 'dayjs/plugin/timezone.js'
-import yargs from 'yargs'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-const debug = debugClient('toggl-cli-edit');
+const debug = debugClient('toggl-cli-add');
 
-export const command = 'edit'
-export const desc = 'Edits the current running time entry. Only updating the time is supported and the time must be parsable by dayjs, e.g. 4:50PM or \'12:00 AM\'.'
+export const command = 'add [startTime] [endTime] [description]'
+export const desc = 'Create a time entry. Time must be parsable by dayjs, e.g. 4:50PM or \'12:00 AM\'.'
 
 export const builder = {
-  d: { alias: ['description'], describe: 'Time entry name', type: 'string:' },
+  d: { alias: ['description'], describe: 'Time entry name', type: 'string:', demandOption: true},
   p: { alias: ['projectId', 'project'], describe: 'The case insensitive project name or project id.', type: 'string', demandOption: false },
   s: { alias: ['start', 'startTime'], describe: 'The start time for the task, e.g. 13:00 12:45AM.', type: 'string', demandOption: false },
   e: { alias: ['end', 'endTime'], describe: 'The end time for the task, e.g. 13:00 12:45AM.', type: 'string', demandOption: false }
 }
 
 export const handler = async function (argv) {
-  if (!(argv.d || argv.p || argv.s || argv.e)) {
-    console.error('At least one option must be provided, description, project, start or end')
-    yargs().help()
-    yargs().exit(1, new Error('At least one option must be provided, description, project, start or end'))
-  }
   const client = await Client()
-  const currentTimeEntry = await client.timeEntries.current()
-  debug(currentTimeEntry)
   const params = {}
 
   params.workspace_id = +defaultWorkspaceId
@@ -62,14 +54,15 @@ export const handler = async function (argv) {
   startTime ? params.start = startTime.toISOString() : undefined
   endTime ? params.stop = endTime.toISOString() : undefined
   if (startTime || endTime) {
-    const startTimeUnix = (startTime || dayjs(currentTimeEntry.start)).unix()
-    const endTimeUnix = (endTime || dayjs(currentTimeEntry.end) || dayjs()).unix()
+    const startTimeUnix = startTime.unix()
+    const endTimeUnix = endTime.unix()
     let duration = endTimeUnix - startTimeUnix
     duration = endTime ? duration : startTimeUnix * -1
     params.duration = duration
   }
   argv.description ? params.description = argv.description : undefined
   debug(params)
-  const timeEntry = await client.timeEntries.update(currentTimeEntry.id, params)
+  const timeEntry = await client.timeEntries.create(params)
   await displayTimeEntry(timeEntry)
 }
+

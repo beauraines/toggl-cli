@@ -53,7 +53,7 @@ export const createTimeEntry = async function (params) {
       description: params.description,
       workspace_id: +params.workspaceId,
       project_id: +params.projectId,
-      start: dayjs().toISOString(),
+      start: params.start ? params.start : dayjs().toISOString(),
       duration: -1 * dayjs().unix(),
       created_with: appName,
       at: dayjs().toISOString()
@@ -113,11 +113,15 @@ export const displayTimeEntry = async function (timeEntry) {
     console.info(`${chalk.blueBright(timeEntry.description ? timeEntry.description : 'no description')} ${chalk.yellow('#'+timeEntry.id)}`)
     console.info(`Billable: ${chalk.gray(timeEntry.billable)}`)
 
-    // TODO this should be abstracted for reuse
-    const startTime = dayjs.unix(timeEntry.duration * -1)
-    const duration = dayjs().diff(startTime, 's')
-    const durationFormatted = dayjs.duration(duration * 1000).format('H[h] m[m]')
+    let stopTime;
+    if (timeEntry.stop == null) {
+      stopTime = dayjs()
+    } else {
+      stopTime = dayjs(timeEntry.stop)
+    }
 
+    const duration = stopTime.diff(dayjs(timeEntry.start))
+    const durationFormatted = dayjs.duration(duration).format('H[h] m[m]')
     console.info(`Duration: ${chalk.green(durationFormatted)}`)
 
     const projects = await getProjects(timeEntry.wid)
@@ -137,4 +141,24 @@ export const displayTimeEntry = async function (timeEntry) {
     const workspace = await getWorkspace()
     console.info(`Workspace: ${workspace.name} (#${timeEntry.wid})`)
   }
+}
+
+/**
+ * Parses a timelike string into a dayjs object of the current date and that time
+ * @param {string} timeString timelike string e.g. 4:50PM '12:00 AM' etc.
+ * @returns {object} dayjs object
+ */
+export function parseTime (timeString) {
+  let h, m
+  // Assumes time in format 4:50 PM
+  const time = timeString.split(':', 2)
+  h = time[0]
+  m = time[1].match(/[0-9]+/)[0]
+  if (timeString.match(/PM/i) && h <= 12) {
+    // + in front of string converts to a number, cool!
+    h = +h + 12
+  } else if (h == 12) {
+    h = 0
+  }
+  return dayjs().hour(h).minute(m).second(0).millisecond(0)
 }
