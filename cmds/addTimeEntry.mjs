@@ -16,8 +16,8 @@ export const desc = 'Create a time entry. Time must be parsable by dayjs, e.g. 4
 export const builder = {
   d: { alias: ['description'], describe: 'Time entry name', type: 'string:', demandOption: true},
   p: { alias: ['projectId', 'project'], describe: 'The case insensitive project name or project id.', type: 'string', demandOption: false },
-  s: { alias: ['start', 'startTime'], describe: 'The start time for the task, e.g. 13:00 12:45AM.', type: 'string', demandOption: false },
-  e: { alias: ['end', 'endTime'], describe: 'The end time for the task, e.g. 13:00 12:45AM.', type: 'string', demandOption: false }
+  s: { alias: ['start', 'startTime'], describe: 'The start time for the task, e.g. 13:00 12:45AM.', type: 'string', demandOption: true },
+  e: { alias: ['end', 'endTime'], describe: 'The end time for the task, e.g. 13:00 12:45AM.', type: 'string', demandOption: true }
 }
 
 export const handler = async function (argv) {
