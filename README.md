@@ -35,34 +35,36 @@ Configure your environment, with environment variables or a `.env` file in the p
 
 ## Features
 
-| Feature                                  | Available | Comments                                                    |
-| ---------------------------------------- | --------- | ----------------------------------------------------------- |
-| Start time entry                         | ✅         |                                                             |
-| Start time entry with description        | ✅         |                                                             |
-| Start time entry with project            | ✅         |                                                             |
-| stop time entry                          | ✅         |                                                             |
-| Continue named time entry                | ✅         |                                                             |
-| Report today by project                  | ✅         |                                                             |
-| Report this week by project by day       | ✅         |                                                             |
-| Edit current time entry                  | ✅         |                                                             |
-| Use config from file                     | ✅         |                                                             |
-| Save config to file                      | ✅         |                                                             |
-| Refactor: Display and format modules     |            |                                                             |
-| Client: reset PAT                        |            | Is this really necessary?                                   |
-| Client: specify client name              | ✅         |                                                             |
-| Colorize output                          | ✅         |                                                             |
-| Better table output                      | ✅         |                                                             |
-| List recent time entries                 | ✅         |                                                             |
-| Command line completion                  | ✅         | [#6](https://github.com/beauraines/toggl-cli-node/issues/6) |
-| Delete time entry by id                  |            |                                                             |
-| Edit other time entries than the current |            |                                                             |
-| Display earlier time entries             |            |                                                             |
+| Feature                                             | Available | Comments                                                                               |
+| --------------------------------------------------- | --------- | -------------------------------------------------------------------------------------- |
+| Start time entry                                    | ✅         |                                                                                        |
+| Start time entry with description                   | ✅         |                                                                                        |
+| Start time entry with project                       | ✅         |                                                                                        |
+| stop time entry                                     | ✅         |                                                                                        |
+| Continue named time entry                           | ✅         |                                                                                        |
+| Report today by project                             | ✅         |                                                                                        |
+| Report this week by project by day                  | ✅         |                                                                                        |
+| Edit current time entry                             | ✅         |                                                                                        |
+| Use config from file                                | ✅         |                                                                                        |
+| Save config to file                                 | ✅         |                                                                                        |
+| Refactor: Display and format modules                |           |                                                                                        |
+| Client: reset PAT                                   |           | Is this really necessary?                                                              |
+| Client: specify client name                         | ✅         |                                                                                        |
+| Colorize output                                     | ✅         |                                                                                        |
+| Better table output                                 | ✅         |                                                                                        |
+| List recent time entries                            | ✅         |                                                                                        |
+| Command line completion                             | ✅         | [#6](https://github.com/beauraines/toggl-cli-node/issues/6)                            |
+| Delete time entry by id                             | ✅         | Contributed by @benthayer  [#160](https://github.com/beauraines/toggl-cli/pull/160)    |
+| Edit other time entries than the current            |           |                                                                                        |
+| Display earlier time entries                        |           |                                                                                        |
+| Add a completed time entry with start and end times | ✅         | Contributed by @benthayer     [#165](https://github.com/beauraines/toggl-cli/pull/165) |
+| Overlap detection on editing or adding entries      |           | Issue [#134](https://github.com/beauraines/toggl-cli/issues/134)                       |
 
 
 
 ## Planned Limitations
 
-There are several features that I do not use from Toggl, so including them is a priority for me. I'm not opposed to them being in there and would welcome collaboration to include them.
+There are several features that I do not use from Toggl, so including them is a priority for me. I'm not opposed to them being in there and would welcome contributions to include them.
 
 1. tags
 2. multiple workspaces
