@@ -5,7 +5,6 @@ import dayjs from 'dayjs'
 import debugClient from 'debug'
 import utc from 'dayjs/plugin/utc.js'
 import timezone from 'dayjs/plugin/timezone.js'
-import yargs from 'yargs'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
@@ -55,8 +54,8 @@ export const handler = async function (argv) {
   startTime ? params.start = startTime.toISOString() : undefined
   endTime ? params.stop = endTime.toISOString() : undefined
   if (startTime || endTime) {
-    const startTimeUnix = (startTime || dayjs(currentTimeEntry.start)).unix()
-    const endTimeUnix = (endTime || dayjs(currentTimeEntry.end) || dayjs()).unix()
+    const startTimeUnix = startTime.unix()
+    const endTimeUnix = endTime.unix()
     let duration = endTimeUnix - startTimeUnix
     duration = endTime ? duration : startTimeUnix * -1
     params.duration = duration
