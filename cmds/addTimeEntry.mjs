@@ -9,7 +9,7 @@ import yargs from 'yargs'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-const debug = debugClient('toggl-cli-edit');
+const debug = debugClient('toggl-cli-add');
 
 export const command = 'add <startTime> <endTime> <description>'
 export const desc = 'Create a time entry. Time must be parsable by dayjs, e.g. 4:50PM or \'12:00 AM\'.'
