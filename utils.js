@@ -113,17 +113,15 @@ export const displayTimeEntry = async function (timeEntry) {
     console.info(`${chalk.blueBright(timeEntry.description ? timeEntry.description : 'no description')} ${chalk.yellow('#'+timeEntry.id)}`)
     console.info(`Billable: ${chalk.gray(timeEntry.billable)}`)
 
-    // TODO this should be abstracted for reuse
-    let durationFormatted;
+    let stopTime;
     if (timeEntry.stop == null) {
-      const startTime = dayjs.unix(timeEntry.duration * -1)
-      const duration = dayjs().diff(startTime, 's')
-      durationFormatted = dayjs.duration(duration * 1000).format('H[h] m[m]')
+      stopTime = dayjs()
     } else {
-      const duration = dayjs(timeEntry.stop).diff(dayjs(timeEntry.start))
-      durationFormatted = dayjs.duration(duration).format('H[h] m[m]')
+      stopTime = dayjs(timeEntry.stop)
     }
 
+    const duration = stopTime.diff(dayjs(timeEntry.start))
+    const durationFormatted = dayjs.duration(duration).format('H[h] m[m]')
     console.info(`Duration: ${chalk.green(durationFormatted)}`)
 
     const projects = await getProjects(timeEntry.wid)
