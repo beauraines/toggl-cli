@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.1](https://github.com/beauraines/toggl-cli/compare/v2.3.0...v2.3.1) (2024-05-25)
+
+
+### Bug Fixes
+
+* missed required start/end option on add command ([5b1ca68](https://github.com/beauraines/toggl-cli/commit/5b1ca68eb78707c44a478d5e0c9bd7b1949aa0f0))
+
 ## [2.3.0](https://github.com/beauraines/toggl-cli/compare/v2.2.1...v2.3.0) (2024-05-25)
 
 
