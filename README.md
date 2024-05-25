@@ -1,6 +1,6 @@
 # toggl-cli-node
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 **UPDATED TO USE Toggl v9 API**
@@ -86,10 +86,10 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://benthayer.com"><img src="https://avatars.githubusercontent.com/u/6099299?v=4?s=100" width="100px;" alt="Ben Thayer"/><br /><sub><b>Ben Thayer</b></sub></a><br /><a href="https://github.com/beauraines/toggl-cli/commits?author=benthayer" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://yieldthedog.github.com/"><img src="https://avatars.githubusercontent.com/u/123820?v=4?s=100" width="100px;" alt="Christoph Walcher"/><br /><sub><b>Christoph Walcher</b></sub></a><br /><a href="#tool-saintedlama" title="Tools">🔧</a> <a href="#projectManagement-saintedlama" title="Project Management">📆</a></td>
     </tr>
   </tbody>
 </table>
-
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
