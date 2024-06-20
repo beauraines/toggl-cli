@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.2](https://github.com/beauraines/toggl-cli/compare/v2.3.1...v2.3.2) (2024-06-20)
+
+
+### Bug Fixes
+
+* **deps:** bump debug from 4.3.4 to 4.3.5 ([6a6a62f](https://github.com/beauraines/toggl-cli/commit/6a6a62fda0f6e33b4cb8784c02d9a0eb177bebf2))
+
 ### [2.3.1](https://github.com/beauraines/toggl-cli/compare/v2.3.0...v2.3.1) (2024-05-25)
 
 
