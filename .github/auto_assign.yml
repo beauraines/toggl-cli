@@ -1,0 +1,8 @@
+# Set to true to add reviewers to pull requests
+addReviewers: true
+
+# Set to true to add assignees to pull requests
+addAssignees: false
+
+reviewers: beauraines
+assign-yourself: false
