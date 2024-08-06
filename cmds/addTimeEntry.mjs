@@ -5,17 +5,16 @@ import dayjs from 'dayjs'
 import debugClient from 'debug'
 import utc from 'dayjs/plugin/utc.js'
 import timezone from 'dayjs/plugin/timezone.js'
-import yargs from 'yargs'
 dayjs.extend(utc)
 dayjs.extend(timezone)
 
-const debug = debugClient('toggl-cli-edit');
+const debug = debugClient('toggl-cli-add');
 
-export const command = 'add <startTime> <endTime> <description>'
+export const command = 'add [startTime] [endTime] [description]'
 export const desc = 'Create a time entry. Time must be parsable by dayjs, e.g. 4:50PM or \'12:00 AM\'.'
 
 export const builder = {
-  d: { alias: ['description'], describe: 'Time entry name', type: 'string:' },
+  d: { alias: ['description'], describe: 'Time entry name', type: 'string:', demandOption: true},
   p: { alias: ['projectId', 'project'], describe: 'The case insensitive project name or project id.', type: 'string', demandOption: false },
   s: { alias: ['start', 'startTime'], describe: 'The start time for the task, e.g. 13:00 12:45AM.', type: 'string', demandOption: false },
   e: { alias: ['end', 'endTime'], describe: 'The end time for the task, e.g. 13:00 12:45AM.', type: 'string', demandOption: false }
@@ -55,8 +54,8 @@ export const handler = async function (argv) {
   startTime ? params.start = startTime.toISOString() : undefined
   endTime ? params.stop = endTime.toISOString() : undefined
   if (startTime || endTime) {
-    const startTimeUnix = (startTime || dayjs(currentTimeEntry.start)).unix()
-    const endTimeUnix = (endTime || dayjs(currentTimeEntry.end) || dayjs()).unix()
+    const startTimeUnix = startTime.unix()
+    const endTimeUnix = endTime.unix()
     let duration = endTimeUnix - startTimeUnix
     duration = endTime ? duration : startTimeUnix * -1
     params.duration = duration
