@@ -149,16 +149,25 @@ export const displayTimeEntry = async function (timeEntry) {
  * @returns {object} dayjs object
  */
 export function parseTime (timeString) {
-  let h, m
+  let h_orig, h, m
   // Assumes time in format 4:50 PM
   const time = timeString.split(':', 2)
-  h = time[0]
-  m = time[1].match(/[0-9]+/)[0]
-  if (timeString.match(/PM/i) && h <= 12) {
-    // + in front of string converts to a number, cool!
-    h = +h + 12
-  } else if (h == 12) {
-    h = 0
+
+  // + in front of string converts to a number, cool!
+  h_orig = +time[0]
+  h = h_orig
+  m = +time[1].match(/[0-9]+/)[0]
+
+  if (h_orig > 12) {
+    // 24 hour time
+    h = h_orig
+  } else if (h_orig == 12) {
+    // 12 is a special case
+    h = timeString.match(/PM/i) ? 12 : 0
+  } else {
+    // 12 hour time
+    h = h_orig
+    if (timeString.match(/PM/i)) h += 12
   }
   return dayjs().hour(h).minute(m).second(0).millisecond(0)
 }
