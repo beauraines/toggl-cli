@@ -155,7 +155,6 @@ export function parseTime (timeString) {
 
   // + in front of string converts to a number, cool!
   h_orig = +time[0]
-  h = h_orig
   m = +time[1].match(/[0-9]+/)[0]
 
   if (h_orig > 12) {
