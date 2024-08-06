@@ -1,0 +1,14 @@
+name: Auto-assign reviewers for Dependabot PRs
+
+on:
+  pull_request_target:
+    types: [opened, reopened]
+
+jobs:
+  assign-reviewers:
+    if: github.actor == 'dependabot[bot]' || github.actor == 'dependabot-preview[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Assign reviewers
+        uses: kentaro-m/auto-assign-action@v2.0.0
+

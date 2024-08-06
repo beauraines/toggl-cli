@@ -1,4 +1,7 @@
 # toggl-cli-node
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 **UPDATED TO USE Toggl v9 API**
 
@@ -32,34 +35,36 @@ Configure your environment, with environment variables or a `.env` file in the p
 
 ## Features
 
-| Feature                                  | Available | Comments                                                    |
-| ---------------------------------------- | --------- | ----------------------------------------------------------- |
-| Start time entry                         | ✅         |                                                             |
-| Start time entry with description        | ✅         |                                                             |
-| Start time entry with project            | ✅         |                                                             |
-| stop time entry                          | ✅         |                                                             |
-| Continue named time entry                | ✅         |                                                             |
-| Report today by project                  | ✅         |                                                             |
-| Report this week by project by day       | ✅         |                                                             |
-| Edit current time entry                  | ✅         |                                                             |
-| Use config from file                     | ✅         |                                                             |
-| Save config to file                      | ✅         |                                                             |
-| Refactor: Display and format modules     |            |                                                             |
-| Client: reset PAT                        |            | Is this really necessary?                                   |
-| Client: specify client name              | ✅         |                                                             |
-| Colorize output                          | ✅         |                                                             |
-| Better table output                      | ✅         |                                                             |
-| List recent time entries                 | ✅         |                                                             |
-| Command line completion                  | ✅         | [#6](https://github.com/beauraines/toggl-cli-node/issues/6) |
-| Delete time entry by id                  |            |                                                             |
-| Edit other time entries than the current |            |                                                             |
-| Display earlier time entries             |            |                                                             |
+| Feature                                             | Available | Comments                                                                               |
+| --------------------------------------------------- | --------- | -------------------------------------------------------------------------------------- |
+| Start time entry                                    | ✅         |                                                                                        |
+| Start time entry with description                   | ✅         |                                                                                        |
+| Start time entry with project                       | ✅         |                                                                                        |
+| stop time entry                                     | ✅         |                                                                                        |
+| Continue named time entry                           | ✅         |                                                                                        |
+| Report today by project                             | ✅         |                                                                                        |
+| Report this week by project by day                  | ✅         |                                                                                        |
+| Edit current time entry                             | ✅         |                                                                                        |
+| Use config from file                                | ✅         |                                                                                        |
+| Save config to file                                 | ✅         |                                                                                        |
+| Refactor: Display and format modules                |           |                                                                                        |
+| Client: reset PAT                                   |           | Is this really necessary?                                                              |
+| Client: specify client name                         | ✅         |                                                                                        |
+| Colorize output                                     | ✅         |                                                                                        |
+| Better table output                                 | ✅         |                                                                                        |
+| List recent time entries                            | ✅         |                                                                                        |
+| Command line completion                             | ✅         | [#6](https://github.com/beauraines/toggl-cli-node/issues/6)                            |
+| Delete time entry by id                             | ✅         | Contributed by @benthayer  [#160](https://github.com/beauraines/toggl-cli/pull/160)    |
+| Edit other time entries than the current            |           |                                                                                        |
+| Display earlier time entries                        |           |                                                                                        |
+| Add a completed time entry with start and end times | ✅         | Contributed by @benthayer     [#165](https://github.com/beauraines/toggl-cli/pull/165) |
+| Overlap detection on editing or adding entries      |           | Issue [#134](https://github.com/beauraines/toggl-cli/issues/134)                       |
 
 
 
 ## Planned Limitations
 
-There are several features that I do not use from Toggl, so including them is a priority for me. I'm not opposed to them being in there and would welcome collaboration to include them.
+There are several features that I do not use from Toggl, so including them is a priority for me. I'm not opposed to them being in there and would welcome contributions to include them.
 
 1. tags
 2. multiple workspaces
@@ -69,4 +74,29 @@ There are several features that I do not use from Toggl, so including them is a 
 
 I need to clean up and refactor the code and establish a few more helper and utility functions, but I'm open to contributions!
 
+
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://benthayer.com"><img src="https://avatars.githubusercontent.com/u/6099299?v=4?s=100" width="100px;" alt="Ben Thayer"/><br /><sub><b>Ben Thayer</b></sub></a><br /><a href="https://github.com/beauraines/toggl-cli/commits?author=benthayer" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://yieldthedog.github.com/"><img src="https://avatars.githubusercontent.com/u/123820?v=4?s=100" width="100px;" alt="Christoph Walcher"/><br /><sub><b>Christoph Walcher</b></sub></a><br /><a href="#tool-saintedlama" title="Tools">🔧</a> <a href="#projectManagement-saintedlama" title="Project Management">📆</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 

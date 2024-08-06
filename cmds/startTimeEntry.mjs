@@ -34,18 +34,13 @@ export const handler = async function (argv) {
   }
 
   if (argv.startTime) {
-    console.log(argv.startTime)
     let startTime;
     if (dayjs(argv.startTime).isValid()) {
-      console.log('parsing with dayjs')
       startTime = argv.startTime
     } else {
       // Parse the time and set it based upon the current time
       startTime = parseTime(argv.startTime)
-      console.log('parsing with parseTime')
     }
-
-    console.log(startTime)
 
     params.start = startTime.toISOString()
     params.duration = -1

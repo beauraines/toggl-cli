@@ -1,6 +1,6 @@
 {
   "name": "@beauraines/toggl-cli",
-  "version": "2.2.1",
+  "version": "2.3.9",
   "description": "CLI client for Toggl Time Tracker",
   "main": "cli.js",
   "bin": {
@@ -40,14 +40,13 @@
     "yargs": "^17.6.0"
   },
   "devDependencies": {
-    "eslint": "^8.34.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jest": "^27.2.1",
-    "eslint-plugin-n": "^16.0.1",
-    "eslint-plugin-promise": "^6.1.1",
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.5.0",
+    "eslint": "^9.5.0",
+    "eslint-plugin-jest": "^28.6.0",
+    "globals": "^15.6.0",
     "jest": "^29.4.3",
-    "should-release": "^1.2.0",
+    "should-release": "github:beauraines/should-release",
     "standard-version": "^9.5.0"
   }
 }

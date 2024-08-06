@@ -2,6 +2,46 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.3.9](https://github.com/beauraines/toggl-cli/compare/v2.3.8...v2.3.9) (2024-07-23)
+
+
+### Bug Fixes
+
+* **deps:** bump dayjs from 1.11.11 to 1.11.12 ([#182](https://github.com/beauraines/toggl-cli/issues/182)) ([5e81f91](https://github.com/beauraines/toggl-cli/commit/5e81f910ef301fd9056945b364ed957b2f0e77ce))
+
+### [2.3.8](https://github.com/beauraines/toggl-cli/compare/v2.3.7...v2.3.8) (2024-07-21)
+
+### [2.3.7](https://github.com/beauraines/toggl-cli/compare/v2.3.6...v2.3.7) (2024-07-06)
+
+### [2.3.6](https://github.com/beauraines/toggl-cli/compare/v2.3.5...v2.3.6) (2024-07-01)
+
+### [2.3.5](https://github.com/beauraines/toggl-cli/compare/v2.3.4...v2.3.5) (2024-06-22)
+
+### [2.3.4](https://github.com/beauraines/toggl-cli/compare/v2.3.3...v2.3.4) (2024-06-22)
+
+### [2.3.3](https://github.com/beauraines/toggl-cli/compare/v2.3.2...v2.3.3) (2024-06-21)
+
+### [2.3.2](https://github.com/beauraines/toggl-cli/compare/v2.3.1...v2.3.2) (2024-06-20)
+
+
+### Bug Fixes
+
+* **deps:** bump debug from 4.3.4 to 4.3.5 ([6a6a62f](https://github.com/beauraines/toggl-cli/commit/6a6a62fda0f6e33b4cb8784c02d9a0eb177bebf2))
+
+### [2.3.1](https://github.com/beauraines/toggl-cli/compare/v2.3.0...v2.3.1) (2024-05-25)
+
+
+### Bug Fixes
+
+* missed required start/end option on add command ([5b1ca68](https://github.com/beauraines/toggl-cli/commit/5b1ca68eb78707c44a478d5e0c9bd7b1949aa0f0))
+
+## [2.3.0](https://github.com/beauraines/toggl-cli/compare/v2.2.1...v2.3.0) (2024-05-25)
+
+
+### Features
+
+* Add time entry, include start with create ([#165](https://github.com/beauraines/toggl-cli/issues/165)) ([d73f181](https://github.com/beauraines/toggl-cli/commit/d73f181115ea0a92e4e1427d0f2c77337ef55132))
+
 ### [2.2.1](https://github.com/beauraines/toggl-cli/compare/v2.2.0...v2.2.1) (2024-05-17)
 
 
