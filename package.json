@@ -1,6 +1,6 @@
 {
   "name": "@beauraines/toggl-cli",
-  "version": "2.3.14",
+  "version": "2.3.15",
   "description": "CLI client for Toggl Time Tracker",
   "main": "cli.js",
   "bin": {
