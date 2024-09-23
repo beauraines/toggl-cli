@@ -5,7 +5,8 @@ export const command = 'start'
 export const desc = 'Starts a time entry'
 
 export const builder = {
-  description: {
+  d: {
+    alias: ['description'],
     describe: 'Time entry name',
     type: 'string:'
   },
