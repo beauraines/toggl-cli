@@ -7,6 +7,12 @@ export const builder = {}
 
 export const handler = async function (argv) {
   const client = await Client()
-  const deleted = await client.timeEntries.delete(argv.id)
+  let deleted
+  try {
+    deleted = await client.timeEntries.delete(argv.id)
+  } catch (error) {
+    console.error(error.message)
+    process.exit(1) 
+  }  
   console.log(`Deleted time entry with id #${argv.id}`)
-}
+  }
