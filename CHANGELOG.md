@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/beauraines/toggl-cli/compare/v2.3.15...v2.4.0) (2024-09-23)
+
+
+### Features
+
+* error handling when removing non-existent time entry ([#196](https://github.com/beauraines/toggl-cli/issues/196)) ([5506de2](https://github.com/beauraines/toggl-cli/commit/5506de202d208690aa03bcaed4f8c36686aa28be)), closes [#195](https://github.com/beauraines/toggl-cli/issues/195)
+* short alias for description on start command ([#197](https://github.com/beauraines/toggl-cli/issues/197)) ([c01bf27](https://github.com/beauraines/toggl-cli/commit/c01bf2725f58cf6dabb4b913e72e05e0d4bbe72a))
+
+
+### Bug Fixes
+
+* **deps:** bump debug from 4.3.6 to 4.3.7 ([#192](https://github.com/beauraines/toggl-cli/issues/192)) ([2aa2cb8](https://github.com/beauraines/toggl-cli/commit/2aa2cb880bc1ca332d5c4ef60c0cfaa44e5c85c8))
+
 ### [2.3.15](https://github.com/beauraines/toggl-cli/compare/v2.3.14...v2.3.15) (2024-09-05)
 
 ### [2.3.14](https://github.com/beauraines/toggl-cli/compare/v2.3.13...v2.3.14) (2024-08-30)
