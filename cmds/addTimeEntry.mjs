@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import Client from '../client.js'
-import { defaultWorkspaceId, getProjectByName, getProjectById, appName, displayTimeEntry, parseTime } from '../utils.js'
+import { defaultProjectId, defaultWorkspaceId, getProjectByName, getProjectById, appName, displayTimeEntry, parseTime } from '../utils.js'
 import dayjs from 'dayjs'
 import debugClient from 'debug'
 import utc from 'dayjs/plugin/utc.js'
@@ -32,6 +32,8 @@ export const handler = async function (argv) {
     } else {
       project = await getProjectById(params.workspace_id, argv.projectId)
     }
+  } else {
+    project = await getProjectById(params.workspace_id, defaultProjectId )
   }
 
   let startTime, endTime
