@@ -8,14 +8,14 @@ updates:
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: "monthly"
       day: "friday"
     commit-message:
       prefix: fix
       prefix-development: chore
       include: scope
     groups:
-        dev-dependencies:
-          dependency-type: "development"
-          patterns:
-            - "*"
+      dev-dependencies:
+        dependency-type: "development"
+        patterns:
+          - "*"
