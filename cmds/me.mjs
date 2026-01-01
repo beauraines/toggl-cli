@@ -37,8 +37,7 @@ export const handler = async function (argv) {
   const workspaces = (await client.workspaces.list()).map(w => w.name).join(', ')
   console.log('')
   console.log(`Workspaces: ${workspaces}`)
-  // FIXME since is no longer in the response
-  const since = dayjs.unix(currentUser.since)
+  const since = dayjs(currentUser.created_at)
   console.log('')
   console.log(`Toggl user since ${since}`)
 }
