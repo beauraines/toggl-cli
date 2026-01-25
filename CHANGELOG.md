@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.6.2](https://github.com/beauraines/toggl-cli/compare/v2.6.1...v2.6.2) (2026-01-25)
+
+
+### Bug Fixes
+
+* **deps:** bump lodash from 4.17.21 to 4.17.23 ([#222](https://github.com/beauraines/toggl-cli/issues/222)) ([e77e306](https://github.com/beauraines/toggl-cli/commit/e77e306ee6c6472169502d5ac27cb7d9e34f3b86))
+
 ### [2.6.1](https://github.com/beauraines/toggl-cli/compare/v2.5.8...v2.6.1) (2026-01-01)
 
 
