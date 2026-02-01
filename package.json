@@ -44,7 +44,7 @@
     "@eslint/js": "^9.5.0",
     "eslint": "^9.5.0",
     "eslint-plugin-jest": "^29.5.0",
-    "globals": "^16.5.0",
+    "globals": "^17.3.0",
     "jest": "^30.2.0",
     "should-release": "github:beauraines/should-release",
     "standard-version": "^9.5.0"
