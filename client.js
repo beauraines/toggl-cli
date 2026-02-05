@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 import togglClient from 'toggl-client'
 import { readConfig } from './config.js'
-dotenv.config()
+dotenv.config({quiet:true})
 import debugClient from 'debug'
 const debug = debugClient('toggl-cli-client')
 
