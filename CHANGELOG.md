@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/beauraines/toggl-cli/compare/v2.6.6...v2.7.0) (2026-02-28)
+
+
+### Features
+
+* add automatic API quota warning on every command ([#228](https://github.com/beauraines/toggl-cli/issues/228)) ([9c0ce3f](https://github.com/beauraines/toggl-cli/commit/9c0ce3f971e99ef31cbc66bbcff10bffae89a050))
+
 ### [2.6.6](https://github.com/beauraines/toggl-cli/compare/v2.6.5...v2.6.6) (2026-02-28)
 
 
