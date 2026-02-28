@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.6.6](https://github.com/beauraines/toggl-cli/compare/v2.6.5...v2.6.6) (2026-02-28)
+
+
+### Bug Fixes
+
+* **deps:** bump minimatch ([#229](https://github.com/beauraines/toggl-cli/issues/229)) ([b812aa5](https://github.com/beauraines/toggl-cli/commit/b812aa5f94ee58068a5320e04ed316f1e6ca96e0))
+
 ### [2.6.5](https://github.com/beauraines/toggl-cli/compare/v2.6.4...v2.6.5) (2026-02-05)
 
 
