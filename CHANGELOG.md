@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.8.4](https://github.com/beauraines/toggl-cli/compare/v2.8.3...v2.8.4) (2026-03-30)
+
+
+### Bug Fixes
+
+* **deps:** bump picomatch ([#236](https://github.com/beauraines/toggl-cli/issues/236)) ([d70cb20](https://github.com/beauraines/toggl-cli/commit/d70cb20f90a9e52bcd8dd368c8b3e5f3ebddeeba))
+
 ### [2.8.3](https://github.com/beauraines/toggl-cli/compare/v2.8.0...v2.8.3) (2026-03-24)
 
 
