@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.8.8](https://github.com/beauraines/toggl-cli/compare/v2.8.7...v2.8.8) (2026-04-05)
+
+
+### Bug Fixes
+
+* **deps:** bump lodash from 4.17.23 to 4.18.1 ([#240](https://github.com/beauraines/toggl-cli/issues/240)) ([d419b66](https://github.com/beauraines/toggl-cli/commit/d419b66c63af81d691ebf2ad3de5a8ab5351fd21))
+
 ### [2.8.7](https://github.com/beauraines/toggl-cli/compare/v2.8.6...v2.8.7) (2026-04-05)
 
 
