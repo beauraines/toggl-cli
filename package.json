@@ -7,7 +7,7 @@
     "toggl": "./cli.js"
   },
   "scripts": {
-    "test": "jest",
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest",
     "lint": "eslint . ./**/*.js ./**/*.mjs",
     "lint:fix": "eslint . ./**/*.js ./**/*.mjs --fix",
     "release": "standard-version",
