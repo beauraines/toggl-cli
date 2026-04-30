@@ -14,7 +14,9 @@ import * as today from './today.mjs'
 import * as weekly from './weekly.mjs'
 import * as createConfig from './create-config.mjs'
 import * as quota from './quota.mjs'
-export const commands = [
+import { withErrorHandling } from '../errorHandler.js'
+
+const rawCommands = [
   continueEntry,
   current,
   edit,
@@ -32,3 +34,8 @@ export const commands = [
   workspace,
   createConfig
 ]
+
+export const commands = rawCommands.map(cmd => ({
+  ...cmd,
+  handler: withErrorHandling(cmd.handler)
+}))
