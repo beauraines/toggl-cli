@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.8.10](https://github.com/beauraines/toggl-cli/compare/v2.8.9...v2.8.10) (2026-04-30)
+
+
+### Bug Fixes
+
+* improve error output when offline ([#243](https://github.com/beauraines/toggl-cli/issues/243)) ([#244](https://github.com/beauraines/toggl-cli/issues/244)) ([5c8caa8](https://github.com/beauraines/toggl-cli/commit/5c8caa865dfe351258c66379906a76adff58a5db))
+
 ### [2.8.9](https://github.com/beauraines/toggl-cli/compare/v2.8.8...v2.8.9) (2026-04-13)
 
 ### [2.8.8](https://github.com/beauraines/toggl-cli/compare/v2.8.7...v2.8.8) (2026-04-05)
