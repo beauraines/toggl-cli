@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.8.17](https://github.com/beauraines/toggl-cli/compare/v2.8.15...v2.8.17) (2026-09-09)
+
+
+### Bug Fixes
+
+* **deps:** bump dayjs from 1.11.21 to 1.11.23 ([#254](https://github.com/beauraines/toggl-cli/issues/254)) ([7eb3a7a](https://github.com/beauraines/toggl-cli/commit/7eb3a7aa8a2df8fc000962ee7746521e0c386925))
+* **deps:** bump js-yaml ([#259](https://github.com/beauraines/toggl-cli/issues/259)) ([13d6910](https://github.com/beauraines/toggl-cli/commit/13d691022147288014bdfa4d544c39cb55d25b0e))
+* **deps:** bump open from 11.0.0 to 11.0.1 ([#253](https://github.com/beauraines/toggl-cli/issues/253)) ([c5c6a70](https://github.com/beauraines/toggl-cli/commit/c5c6a70b999514745ce1cff63ad272fb86b7019a))
+* **deps:** bump yargs from 18.0.0 to 18.1.0 ([#251](https://github.com/beauraines/toggl-cli/issues/251)) ([342e95e](https://github.com/beauraines/toggl-cli/commit/342e95e82fb8967e5c98e4b63a24a79203ca4fc3))
+
 ### [2.8.15](https://github.com/beauraines/toggl-cli/compare/v2.8.14...v2.8.15) (2026-09-07)
 
 ### [2.8.14](https://github.com/beauraines/toggl-cli/compare/v2.8.13...v2.8.14) (2026-06-02)
