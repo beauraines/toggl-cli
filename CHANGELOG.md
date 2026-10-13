@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.8.19](https://github.com/beauraines/toggl-cli/compare/v2.8.18...v2.8.19) (2026-10-13)
+
 ### [2.8.18](https://github.com/beauraines/toggl-cli/compare/v2.8.17...v2.8.18) (2026-10-13)
 
 
