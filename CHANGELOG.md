@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.8.18](https://github.com/beauraines/toggl-cli/compare/v2.8.17...v2.8.18) (2026-10-13)
+
+
+### Bug Fixes
+
+* **deps:** bump brace-expansion ([#267](https://github.com/beauraines/toggl-cli/issues/267)) ([ea5992c](https://github.com/beauraines/toggl-cli/commit/ea5992c229d6b40d15a63d6b590cf5d94dc7e192))
+
 ### [2.8.17](https://github.com/beauraines/toggl-cli/compare/v2.8.15...v2.8.17) (2026-09-09)
 
 
