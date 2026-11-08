@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.8.21](https://github.com/beauraines/toggl-cli/compare/v2.8.20...v2.8.21) (2026-11-08)
+
+
+### Bug Fixes
+
+* **deps:** bump open from 11.0.1 to 11.0.4 ([#266](https://github.com/beauraines/toggl-cli/issues/266)) ([e24b1b4](https://github.com/beauraines/toggl-cli/commit/e24b1b4e98668d013c6eefc57403260413976b23))
+
 ### [2.8.20](https://github.com/beauraines/toggl-cli/compare/v2.8.19...v2.8.20) (2026-11-08)
 
 ### [2.8.19](https://github.com/beauraines/toggl-cli/compare/v2.8.18...v2.8.19) (2026-10-13)
